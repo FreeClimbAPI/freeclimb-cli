@@ -22,4 +22,4 @@ OPTIONS
                                  E.164 format.
 ```
 
-_See code: [src/commands/available-numbers/list.ts](https://github.com/Documents/freeclimb-cli/blob/v0.0.0/src/commands/available-numbers/list.ts)_
+_See code: [src/commands/available-numbers/list.ts](https://github.com/Documents/freeclimb-cli/blob/v0.1.0/src/commands/available-numbers/list.ts)_

@@ -26,7 +26,7 @@ OPTIONS
   -h, --help                         show CLI help
 ```
 
-_See code: [src/commands/incoming-numbers/buy.ts](https://github.com/Documents/freeclimb-cli/blob/v0.0.0/src/commands/incoming-numbers/buy.ts)_
+_See code: [src/commands/incoming-numbers/buy.ts](https://github.com/Documents/freeclimb-cli/blob/v0.1.0/src/commands/incoming-numbers/buy.ts)_
 
 ## `freeclimb incoming-numbers:delete PHONENUMBERID`
 
@@ -43,7 +43,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/incoming-numbers/delete.ts](https://github.com/Documents/freeclimb-cli/blob/v0.0.0/src/commands/incoming-numbers/delete.ts)_
+_See code: [src/commands/incoming-numbers/delete.ts](https://github.com/Documents/freeclimb-cli/blob/v0.1.0/src/commands/incoming-numbers/delete.ts)_
 
 ## `freeclimb incoming-numbers:get PHONENUMBERID`
 
@@ -61,7 +61,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/incoming-numbers/get.ts](https://github.com/Documents/freeclimb-cli/blob/v0.0.0/src/commands/incoming-numbers/get.ts)_
+_See code: [src/commands/incoming-numbers/get.ts](https://github.com/Documents/freeclimb-cli/blob/v0.1.0/src/commands/incoming-numbers/get.ts)_
 
 ## `freeclimb incoming-numbers:list`
 
@@ -80,7 +80,7 @@ OPTIONS
                                  expression.
 ```
 
-_See code: [src/commands/incoming-numbers/list.ts](https://github.com/Documents/freeclimb-cli/blob/v0.0.0/src/commands/incoming-numbers/list.ts)_
+_See code: [src/commands/incoming-numbers/list.ts](https://github.com/Documents/freeclimb-cli/blob/v0.1.0/src/commands/incoming-numbers/list.ts)_
 
 ## `freeclimb incoming-numbers:update PHONENUMBERID`
 
@@ -99,4 +99,4 @@ OPTIONS
   -h, --help                         show CLI help
 ```
 
-_See code: [src/commands/incoming-numbers/update.ts](https://github.com/Documents/freeclimb-cli/blob/v0.0.0/src/commands/incoming-numbers/update.ts)_
+_See code: [src/commands/incoming-numbers/update.ts](https://github.com/Documents/freeclimb-cli/blob/v0.1.0/src/commands/incoming-numbers/update.ts)_
