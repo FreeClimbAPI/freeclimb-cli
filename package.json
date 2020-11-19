@@ -6,7 +6,7 @@
     "freeclimb": "./bin/run"
   },
   "bugs": {
-    "url": "https://github.com/Documents/freeclimb-cli/issues"
+    "url": "https://github.com/FreeClimbAPI/freeclimb-cli/issues"
   },
   "dependencies": {
     "@oclif/command": "^1.8",
@@ -55,7 +55,7 @@
     "/npm-shrinkwrap.json",
     "/oclif.manifest.json"
   ],
-  "homepage": "https://github.com/Documents/freeclimb-cli",
+  "homepage": "https://github.com/FreeClimbAPI/freeclimb-cli",
   "keywords": [
     "oclif"
   ],
@@ -115,7 +115,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Documents/freeclimb-cli.git"
+    "url": "git+https://github.com/FreeClimbAPI/freeclimb-cli.git"
   },
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
