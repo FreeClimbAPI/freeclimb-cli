@@ -1,7 +1,7 @@
 {
   "name": "freeclimb-cli",
   "version": "0.1.0",
-  "author": "ataniguchi",
+  "author": "dev@freeclimb.com",
   "bin": {
     "freeclimb": "./bin/run"
   },
