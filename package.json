@@ -1,0 +1,147 @@
+{
+  "name": "freeclimb-cli",
+  "version": "0.1.0",
+  "author": "dev@freeclimb.com",
+  "bin": {
+    "freeclimb": "./bin/run"
+  },
+  "bugs": {
+    "url": "https://github.com/FreeClimbAPI/freeclimb-cli/issues"
+  },
+  "dependencies": {
+    "@oclif/command": "^1.8",
+    "@oclif/config": "^1",
+    "@oclif/errors": "^1.3.3",
+    "@oclif/plugin-autocomplete": "^0.2.0",
+    "@oclif/plugin-help": "^3",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "keytar": "^6.0.1",
+    "lodash": "^4.17.15",
+    "tslib": "^1"
+  },
+  "devDependencies": {
+    "@oclif/dev-cli": "^1",
+    "@oclif/test": "^1",
+    "@types/chai": "^4",
+    "@types/mocha": "^5",
+    "@types/node": "^10",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "chai": "^4",
+    "eslint": "^7.2.0",
+    "eslint-config-import": "^0.13.0",
+    "eslint-config-oclif": "^3.1",
+    "eslint-config-oclif-typescript": "^0.1",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-no-only-tests": "^2.4.0",
+    "globby": "^10",
+    "husky": "^4.2.5",
+    "lint-staged": "^10.2.9",
+    "mocha": "^5",
+    "nock": "^12.0.3",
+    "nyc": "^14",
+    "prettier": "^2.0.5",
+    "ts-node": "^8",
+    "typescript": "^3.3"
+  },
+  "engines": {
+    "node": ">=12.9.0"
+  },
+  "files": [
+    "/bin",
+    "/lib",
+    "/npm-shrinkwrap.json",
+    "/oclif.manifest.json"
+  ],
+  "homepage": "https://github.com/FreeClimbAPI/freeclimb-cli",
+  "keywords": [
+    "oclif"
+  ],
+  "license": "MIT",
+  "main": "lib/index.js",
+  "oclif": {
+    "commands": "./lib/commands",
+    "bin": "freeclimb",
+    "helpClass": "./lib/help",
+    "macos": {
+      "identifier": "freeclimb-cli"
+    },
+    "plugins": [
+      "@oclif/plugin-help"
+    ],
+    "topics": {
+      "sms": {
+        "description": " A Message instance resource represents an SMS Message sent between FreeClimb and a remote endpoint. The Message may be inbound (when a person messages a FreeClimb number ) or outbound (when an Application initiates sending the Message, either via the REST API or the PerCL Sms command). The Messages list resource represents the set of all Messages made to and from an Account. Messages can exist in one of the following states:"
+      },
+      "recordings": {
+        "description": " A Recording instance resource represents an audio file created by FreeClimb during a Call or Conference. The Recording resource is a subresource of a Call resource and Conference resource. This enables navigating directly from a Call or Conference to the Recordings generated from them. Recordings are owned by an account and are stored for the account holder on FreeClimb until deleted. There are two ways to begin a Recording:"
+      },
+      "logs": {
+        "description": " A Log instance resource represents a log entry made by FreeClimb in the course of processing a PerCL script or servicing a REST API request. It is mostly useful for debugging purposes. The Logs list resource represents the set of logs generated for an account. For convenience, a Logs list resource is also available as a subresource of a Call instance resource, since most logging occurs during call processing. The Log instance resource is unusual in that it exists but is not directly addressable. It also does not have a resource ID."
+      },
+      "queue-members": {
+        "description": " A Queue Member is a subresource of a Queue resource and represents a Call currently in a particular Queue."
+      },
+      "call-queues": {
+        "description": " Queues are the primary means of keeping callers waiting. A Queue is an object to hold callers until they can be provided the service they seek. Queues can be created ahead of time and are deleted automatically when they change state from populated to empty."
+      },
+      "conference-participants": {
+        "description": " A Participant is a subresource of a Conference resource and represents a Call currently connected to a particular Conference."
+      },
+      "conferences": {
+        "description": "A Conference represents a call between two or more participants."
+      },
+      "calls": {
+        "description": " A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound (when a person calls a FreeClimb number) or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account. FreeClimb currently does not support direct SIP user agent endpoints. If you are interested in SIP trunking, please contact Support. A Call resource is represented by the following properties:"
+      },
+      "incoming-numbers": {
+        "description": " This is the collection of all the phone numbers that you have purchased from FreeClimb and which now belong to the account. These phone numbers can receive and send calls. An Incoming number resource is represented by the following properties:"
+      },
+      "available-numbers": {
+        "description": " Available Numbers are FreeClimb phone numbers available for purchase. The properties of the Available Phone Numbers resource provides a means to search for phone numbers that are available to buy. You use pattern matching to search for phone numbers that match your needs. When an available number is identified for purchase, make an HTTP POST request to the IncomingPhoneNumbers endpoint using the number as the phoneNumber parameter. The list of Available Phone Number resources is accessible to all accounts."
+      },
+      "applications": {
+        "description": " An Application in FreeClimb is just a set of configuration data and URLs that FreeClimb invokes to notify the app of an event or to retrieve instructions on how to behave in response to an event, such as when one of the phone numbers associated with the Application receives a Call. Applications are useful for encapsulating configuration information that we need to distribute across multiple phone numbers. Any number of phone numbers can point to a single Application so that they share a common set of properties and URLs. This makes it possible to change the configuration of a large number of phone numbers by modifying a single Application instance. If we create an Application with its voiceUrl set to http://www.example.com/answer, we can assign that Application to all of our incoming phone numbers and FreeClimb will make a request to that URL whenever an inbound call arrives. Likewise, when making outbound calls using the REST API, we can specify an applicationId to handle the outbound request and FreeClimb will make a request to the callConnectUrl of the Application. The callConnectUrl property is used instead of the voiceUrl property for outbound calls. The behavior of the callConnectUrl and voiceUrl are different because of the difference in ‘behavior’ when making an outbound call and answering an inbound call; the main difference being that an outbound call may not actually be connected (e.g. busy, no answer). For incoming SMS messages, we can specify an smsUrl which FreeClimb will request when a number assigned to our Application receives an SMS message. An Application resource is represented by the following properties:"
+      },
+      "accounts": {
+        "description": " You get a FreeClimb Account at signup. This includes an account ID (accountId) and an authentication token (authToken). These two properties enable you to connect and communicate with FreeClimb. An Account resource is represented by the following properties:"
+      }
+    }
+  },
+  "do-not-move": {
+    "important": "This key is required to be right after oclif/topics to prevent the autogeneration script from overrunning when generating OCLIF topics"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FreeClimbAPI/freeclimb-cli.git"
+  },
+  "scripts": {
+    "postpack": "rm -f oclif.manifest.json",
+    "lint": "eslint . --ext .js,.ts --config .eslintrc.json",
+    "lint-write": "eslint . --fix --ext .js,.ts --config .eslintrc.json && prettier --write **.{js,ts,json,md}",
+    "prepack": "rm -rf lib && tsc -b && oclif-dev manifest && oclif-dev readme",
+    "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\" --runInBand",
+    "version": "oclif-dev readme && git add README.md"
+  },
+  "types": "lib/index.d.ts",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && oclif-dev readme --multi && git add ."
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,json,md}": [
+      "prettier --write",
+      "git add"
+    ],
+    "*/**/*.{js,ts}": [
+      "eslint --quiet"
+    ]
+  },
+  "description": "freeclimb-cli =============",
+  "directories": {
+    "test": "test"
+  }
+}
