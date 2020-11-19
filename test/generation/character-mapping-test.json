@@ -1,0 +1,132 @@
+[
+  {
+    "topic": "accounts",
+    "commands": [
+      {
+        "params": [
+          {
+            "name": "variableOne",
+            "required": false
+          },
+          {
+            "name": "variableTwo",
+            "required": false
+          },
+          {
+            "name": "variableThree",
+            "required": false
+          }
+        ]
+      },
+      {
+        "params": [
+          {
+            "name": "variableOne",
+            "required": false
+          },
+          {
+            "name": "variableTest",
+            "required": false
+          },
+          {
+            "name": "alias",
+            "required": false
+          },
+          {
+            "name": "test",
+            "required": false
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "topic": "applications",
+    "commands": [
+      {
+        "params": [
+          {
+            "name": "allVariable",
+            "required": false
+          },
+          {
+            "name": "alias",
+            "required": false
+          },
+          {
+            "name": "test",
+            "required": false
+          },
+          {
+            "name": "variableTest",
+            "required": false
+          },
+          {
+            "name": "ignored",
+            "required": true
+          }
+        ]
+      },
+      {
+        "params": [
+          {
+            "name": "variableOne",
+            "required": false
+          },
+          {
+            "name": "variableTwo",
+            "required": false
+          },
+          {
+            "name": "test",
+            "required": false
+          },
+          {
+            "name": "4Lower",
+            "required": false
+          }
+        ]
+      },
+      {
+        "params": [
+          {
+            "name": "another",
+            "required": false
+          },
+          {
+            "name": "rut",
+            "required": false
+          },
+          {
+            "name": "race",
+            "required": false
+          },
+          {
+            "name": "ru",
+            "required": false
+          },
+          {
+            "name": "urn",
+            "required": false
+          },
+          {
+            "name": "new",
+            "required": false
+          },
+          {
+            "name": "nice",
+            "required": false
+          },
+          {
+            "name": "run",
+            "required": false
+          },
+          {
+            "name": "alias",
+            "required": false
+          }
+        ]
+      }
+    ]
+  }
+]

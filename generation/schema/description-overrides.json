@@ -1,0 +1,12 @@
+{
+  "topics": {
+    "accounts": {
+      "commands": {
+        "manage": "This command allows you to manage an account."
+      }
+    },
+    "conferences": {
+      "self": "A Conference represents a call between two or more participants."
+    }
+  }
+}

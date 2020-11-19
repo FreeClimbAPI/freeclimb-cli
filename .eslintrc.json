@@ -1,0 +1,109 @@
+{
+  "extends": [
+    "oclif",
+    "oclif-typescript",
+    "plugin:@typescript-eslint/recommended",
+    "prettier",
+    "prettier/@typescript-eslint"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "plugins": [
+    // add suite of typescript syntax rules
+    "@typescript-eslint",
+    "import",
+    "no-only-tests"
+  ],
+  "globals": {
+    "expect": true,
+    "before": true,
+    "after": true
+  },
+  "rules": {
+    "no-await-in-loop": ["warn"],
+    "prefer-destructuring": ["error", { "object": true, "array": false }],
+    // deprecated - eventually use node/global-require
+    "global-require": ["warn"],
+    "no-var": ["error"],
+    "no-param-reassign": ["error", { "props": false }],
+    "no-underscore-dangle": ["error"],
+    "no-shadow": ["warn"],
+    // in TS it is not uncommon to see constrcutors without bodies in ambient declarations
+    "no-useless-constructor": "off",
+    "no-use-before-define": "off",
+    "eqeqeq": "error",
+    // https://www.npmjs.com/package/eslint-plugin-import
+    "import/no-named-as-default": ["warn"],
+    "import/no-dynamic-require": ["warn"],
+    "import/order": [
+      "error",
+      {
+        "groups": [["builtin", "external"], "internal", "parent", "sibling", "index"]
+      }
+    ],
+    "import/no-default-export": ["error"],
+    // https://www.npmjs.com/package/@typescript-eslint/eslint-plugin
+    "@typescript-eslint/explicit-member-accessibility": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-empty-interface": "warn",
+    "@typescript-eslint/no-parameter-properties": "off",
+    "@typescript-eslint/no-namespace": ["error", { "allowDeclarations": true }],
+    "@typescript-eslint/no-unused-vars": ["warn", { "args": "none" }],
+    "@typescript-eslint/ban-ts-ignore": "off",
+    "@typescript-eslint/triple-slash-reference": [
+      "error",
+      { "path": "never", "types": "never", "lib": "never" }
+    ],
+    "@typescript-eslint/no-empty-function": "warn",
+    "no-multiple-empty-lines": ["error", { "max": 1, "maxEOF": 1 }]
+  },
+  "overrides": [
+    // eslint will lint ts and tsx files as well since they are matched in an overrides entry
+    { "files": ["*.js", "*.ts"] },
+    // disable core no-unused-expressions rule in favor of a chai-friendly version for spec files
+    {
+      "files": ["*.spec.js", "*.spec.ts", "*.spec.tsx"],
+      "rules": {
+        "@typescript-eslint/no-unused-expressions": 0,
+        "chai-friendly/no-unused-expressions": 2
+      }
+    },
+    {
+      "files": ["character-mapping.test.ts"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
+    },
+    {
+      // overrides for any and all JS
+      "files": ["*.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off",
+        "import/no-default-export": "warn",
+        "no-undef": "warn"
+      }
+    },
+    {
+      // overrides for file generation js
+      "files": ["generation/**/*.js"],
+      "rules": {
+        "no-template-curly-in-string": "off", // because the scripts write to command files that use string interpolation
+        "no-param-reassign": "warn",
+        "no-regex-spaces": "warn"
+      }
+    },
+    {
+      // overrides for generated typescript files
+      "files": ["src/commands/*/*.ts"],
+      "rules": {
+        "no-underscore-dangle": "off" // this is turned off because OCLIF uses _help() to show help
+      }
+    },
+    {
+      // overrides for the help class
+      "files": ["src/help.ts"],
+      "rules": {
+        "import/no-default-export": "off" // OCLIF internally requires the default export for this class
+      }
+    }
+  ]
+}

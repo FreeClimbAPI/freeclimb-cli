@@ -1,0 +1,13 @@
+{
+  "maxItem": {
+    "description": "Show only a certain number of the most recent logs on this page.",
+    "char": "m"
+  },
+  "help": {
+    "char": "h"
+  },
+  "next": {
+    "description": "Displays the next page of output.",
+    "char": "n"
+  }
+}
