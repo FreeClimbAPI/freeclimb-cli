@@ -1,5 +1,5 @@
 # FreeClimb CLI
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io) [![Version](https://img.shields.io/npm/v/freeclimb-cli.svg)](https://npmjs.org/package/freeclimb-cli) [![Downloads/week](https://img.shields.io/npm/dw/freeclimb-cli.svg)](https://npmjs.org/package/freeclimb-cli) [![License](https://img.shields.io/npm/l/freeclimb-cli.svg)](https://github.com/Documents/freeclimb-cli/blob/master/package.json)
+[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io) [![Version](https://img.shields.io/npm/v/freeclimb-cli.svg)](https://npmjs.org/package/freeclimb-cli) [![Downloads/week](https://img.shields.io/npm/dw/freeclimb-cli.svg)](https://npmjs.org/package/freeclimb-cli) [![License](https://img.shields.io/npm/l/freeclimb-cli.svg)](https://github.com/FreeClimbAPI/freeclimb-cli/blob/master/package.json)
 
 Install FreeClimb's CLI to start managing apps, buying numbers, and testing applications from your command line.
 
