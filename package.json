@@ -1,6 +1,6 @@
 {
   "name": "freeclimb-cli",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "dev@freeclimb.com",
   "bin": {
     "freeclimb": "./bin/run"

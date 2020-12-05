@@ -26,7 +26,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/calls/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.0/src/commands/calls/get.ts)_
+_See code: [src/commands/calls/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/calls/get.ts)_
 
 ## `freeclimb calls:list`
 
@@ -55,7 +55,7 @@ OPTIONS
   -t, --to=to                      Only show Calls to this phone number.
 ```
 
-_See code: [src/commands/calls/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.0/src/commands/calls/list.ts)_
+_See code: [src/commands/calls/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/calls/list.ts)_
 
 ## `freeclimb calls:list-call CALLID`
 
@@ -74,7 +74,7 @@ OPTIONS
   -n, --next                     Displays the next page of output.
 ```
 
-_See code: [src/commands/calls/list-call.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.0/src/commands/calls/list-call.ts)_
+_See code: [src/commands/calls/list-call.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/calls/list-call.ts)_
 
 ## `freeclimb calls:list-call-logs CALLID`
 
@@ -92,7 +92,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/calls/list-call-logs.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.0/src/commands/calls/list-call-logs.ts)_
+_See code: [src/commands/calls/list-call-logs.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/calls/list-call-logs.ts)_
 
 ## `freeclimb calls:make FROM TO APPLICATIONID`
 
@@ -150,7 +150,7 @@ DESCRIPTION
   following parameters (in addition to the standard request parameters):
 ```
 
-_See code: [src/commands/calls/make.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.0/src/commands/calls/make.ts)_
+_See code: [src/commands/calls/make.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/calls/make.ts)_
 
 ## `freeclimb calls:update CALLID STATUS`
 
@@ -174,4 +174,4 @@ DESCRIPTION
   status=completed to cancel it.
 ```
 
-_See code: [src/commands/calls/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.0/src/commands/calls/update.ts)_
+_See code: [src/commands/calls/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/calls/update.ts)_
