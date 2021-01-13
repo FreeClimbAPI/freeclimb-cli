@@ -223,11 +223,13 @@ TestOutline.prototype.testCustomBaseUrlOutline = function () {
         .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
-    .env("FREECLIMB_CLI_BASE_URL":"https://user-custom-domain.example.com/apiserver")
     .stdout()
+    .env({"FREECLIMB_CLI_BASE_URL":"https://user-custom-domain.example.com/apiserver"})
     .command(["${this.commandName}"${this.paramCommandInput()}${this.additionalCommandInput()}])
-    .exit(${this.exitCode})
-    .it("${this.message}")`
+    .it("${this.message}", async (ctx) => {
+        expect(ctx.stdout).to.contain(${this.nockServerResponse[0]})
+        ${this.additionalExpect}
+    })`
 }
 
 /**
