@@ -64,8 +64,8 @@ let requiredParamTest = function (additionalParams) {
     requiredWrongInputParse.additionalFlags = `"additionalArguments"`
     requiredWrongInputParse.statusCode = 500
     requiredWrongInputParse.exitCode = 2
-    
-    test += `${requiredTestInstance.variableOutline()}\n\n${requiredTestInstance.testOutline()}\n\n${requiredTestError.variableOutline()}\n\n${requiredTestError.testErrorResponseOuline()}\n\n${requiredTestErrorSuggestion.variableOutline()}\n\n${requiredTestErrorSuggestion.testErrorResponseOuline()}\n\n${requiredWrongInputParse.testExitCodeOutline()}\n\n`
+
+    test += `${requiredTestInstance.variableOutline()}\n\n${requiredTestInstance.testOutline()}\n\n${requiredTestError.variableOutline()}\n\n${requiredTestError.testErrorResponseOuline()}\n\n${requiredTestInstance.testCustomBaseUrlOutline()}\n\n${requiredTestErrorSuggestion.variableOutline()}\n\n${requiredTestErrorSuggestion.testErrorResponseOuline()}\n\n${requiredWrongInputParse.testExitCodeOutline()}\n\n`
 
     if (formatedPQL.includes(this.commandName)) {
         test += formatedPQLTest(this, additionalParams)

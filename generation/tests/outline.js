@@ -214,6 +214,22 @@ TestOutline.prototype.testErrorResponseOuline = function () {
     .it("${this.message}")`
 }
 
+TestOutline.prototype.testCustomBaseUrlOutline = function () {
+    this.setParams(this.additionalParam)
+    return `test.nock("https://user-custom-domain.example.com", async (api) =>
+    api
+        .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
+        ${this.query()}
+        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .reply(${this.statusCode}, ${this.testJson[0]})
+    )
+    .env("FREECLIMB_CLI_BASE_URL":"https://user-custom-domain.example.com/apiserver")
+    .stdout()
+    .command(["${this.commandName}"${this.paramCommandInput()}${this.additionalCommandInput()}])
+    .exit(${this.exitCode})
+    .it("${this.message}")`
+}
+
 /**
  * @description tests outline for exit codes
  * @returns {string}
