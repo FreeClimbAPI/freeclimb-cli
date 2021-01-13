@@ -48,6 +48,20 @@ describe("recordings:list Data Test", function () {
         .exit(3)
         .it("Test Freeclimb Api error repsonce is process correctly without a suggestion")
 
+    test.nock("https://user-custom-domain.example.com", async (api) =>
+        api
+            .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, testJson)
+    )
+        .stdout()
+        .env({ FREECLIMB_CLI_BASE_URL: "https://user-custom-domain.example.com/apiserver" })
+        .command(["recordings:list"])
+        .it("Sends API requests to the base URL from an environment variable", async (ctx) => {
+            expect(ctx.stdout).to.contain(nockServerResponse)
+        })
+
     const testJsonErrorWithSuggestion = {
         code: 50,
         message: "Unauthorized To Make Request",
