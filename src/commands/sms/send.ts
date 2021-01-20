@@ -5,7 +5,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class smsSend extends Command {
-    static description = ` Responses: `
+    static description = `This command allows user to send a sms message.`
 
     static flags = {
         notificationUrl: flags.string({
