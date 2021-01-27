@@ -15,10 +15,6 @@ export class logsFilter extends Command {
             char: "m",
             description: "Show only a certain number of the most recent logs on this page.",
         }),
-        follow: flags.boolean({
-            char: "F",
-            default: false,
-        }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
     }
@@ -111,7 +107,7 @@ export class logsFilter extends Command {
                 this.error(err.message, { exit: err.code })
             }
 
-            while (flags.follow) {
+            while (args.tail) {
                 await fcApi.apiCall(
                     "POST",
                     {

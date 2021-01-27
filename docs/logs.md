@@ -19,7 +19,6 @@ ARGUMENTS
   TAIL  (tail)
 
 OPTIONS
-  -F, --follow
   -h, --help             show CLI help
   -m, --maxItem=maxItem  Show only a certain number of the most recent logs on this page.
   -n, --next             Displays the next page of output.
