@@ -73,6 +73,20 @@ export class NoNextPage extends FreeClimbError {
     }
 }
 
+export class NoTimestamp extends FreeClimbError {
+    constructor() {
+        super(
+            returnFormat(
+                1919,
+                "No timestamp",
+                "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                "You can not use tail and timestamp pql"
+            ),
+            3
+        )
+    }
+}
+
 export class OutOfRange extends FreeClimbError {
     constructor(param: string, bound: number, direction: string) {
         super(

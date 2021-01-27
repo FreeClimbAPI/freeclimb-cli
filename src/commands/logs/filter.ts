@@ -5,6 +5,8 @@ import { Output } from "../../output"
 import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
+let lastTime: number
+
 export class logsFilter extends Command {
     static description = ` Returns the first page of Logs associated with the specified account. The Performance Query Language, or PQL, is a simple query language that uses key-comparator-value triplets joined by boolean operators to build queries capable of searching through logs. PQL is inspired heavily by the syntax of SQL's WHERE clauses. The Dot Operator (.) can be used to search for nested key / value pairs. In the example above, metadata.test is used to access the value of the nested test key under metadata. PQL supports the following comparator operators: =, !=, <, <=, >, >=, as well as the use of () to indicate the order in which parts are evaluated.`
 
@@ -12,6 +14,10 @@ export class logsFilter extends Command {
         maxItem: flags.integer({
             char: "m",
             description: "Show only a certain number of the most recent logs on this page.",
+        }),
+        follow: flags.boolean({
+            char: "F",
+            default: false,
         }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
@@ -23,6 +29,11 @@ export class logsFilter extends Command {
             description:
                 "The filter query for retrieving logs. See Performance Query Language below.",
             required: true,
+        },
+        {
+            name: "tail",
+            required: false,
+            options: ["tail"],
         },
     ]
 
@@ -54,6 +65,14 @@ export class logsFilter extends Command {
                 throw new Errors.UndefinedResponseError()
             }
         }
+
+        const tailResponse = (response: FreeClimbResponse) => {
+            if (response.data.end !== 0) {
+                lastTime = response.data.logs[0].timestamp
+                out.outTail(response.data.logs.reverse())
+            }
+        }
+
         const nextResponse = (response: FreeClimbResponse) => {
             if (response.data) {
                 out.out(
@@ -85,15 +104,34 @@ export class logsFilter extends Command {
                 )
             )
         }
+        if (args.tail) {
+            lastTime = 0
+            if (args.pql.includes("timestamp")) {
+                const err = new Errors.NoTimestamp()
+                this.error(err.message, { exit: err.code })
+            }
 
-        await fcApi.apiCall(
-            "POST",
-            {
-                data: {
-                    pql: args.pql,
+            while (flags.follow) {
+                await fcApi.apiCall(
+                    "POST",
+                    {
+                        data: {
+                            pql: `${args.pql} AND timestamp>${lastTime}`,
+                        },
+                    },
+                    tailResponse
+                )
+            }
+        } else {
+            await fcApi.apiCall(
+                "POST",
+                {
+                    data: {
+                        pql: args.pql,
+                    },
                 },
-            },
-            normalResponse
-        )
+                normalResponse
+            )
+        }
     }
 }
