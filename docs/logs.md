@@ -22,6 +22,7 @@ OPTIONS
   -h, --help             show CLI help
   -m, --maxItem=maxItem  Show only a certain number of the most recent logs on this page.
   -n, --next             Displays the next page of output.
+  -s, --sleep=sleep      [default: 1000] i do not know what do put
 ```
 
 _See code: [src/commands/logs/filter.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/logs/filter.ts)_

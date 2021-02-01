@@ -38,10 +38,6 @@ export class Output {
         }
     }
 
-    outTail(output: string): void {
-        this.logger.log(output)
-    }
-
     get next(): Next {
         if (this.currentPage && this.currentPage.next === null) {
             // if at the last page of output
