@@ -9,5 +9,10 @@
   "next": {
     "description": "Displays the next page of output.",
     "char": "n"
+  },
+  "sleep": {
+    "description": "i do not know what it should be yet",
+    "char": "q",
+    "default": 1000
   }
 }

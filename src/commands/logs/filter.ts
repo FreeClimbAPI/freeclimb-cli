@@ -3,8 +3,8 @@ import { Command, flags } from "@oclif/command"
 import chalk from "chalk"
 import { Output } from "../../output"
 import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
-import { sleep } from "../../timeout"
 import * as Errors from "../../errors"
+import { sleep } from "../../timeout"
 
 let lastTime: number
 
@@ -17,8 +17,8 @@ export class logsFilter extends Command {
             description: "Show only a certain number of the most recent logs on this page.",
         }),
         sleep: flags.integer({
-            char: "s",
-            description: "i do not know what do put",
+            char: "q",
+            description: "i do not know what it should be yet",
             default: 1000,
         }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
@@ -34,6 +34,7 @@ export class logsFilter extends Command {
         },
         {
             name: "tail",
+            description: "also dont know what it should be",
             required: false,
             options: ["tail"],
         },
@@ -89,6 +90,7 @@ export class logsFilter extends Command {
                 out.out("== You are on the last page of output. ==")
             }
         }
+
         if (flags.next) {
             if (out.next === undefined || out.next === "freeclimbUnnamedTest") {
                 const error = new Errors.NoNextPage()
@@ -105,6 +107,7 @@ export class logsFilter extends Command {
                 )
             )
         }
+
         if (args.tail) {
             lastTime = 0
             if (args.pql.includes("timestamp")) {
@@ -123,7 +126,6 @@ export class logsFilter extends Command {
                     tailResponse
                 )
                 await sleep(flags.sleep)
-                console.log("here")
             }
         } else {
             await fcApi.apiCall(

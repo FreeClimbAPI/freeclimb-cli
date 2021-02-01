@@ -4,7 +4,7 @@
 A Log instance resource represents a log entry made by FreeClimb in the course of processing a PerCL script or servicing a REST API request. It is mostly useful for debugging purposes. The Logs list resource represents the set of logs generated for an account. For convenience, a Logs list resource is also available as a subresource of a Call instance resource, since most logging occurs during call processing. The Log instance resource is unusual in that it exists but is not directly addressable. It also does not have a resource ID.
 
 * [`freeclimb logs:filter PQL [TAIL]`](#freeclimb-logsfilter-pql-tail)
-* [`freeclimb logs:list`](#freeclimb-logslist)
+* [`freeclimb logs:list [TAIL]`](#freeclimb-logslist-tail)
 
 ## `freeclimb logs:filter PQL [TAIL]`
 
@@ -16,29 +16,33 @@ USAGE
 
 ARGUMENTS
   PQL   The filter query for retrieving logs. See Performance Query Language below.
-  TAIL  (tail)
+  TAIL  (tail) also dont know what it should be
 
 OPTIONS
   -h, --help             show CLI help
   -m, --maxItem=maxItem  Show only a certain number of the most recent logs on this page.
   -n, --next             Displays the next page of output.
-  -s, --sleep=sleep      [default: 1000] i do not know what do put
+  -q, --sleep=sleep      [default: 1000] i do not know what it should be yet
 ```
 
 _See code: [src/commands/logs/filter.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/logs/filter.ts)_
 
-## `freeclimb logs:list`
+## `freeclimb logs:list [TAIL]`
 
 Returns all Logs associated with the specified account or a specific page of Logs as indicated by the URI in the request. Note: A PQL query should not be included with this GET request.
 
 ```
 USAGE
-  $ freeclimb logs:list
+  $ freeclimb logs:list [TAIL]
+
+ARGUMENTS
+  TAIL  (tail) also dont know what it should be
 
 OPTIONS
   -h, --help             show CLI help
   -m, --maxItem=maxItem  Show only a certain number of the most recent logs on this page.
   -n, --next             Displays the next page of output.
+  -q, --sleep=sleep      [default: 1000] i do not know what it should be yet
 ```
 
 _See code: [src/commands/logs/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/logs/list.ts)_

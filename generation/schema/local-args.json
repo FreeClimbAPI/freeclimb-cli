@@ -1,0 +1,8 @@
+{
+  "tail": {
+    "name": "tail",
+    "description": "also dont know what it should be",
+    "required": false,
+    "options": "['tail']"
+  }
+}
