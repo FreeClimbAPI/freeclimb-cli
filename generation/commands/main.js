@@ -448,6 +448,7 @@ function getTailApi(command) {
         lastTime = 0
         ${includesPQL ? includesTimestamp() : ""}
         if (flags.since) {
+            const currentTime = Date.now() * 1000
             const sinceTimestamp = (() => {
                 try {
                     return calculateSinceTimestamp(flags.since)
@@ -456,7 +457,7 @@ function getTailApi(command) {
                     this.error(err.message, { exit: err.code })
                 }
             })()
-            lastTime = sinceTimestamp
+            lastTime = currentTime - sinceTimestamp
         }
         tailMax = flags.maxItem ? flags.maxItem : 100
         while (args.tail) {

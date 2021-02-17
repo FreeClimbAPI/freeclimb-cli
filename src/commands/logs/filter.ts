@@ -118,6 +118,7 @@ export class logsFilter extends Command {
             }
 
             if (flags.since) {
+                const currentTime = Date.now() * 1000
                 const sinceTimestamp = (() => {
                     try {
                         return calculateSinceTimestamp(flags.since)
@@ -126,7 +127,7 @@ export class logsFilter extends Command {
                         this.error(err.message, { exit: err.code })
                     }
                 })()
-                lastTime = sinceTimestamp
+                lastTime = currentTime - sinceTimestamp
             }
             tailMax = flags.maxItem ? flags.maxItem : 100
             while (args.tail) {

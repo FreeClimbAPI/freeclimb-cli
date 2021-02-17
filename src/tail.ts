@@ -76,7 +76,6 @@ function convertTime(unit: string, time: number) {
 }
 
 export function calculateSinceTimestamp(since: string) {
-    const currentTime = Date.now() * 1000
     let total = 0
     const timeSeperation = processInput(since)
     for (let i = 0; i < timeSeperation.length; i++) {
@@ -85,5 +84,5 @@ export function calculateSinceTimestamp(since: string) {
         const time = parseInt(utSet[1], 10)
         total += convertTime(unit, time)
     }
-    return currentTime - total
+    return total
 }
