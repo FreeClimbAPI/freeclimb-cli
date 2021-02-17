@@ -77,12 +77,12 @@ export class NoTimestamp extends FreeClimbError {
     constructor() {
         super(
             returnFormat(
-                1919,
+                1019,
                 "No timestamp",
                 "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
                 "You can not use tail and timestamp pql"
             ),
-            3
+            2
         )
     }
 }
@@ -135,5 +135,51 @@ export class LoginCancelled extends FreeClimbError {
             ),
             2
         )
+    }
+}
+
+export class SinceFormatError extends FreeClimbError {
+    constructor(errorMessage: any) {
+        if (errorMessage.name === "Incorrect Format - Invalid Unit") {
+            super(
+                returnFormat(
+                    1015,
+                    errorMessage.name,
+                    "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                    `Since is not compatable with the unit ${errorMessage.message}\n\n\t\tValid units of time include: \nw[weeks], d[day], h[hour], m[minute], s[second], ms[milisecond], ns[nanosecond]\n`
+                ),
+                2
+            )
+        } else if (errorMessage.name === "Incorrect Format - Missing Unit") {
+            super(
+                returnFormat(
+                    1016,
+                    errorMessage.name,
+                    "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                    `${errorMessage.message} is missing a unit of time. For every time interval a unit of time must be included. Ex 2h30m`
+                ),
+                2
+            )
+        } else if (errorMessage.name === "Incorrect Format - Starting Number") {
+            super(
+                returnFormat(
+                    1017,
+                    errorMessage.name,
+                    "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                    `${errorMessage.message} must start with an unit of time. Ex. 2h30m`
+                ),
+                2
+            )
+        } else {
+            super(
+                returnFormat(
+                    1018,
+                    errorMessage.name,
+                    "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                    "Check the formatting of since flag"
+                ),
+                2
+            )
+        }
     }
 }

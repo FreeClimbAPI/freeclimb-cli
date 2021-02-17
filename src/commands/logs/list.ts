@@ -4,9 +4,10 @@ import chalk from "chalk"
 import { Output } from "../../output"
 import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
-import { sleep } from "../../timeout"
+import { sleep, calculateSinceTimestamp } from "../../tail"
 
 let lastTime: number
+let tailMax: number
 
 export class logsList extends Command {
     static description = ` Returns all Logs associated with the specified account or a specific page of Logs as indicated by the URI in the request. Note: A PQL query should not be included with this GET request.`
@@ -20,6 +21,10 @@ export class logsList extends Command {
             char: "q",
             description: "i do not know what it should be yet",
             default: 1000,
+        }),
+        since: flags.string({
+            char: "Q",
+            description: "I dont know",
         }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
@@ -66,7 +71,7 @@ export class logsList extends Command {
         const tailResponse = (response: FreeClimbResponse) => {
             if (response.data.end !== 0) {
                 lastTime = response.data.logs[0].timestamp
-                out.out(JSON.stringify(response.data.logs.reverse(), null, 2))
+                out.out(JSON.stringify(response.data.logs.splice(0, tailMax).reverse(), null, 2))
             }
         }
 
@@ -97,8 +102,20 @@ export class logsList extends Command {
 
         if (args.tail) {
             lastTime = 0
-
+            if (flags.since) {
+                const sinceTimestamp = (() => {
+                    try {
+                        return calculateSinceTimestamp(flags.since)
+                    } catch (error) {
+                        const err = new Errors.SinceFormatError(error)
+                        this.error(err.message, { exit: err.code })
+                    }
+                })()
+                lastTime = sinceTimestamp
+            }
+            tailMax = flags.maxItem ? flags.maxItem : 100
             while (args.tail) {
+                await sleep(flags.sleep)
                 await fcApi.apiCall(
                     "POST",
                     {
@@ -108,7 +125,7 @@ export class logsList extends Command {
                     },
                     tailResponse
                 )
-                await sleep(flags.sleep)
+                tailMax = 100
             }
         } else {
             await fcApi.apiCall("GET", {}, normalResponse)

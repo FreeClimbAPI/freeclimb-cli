@@ -4,9 +4,10 @@ import chalk from "chalk"
 import { Output } from "../../output"
 import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
-import { sleep } from "../../timeout"
+import { sleep, calculateSinceTimestamp } from "../../tail"
 
 let lastTime: number
+let tailMax: number
 
 export class logsFilter extends Command {
     static description = ` Returns the first page of Logs associated with the specified account. The Performance Query Language, or PQL, is a simple query language that uses key-comparator-value triplets joined by boolean operators to build queries capable of searching through logs. PQL is inspired heavily by the syntax of SQL's WHERE clauses. The Dot Operator (.) can be used to search for nested key / value pairs. In the example above, metadata.test is used to access the value of the nested test key under metadata. PQL supports the following comparator operators: =, !=, <, <=, >, >=, as well as the use of () to indicate the order in which parts are evaluated.`
@@ -20,6 +21,10 @@ export class logsFilter extends Command {
             char: "q",
             description: "i do not know what it should be yet",
             default: 1000,
+        }),
+        since: flags.string({
+            char: "Q",
+            description: "I dont know",
         }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
@@ -72,7 +77,7 @@ export class logsFilter extends Command {
         const tailResponse = (response: FreeClimbResponse) => {
             if (response.data.end !== 0) {
                 lastTime = response.data.logs[0].timestamp
-                out.out(JSON.stringify(response.data.logs.reverse(), null, 2))
+                out.out(JSON.stringify(response.data.logs.splice(0, tailMax).reverse(), null, 2))
             }
         }
 
@@ -114,7 +119,18 @@ export class logsFilter extends Command {
                 const err = new Errors.NoTimestamp()
                 this.error(err.message, { exit: err.code })
             }
-
+            if (flags.since) {
+                const sinceTimestamp = (() => {
+                    try {
+                        return calculateSinceTimestamp(flags.since)
+                    } catch (error) {
+                        const err = new Errors.SinceFormatError(error)
+                        this.error(err.message, { exit: err.code })
+                    }
+                })()
+                lastTime = sinceTimestamp
+            }
+            tailMax = flags.maxItem ? flags.maxItem : 100
             while (args.tail) {
                 await fcApi.apiCall(
                     "POST",
