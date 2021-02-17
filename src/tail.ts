@@ -87,5 +87,3 @@ export function calculateSinceTimestamp(since: string) {
     }
     return currentTime - total
 }
-
-export function filterOutTimestamp(pql: string) {}

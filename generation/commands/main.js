@@ -119,7 +119,11 @@ import chalk from "chalk"
 import { Output } from '../../output'
 import { FreeClimbApi, FreeClimbResponse } from '../../freeclimb'
 import * as Errors from '../../errors'
-${tail ? `import { sleep } from "../../timeout"\n\nlet lastTime: number\n` : ""}
+${
+    tail
+        ? `import { sleep, calculateSinceTimestamp } from "../../tail"\n\nlet lastTime: number\nlet tailMax: number\n`
+        : ""
+}
 export class ${command.className} extends Command {
     static description = \`${command.description}\`
     
@@ -225,7 +229,7 @@ function getAdditionalFlags(topicName, tail, pagination) {
         data += `\n\t\tmaxItem: flags.integer({ char: "m", description: "${localFlags.maxItem.description}"}),`
     }
     if (tail) {
-        data += `\n\t\tsleep: flags.integer({ char: "${localFlags.sleep.char}", description: "${localFlags.sleep.description}", default: ${localFlags.sleep.default}}),`
+        data += `\n\t\tsleep: flags.integer({ char: "${localFlags.sleep.char}", description: "${localFlags.sleep.description}", default: ${localFlags.sleep.default}}),\n\t\tsince: flags.string({ char: "${localFlags.since.char}", description: "${localFlags.since.description}",}),`
     }
     if (pagination) {
         data += `\n\t\tnext: flags.boolean({char: 'n', description: '${localFlags.next.description}'}),`
@@ -420,7 +424,7 @@ function getTailResponse() {
     const tailResponse = (response: FreeClimbResponse) => {
         if (response.data.end !== 0) {
             lastTime = response.data.logs[0].timestamp
-            out.out(JSON.stringify(response.data.logs.reverse(), null, 2))
+            out.out(JSON.stringify(response.data.logs.splice(0, tailMax).reverse(), null, 2))
         }
     }
     `
@@ -443,6 +447,18 @@ function getTailApi(command) {
     if (args.tail) {
         lastTime = 0
         ${includesPQL ? includesTimestamp() : ""}
+        if (flags.since) {
+            const sinceTimestamp = (() => {
+                try {
+                    return calculateSinceTimestamp(flags.since)
+                } catch (error) {
+                    const err = new Errors.SinceFormatError(error)
+                    this.error(err.message, { exit: err.code })
+                }
+            })()
+            lastTime = sinceTimestamp
+        }
+        tailMax = flags.maxItem ? flags.maxItem : 100
         while (args.tail) {
             await fcApi.apiCall(
                 "POST",
@@ -454,6 +470,7 @@ function getTailApi(command) {
                 tailResponse
             )
             await sleep(flags.sleep)
+            tailMax = 100
         }
     } else {
     `

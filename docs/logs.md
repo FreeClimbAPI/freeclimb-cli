@@ -19,7 +19,7 @@ ARGUMENTS
   TAIL  (tail) also dont know what it should be
 
 OPTIONS
-  -Q, --since=since      I dont know
+  -Q, --since=since      I do not know what it should be yet
   -h, --help             show CLI help
   -m, --maxItem=maxItem  Show only a certain number of the most recent logs on this page.
   -n, --next             Displays the next page of output.
@@ -40,7 +40,7 @@ ARGUMENTS
   TAIL  (tail) also dont know what it should be
 
 OPTIONS
-  -Q, --since=since      I dont know
+  -Q, --since=since      I do not know what it should be yet
   -h, --help             show CLI help
   -m, --maxItem=maxItem  Show only a certain number of the most recent logs on this page.
   -n, --next             Displays the next page of output.

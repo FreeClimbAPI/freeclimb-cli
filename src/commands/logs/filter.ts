@@ -22,10 +22,7 @@ export class logsFilter extends Command {
             description: "i do not know what it should be yet",
             default: 1000,
         }),
-        since: flags.string({
-            char: "Q",
-            description: "I dont know",
-        }),
+        since: flags.string({ char: "Q", description: "I do not know what it should be yet" }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
     }
@@ -119,6 +116,7 @@ export class logsFilter extends Command {
                 const err = new Errors.NoTimestamp()
                 this.error(err.message, { exit: err.code })
             }
+
             if (flags.since) {
                 const sinceTimestamp = (() => {
                     try {
@@ -142,6 +140,7 @@ export class logsFilter extends Command {
                     tailResponse
                 )
                 await sleep(flags.sleep)
+                tailMax = 100
             }
         } else {
             await fcApi.apiCall(
