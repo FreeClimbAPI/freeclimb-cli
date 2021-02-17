@@ -78,7 +78,7 @@ export class NoTimestamp extends FreeClimbError {
         super(
             returnFormat(
                 1019,
-                "No timestamp",
+                "Invalid Use of Timestamp",
                 "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
                 "You can not use tail and timestamp pql"
             ),
@@ -146,7 +146,7 @@ export class SinceFormatError extends FreeClimbError {
                     1015,
                     errorMessage.name,
                     "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
-                    `Since is not compatable with the unit ${errorMessage.message}\n\n\t\tValid units of time include: \nw[weeks], d[day], h[hour], m[minute], s[second], ms[milisecond], ns[nanosecond]\n`
+                    `Since is not compatible with the unit ${errorMessage.message}\n\n\t\tValid units of time include: \nw[weeks], d[day], h[hour], m[minute], s[second], ms[millisecond], ns[nanosecond]\n`
                 ),
                 2
             )
@@ -174,7 +174,7 @@ export class SinceFormatError extends FreeClimbError {
             super(
                 returnFormat(
                     1018,
-                    errorMessage.name,
+                    "Since Format Error",
                     "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
                     "Check the formatting of since flag"
                 ),

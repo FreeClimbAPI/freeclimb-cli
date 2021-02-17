@@ -39,7 +39,7 @@ function processInput(timeStr: string) {
 }
 
 function convertTime(unit: string, time: number) {
-    switch (unit) {
+    switch (unit.toLowerCase()) {
         case "w": {
             return time * 604800000000
         }
