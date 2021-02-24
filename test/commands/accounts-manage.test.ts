@@ -33,7 +33,7 @@ describe("accounts:manage Data Test", function () {
     )
         .stdout()
         .command(["accounts:manage"])
-        //  .exit(3)
+        //   .exit(3)
         .it("Test all required paramaters", async (ctx) => {
             expect(ctx.stdout).to.contain(nockServerResponse)
         })
