@@ -24,6 +24,19 @@ describe("accounts:manage Data Test", function () {
             expect(ctx.stdout).to.contain(nockServerResponse)
         })
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["accounts:manage"])
+        //  .exit(3)
+        .it("Test all required paramaters", async (ctx) => {
+            expect(ctx.stdout).to.contain(nockServerResponse)
+        })
     const testJsonErrorNoSuggestion = {
         code: 2,
         message: "Method Not Allowed",

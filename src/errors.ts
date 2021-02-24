@@ -31,6 +31,20 @@ export class FreeClimbAPIError extends FreeClimbError {
     }
 }
 
+export class UndefinedResponseError extends FreeClimbError {
+    constructor() {
+        super(
+            returnFormat(
+                1020,
+                "Reponse Undefined",
+                "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                "Re-run the command. If error persists, something went wrong on FreeClimb's end. Our engineers are hard at work resolving this problem."
+            ),
+            3
+        )
+    }
+}
+
 export class NoNextPage extends FreeClimbError {
     constructor() {
         super(
