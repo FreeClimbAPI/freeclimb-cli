@@ -62,9 +62,6 @@ export class logsFilter extends Command {
             if (out.next === null) {
                 out.out("== You are on the last page of output. ==")
             }
-            if (out.next === null) {
-                out.out("== You are on the last page of output. ==")
-            }
         }
 
         if (flags.next) {

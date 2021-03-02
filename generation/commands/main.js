@@ -381,7 +381,7 @@ function getAxiosResponse(topicName) {
 
 function getAxiosResponseNextFlag(topicName) {
     return topicName === "logs"
-        ? `if (response.data) { out.out(flags.maxItem?JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2): JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError()} if (out.next === null) { out.out("== You are on the last page of output. ==") }`
+        ? `if (response.data) { out.out(flags.maxItem?JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2): JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError()}`
         : `if (response.data) { out.out(JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }`
 }
 
