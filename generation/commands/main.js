@@ -375,14 +375,14 @@ function getAxiosParams(bodyParams, queryParams) {
 // Return response of Axios request
 function getAxiosResponse(topicName) {
     return topicName === "logs"
-        ? `if(flags.maxItem){ out.out(JSON.stringify(response.data.logs.splice(0,flags.maxItem), null, 2 ))}else{const resp = response.status === 204? "Received a success code from FreeClimb. There is no further output.": JSON.stringify(response.data, null, 2)\n out.out(resp)}`
-        : `const resp = response.status === 204? "Received a success code from FreeClimb. There is no further output.": JSON.stringify(response.data, null, 2)\n out.out(resp)`
+        ? `if (response.status === 204) { out.out("Received a success code from FreeClimb. There is no further output.") } else if (response.data) { out.out(flags.maxItem?JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2): JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }`
+        : `if (response.status === 204) { out.out("Received a success code from FreeClimb. There is no further output.") } else if (response.data) { out.out(JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }`
 }
 
 function getAxiosResponseNextFlag(topicName) {
     return topicName === "logs"
-        ? `if(flags.maxItem){ out.out(JSON.stringify(response.data.logs.splice(0,flags.maxItem), null, 2 ))}else{out.out(JSON.stringify(response.data, null, 2))}`
-        : `out.out(JSON.stringify(response.data, null, 2))`
+        ? `if (response.data) { out.out(flags.maxItem?JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2): JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError()} if (out.next === null) { out.out("== You are on the last page of output. ==") }`
+        : `if (response.data) { out.out(JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }`
 }
 
 function accessSpecifier(param) {

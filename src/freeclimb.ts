@@ -49,8 +49,15 @@ export class FreeClimbApi {
         method: AxiosMethodType,
         requestContent: any,
         onSuccess: (response: FreeClimbResponse) => any,
-        onError = (error: FreeClimbErrorResponse) => {
-            const err = new Errors.FreeClimbAPIError(error.response.data)
+        onError = (error: any) => {
+            let err: Errors.FreeClimbError
+            if (error.message && error.code) {
+                err = error
+            } else if (error.response) {
+                err = new Errors.FreeClimbAPIError(error.response.data)
+            } else {
+                err = new Errors.DefaultFatalError(error)
+            }
             this.errorHandler.error(err.message, { exit: err.code })
         }
     ) {

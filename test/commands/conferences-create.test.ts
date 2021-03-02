@@ -73,6 +73,18 @@ describe("conferences:create Data Test", function () {
 
     test.nock("https://www.freeclimb.com", async (api) =>
         api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["conferences:create"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {
                 alias: "userInput-alias",
                 playBeep: "userInput-playBeep",

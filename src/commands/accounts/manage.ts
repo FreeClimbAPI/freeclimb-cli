@@ -36,15 +36,12 @@ export class accountsManage extends Command {
         const normalResponse = (response: FreeClimbResponse) => {
             if (response.status === 204) {
                 out.out("Received a success code from FreeClimb. There is no further output.")
-            } else if (response) {
+            } else if (response.data) {
                 out.out(JSON.stringify(response.data, null, 2))
             } else {
-                const error = new Errors.NoNextPage()
-                this.error(error.message, { exit: error.code })
-                // out.out("hello")
+                throw new Errors.UndefinedResponseError()
             }
         }
-        console.log(this.error)
         if (flags.next) {
             const error = new Errors.NoNextPage()
             this.error(error.message, { exit: error.code })

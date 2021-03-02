@@ -85,6 +85,21 @@ describe("incoming-numbers:get Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(
+                `/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers/${phoneNumberId}`,
+                {}
+            )
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["incoming-numbers:get", "userInput-phoneNumberId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("incoming-numbers:get next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api
@@ -183,6 +198,26 @@ describe("incoming-numbers:get Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(
+                    `/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers/${phoneNumberId}`
+                )
+                .query({ cursor: "696e636f6d696e672d6e756d626572733a676574" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({
+                FREECLIMB_INCOMING_NUMBERS_GET_NEXT: "696e636f6d696e672d6e756d626572733a676574",
+            })
+            .command(["incoming-numbers:get", "userInput-phoneNumberId", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

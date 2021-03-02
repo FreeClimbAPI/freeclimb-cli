@@ -91,6 +91,21 @@ describe("conference-participants:get Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(
+                `/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}/Participants/${callId}`,
+                {}
+            )
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["conference-participants:get", "userInput-conferenceId", "userInput-callId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("conference-participants:get next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api
@@ -206,6 +221,32 @@ describe("conference-participants:get Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(
+                    `/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}/Participants/${callId}`
+                )
+                .query({ cursor: "636f6e666572656e63652d7061727469636970616e74733a676574" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({
+                FREECLIMB_CONFERENCE_PARTICIPANTS_GET_NEXT:
+                    "636f6e666572656e63652d7061727469636970616e74733a676574",
+            })
+            .command([
+                "conference-participants:get",
+                "userInput-conferenceId",
+                "userInput-callId",
+                "--next",
+            ])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

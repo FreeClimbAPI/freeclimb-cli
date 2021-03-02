@@ -95,6 +95,22 @@ describe("calls:make Data Test", function () {
                 from: "userInput-from",
                 to: "userInput-to",
                 applicationId: "userInput-applicationId",
+            })
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["calls:make", "userInput-from", "userInput-to", "userInput-applicationId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Calls`, {
+                from: "userInput-from",
+                to: "userInput-to",
+                applicationId: "userInput-applicationId",
                 sendDigits: "userInput-sendDigits",
                 ifMachine: "userInput-ifMachine",
                 ifMachineUrl: "userInput-ifMachineUrl",

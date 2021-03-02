@@ -95,6 +95,22 @@ describe("sms:send Data Test", function () {
                 from: "userInput-from",
                 to: "userInput-to",
                 text: "userInput-text",
+            })
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["sms:send", "userInput-from", "userInput-to", "userInput-text"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Messages`, {
+                from: "userInput-from",
+                to: "userInput-to",
+                text: "userInput-text",
                 notificationUrl: "userInput-notificationUrl",
                 accountId: "userInput-accountId",
             })

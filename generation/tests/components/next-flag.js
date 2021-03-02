@@ -65,6 +65,12 @@ let nextFlagTest = function (additionalParam, isPagination) {
             additionalParam,
             "Test flag next works as expected when available with has more pages"
         )
+        const nextFlagTestInstance3 = new TestInstance(
+            this,
+            additionalParam,
+            "Test error is caught when when using next flag and no reponse is given"
+        )
+
         nextFlagTestInstance.testJson = nextTestJson
         nextFlagTestInstance.nockServerResponse = nextNockServerResponse
         nextFlagTestInstance.additionalFlags = `"--next"`
@@ -73,7 +79,11 @@ let nextFlagTest = function (additionalParam, isPagination) {
         nextFlagTestInstance2.nockServerResponse = nextNockServerResponse2
         nextFlagTestInstance2.additionalFlags = `"--next"`
 
-        test += `${nextFlagTestInstance.variableOutline()}\n\n${nextFlagTestInstance2.variableOutline()}\n\n${nextFlagTestInstance.testNextFlagOutline()}\n\n${nextFlagTestInstance2.testNextFlagOutline2()}`
+        nextFlagTestInstance3.exitCode = 3
+        nextFlagTestInstance3.additionalFlags = `"--next"`
+
+        // testNextFlagExitCodeUndefinedOutline
+        test += `${nextFlagTestInstance.variableOutline()}\n\n${nextFlagTestInstance2.variableOutline()}\n\n${nextFlagTestInstance.testNextFlagOutline()}\n\n${nextFlagTestInstance2.testNextFlagOutline2()}\n\n${nextFlagTestInstance3.testNextFlagExitCodeUndefinedOutline()}\n\n`
     }
     test += "})"
     return test

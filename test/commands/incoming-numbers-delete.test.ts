@@ -82,6 +82,21 @@ describe("incoming-numbers:delete Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .delete(
+                `/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers/${phoneNumberId}`,
+                {}
+            )
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["incoming-numbers:delete", "userInput-phoneNumberId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("incoming-numbers:delete next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api

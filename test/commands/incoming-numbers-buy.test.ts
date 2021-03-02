@@ -81,6 +81,20 @@ describe("incoming-numbers:buy Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {
                 phoneNumber: "userInput-phoneNumber",
+            })
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["incoming-numbers:buy", "userInput-phoneNumber"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {
+                phoneNumber: "userInput-phoneNumber",
                 alias: "userInput-alias",
                 applicationId: "userInput-applicationId",
             })

@@ -73,6 +73,18 @@ describe("queue-members:dequeue-head Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["queue-members:dequeue-head", "userInput-queueId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("queue-members:dequeue-head next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api

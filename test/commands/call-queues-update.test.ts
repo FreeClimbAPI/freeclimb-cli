@@ -75,6 +75,18 @@ describe("call-queues:update Data Test", function () {
 
     test.nock("https://www.freeclimb.com", async (api) =>
         api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["call-queues:update", "userInput-queueId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
             .post(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}`, {
                 alias: "userInput-alias",
                 maxSize: 10,

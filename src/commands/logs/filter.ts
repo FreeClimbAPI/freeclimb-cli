@@ -37,21 +37,30 @@ export class logsFilter extends Command {
         })()
         const fcApi = new FreeClimbApi(`Logs`, true, this)
         const normalResponse = (response: FreeClimbResponse) => {
-            if (flags.maxItem) {
-                out.out(JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2))
-            } else {
-                const resp =
-                    response.status === 204
-                        ? "Received a success code from FreeClimb. There is no further output."
+            if (response.status === 204) {
+                out.out("Received a success code from FreeClimb. There is no further output.")
+            } else if (response.data) {
+                out.out(
+                    flags.maxItem
+                        ? JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2)
                         : JSON.stringify(response.data, null, 2)
-                out.out(resp)
+                )
+            } else {
+                throw new Errors.UndefinedResponseError()
             }
         }
         const nextResponse = (response: FreeClimbResponse) => {
-            if (flags.maxItem) {
-                out.out(JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2))
+            if (response.data) {
+                out.out(
+                    flags.maxItem
+                        ? JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2)
+                        : JSON.stringify(response.data, null, 2)
+                )
             } else {
-                out.out(JSON.stringify(response.data, null, 2))
+                throw new Errors.UndefinedResponseError()
+            }
+            if (out.next === null) {
+                out.out("== You are on the last page of output. ==")
             }
             if (out.next === null) {
                 out.out("== You are on the last page of output. ==")

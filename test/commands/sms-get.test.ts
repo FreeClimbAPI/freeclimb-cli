@@ -76,6 +76,18 @@ describe("sms:get Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(`/apiserver/Accounts/${await cred.accountId}/Messages/${messageId}`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["sms:get", "userInput-messageId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("sms:get next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api
@@ -163,6 +175,22 @@ describe("sms:get Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Messages/${messageId}`)
+                .query({ cursor: "736d733a676574" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_SMS_GET_NEXT: "736d733a676574" })
+            .command(["sms:get", "userInput-messageId", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

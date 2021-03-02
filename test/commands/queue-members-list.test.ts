@@ -76,6 +76,18 @@ describe("queue-members:list Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["queue-members:list", "userInput-queueId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("queue-members:list next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api
@@ -163,6 +175,22 @@ describe("queue-members:list Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members`)
+                .query({ cursor: "71756575652d6d656d626572733a6c697374" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_QUEUE_MEMBERS_LIST_NEXT: "71756575652d6d656d626572733a6c697374" })
+            .command(["queue-members:list", "userInput-queueId", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })
