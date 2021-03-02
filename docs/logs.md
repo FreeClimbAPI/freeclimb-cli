@@ -16,14 +16,14 @@ USAGE
 
 ARGUMENTS
   PQL   The filter query for retrieving logs. See Performance Query Language below.
-  TAIL  (tail) also dont know what it should be
+  TAIL  (tail) Polls the FreeClimb API to retrieve and display new logs as they occur.
 
 OPTIONS
-  -Q, --since=since      I do not know what it should be yet
+  -Q, --since=since      Determines time frame of logs to be printed out before starting tail. Ex.2h9m
   -h, --help             show CLI help
   -m, --maxItem=maxItem  Show only a certain number of the most recent logs on this page.
   -n, --next             Displays the next page of output.
-  -q, --sleep=sleep      [default: 1000] i do not know what it should be yet
+  -q, --sleep=sleep      [default: 1000] Determines time waited between request for tail command. Defaults at 1 second.
 ```
 
 _See code: [src/commands/logs/filter.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/logs/filter.ts)_
@@ -37,14 +37,14 @@ USAGE
   $ freeclimb logs:list [TAIL]
 
 ARGUMENTS
-  TAIL  (tail) also dont know what it should be
+  TAIL  (tail) Polls the FreeClimb API to retrieve and display new logs as they occur.
 
 OPTIONS
-  -Q, --since=since      I do not know what it should be yet
+  -Q, --since=since      Determines time frame of logs to be printed out before starting tail. Ex.2h9m
   -h, --help             show CLI help
   -m, --maxItem=maxItem  Show only a certain number of the most recent logs on this page.
   -n, --next             Displays the next page of output.
-  -q, --sleep=sleep      [default: 1000] i do not know what it should be yet
+  -q, --sleep=sleep      [default: 1000] Determines time waited between request for tail command. Defaults at 1 second.
 ```
 
 _See code: [src/commands/logs/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/logs/list.ts)_

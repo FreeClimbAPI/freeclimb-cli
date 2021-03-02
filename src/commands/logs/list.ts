@@ -19,10 +19,15 @@ export class logsList extends Command {
         }),
         sleep: flags.integer({
             char: "q",
-            description: "i do not know what it should be yet",
+            description:
+                "Determines time waited between request for tail command. Defaults at 1 second.",
             default: 1000,
         }),
-        since: flags.string({ char: "Q", description: "I do not know what it should be yet" }),
+        since: flags.string({
+            char: "Q",
+            description:
+                "Determines time frame of logs to be printed out before starting tail. Ex.2h9m",
+        }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
     }
@@ -30,7 +35,7 @@ export class logsList extends Command {
     static args = [
         {
             name: "tail",
-            description: "also dont know what it should be",
+            description: "Polls the FreeClimb API to retrieve and display new logs as they occur.",
             required: false,
             options: ["tail"],
         },
