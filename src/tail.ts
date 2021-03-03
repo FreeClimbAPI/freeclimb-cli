@@ -3,43 +3,17 @@ export function sleep(ms: number) {
 }
 
 function processInput(timeStr: string) {
-    const regex = /[\d]/
-    const timeInput = []
-    const ts = timeStr.split(" ").join("").split("")
-    let collectedUnit = false
-    let unit = ""
-    let time = ""
-    if (regex.exec(ts[0]) === null) {
-        const err = new Error(timeStr)
-        err.name = "Incorrect Format - Starting Number"
-        throw err
+    const regexp = /(?<number>\d+)(?<unit>(ms|us|w|d|h|m|s))/g
+    const finalOutput = []
+    let match: any
+    while ((match = regexp.exec(timeStr.toLowerCase())) !== null) {
+        finalOutput.push({ unit: match.groups.unit, number: match.groups.number })
     }
-    ts.forEach((char) => {
-        if (regex.exec(char)) {
-            if (collectedUnit === true) {
-                collectedUnit = false
-                timeInput.push([unit, time])
-                time = ""
-                unit = ""
-            }
-            time += char
-        } else {
-            collectedUnit = true
-            unit += char
-        }
-    })
-    if (collectedUnit) {
-        timeInput.push([unit, time])
-    } else {
-        const err = new Error(timeStr)
-        err.name = "Incorrect Format - Missing Unit"
-        throw err
-    }
-    return timeInput
+    return finalOutput
 }
 
 function convertTime(unit: string, time: number) {
-    switch (unit.toLowerCase()) {
+    switch (unit) {
         case "w": {
             return time * 604800000000
         }
@@ -78,11 +52,9 @@ function convertTime(unit: string, time: number) {
 export function calculateSinceTimestamp(since: string) {
     let total = 0
     const timeSeperation = processInput(since)
-    for (let i = 0; i < timeSeperation.length; i++) {
-        const utSet = timeSeperation[i]
-        const unit = utSet[0]
-        const time = parseInt(utSet[1], 10)
-        total += convertTime(unit, time)
+    for (const timeSegment of timeSeperation) {
+        const time = parseInt(timeSegment.number, 10)
+        total += convertTime(timeSegment.unit, time)
     }
     return total
 }
