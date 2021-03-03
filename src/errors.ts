@@ -1,13 +1,18 @@
+import chalk from "chalk"
 import { errorWithSuggestions, returnFormat } from "./error-messages"
 import { parse } from "./parse-errors"
+<<<<<<< HEAD
 
 export abstract class FreeClimbError {
+=======
+abstract class FreeClimbError {
+>>>>>>> include color to cli
     message: string
 
     code: number
 
     constructor(newMessage: string, newCode: number) {
-        this.message = newMessage
+        this.message = chalk.red(newMessage)
         this.code = newCode
     }
 }
@@ -26,7 +31,7 @@ export class FreeClimbAPIError extends FreeClimbError {
         } else if (errorMessage.code) {
             super(errorWithSuggestions(errorMessage), 3)
         } else {
-            super(errorMessage, 3)
+            super(JSON.stringify(errorMessage, null, 2), 3)
         }
     }
 }

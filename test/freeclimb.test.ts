@@ -3,7 +3,7 @@ import { FreeClimbApi } from "../src/freeclimb"
 
 describe("FreeClimbApi class", () => {
     const errorResponse = { errorCause: "intentional" }
-    const errorResponseReturn = `{ errorCause: 'intentional' }\n`
+    const errorResponseReturn = `"errorCause": "intentional"`
     const errorer = { error: (message: string, _: any) => console.error(message) }
     const endpoint = test
         .nock("https://www.freeclimb.com", async (api) =>
