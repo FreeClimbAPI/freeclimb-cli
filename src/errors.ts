@@ -1,12 +1,8 @@
 import chalk from "chalk"
 import { errorWithSuggestions, returnFormat } from "./error-messages"
 import { parse } from "./parse-errors"
-<<<<<<< HEAD
 
 export abstract class FreeClimbError {
-=======
-abstract class FreeClimbError {
->>>>>>> include color to cli
     message: string
 
     code: number

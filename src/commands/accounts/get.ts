@@ -27,11 +27,17 @@ export class accountsGet extends Command {
         const normalResponse = (response: FreeClimbResponse) => {
             if (response.status === 204) { out.out(chalk.green("Received a success code from FreeClimb. There is no further output.")) } else if (response.data) { out.out(JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }
         }
+<<<<<<< HEAD
         if(flags.next) {
             
                 const error = new Errors.NoNextPage();
                 this.error(error.message, { exit: error.code});
             
+=======
+        if (flags.next) {
+            const error = new Errors.NoNextPage()
+            this.error(error.message, { exit: error.code })
+>>>>>>> include color to cli
         }
         
         
