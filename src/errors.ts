@@ -150,30 +150,20 @@ export class SinceFormatError extends FreeClimbError {
                 ),
                 2
             )
-        } else if (errorMessage.name === "Incorrect Format - Missing Unit") {
+        } else if (errorMessage.name === "Incorrect Format - Missing Number or Unit") {
             super(
                 returnFormat(
                     1016,
                     errorMessage.name,
                     "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
-                    `${errorMessage.message} is missing a unit of time. For every time interval a unit of time must be included. Ex 2h30m`
-                ),
-                2
-            )
-        } else if (errorMessage.name === "Incorrect Format - Starting Number") {
-            super(
-                returnFormat(
-                    1017,
-                    errorMessage.name,
-                    "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
-                    `${errorMessage.message} must start with an unit of time. Ex. 2h30m`
+                    `${errorMessage.message} is missing a unit of time or number. For every time interval, a unit of time must be included. Ex 2h30m`
                 ),
                 2
             )
         } else {
             super(
                 returnFormat(
-                    1018,
+                    1017,
                     "Since Format Error",
                     "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
                     "Check the formatting of since flag"

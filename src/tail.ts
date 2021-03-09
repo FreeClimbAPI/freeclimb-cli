@@ -3,7 +3,15 @@ export function sleep(ms: number) {
 }
 
 function processInput(timeStr: string) {
-    const regexp = /(?<number>\d+)(?<unit>(ms|us|w|d|h|m|s))/g
+    const regexp = /(?<number>\d+)(?<unit>[a-zA-Z]+)/g
+    const replacedStr = timeStr.replace(/^((?<number>\d+)(?<units>[a-zA-Z]+) *)+$/g, "")
+
+    if (replacedStr.length !== 0) {
+        const err = new Error(`${replacedStr}`)
+        err.name = "Incorrect Format - Missing Number or Unit"
+        throw err
+    }
+
     const finalOutput = []
     let match: any
     while ((match = regexp.exec(timeStr.toLowerCase())) !== null) {
