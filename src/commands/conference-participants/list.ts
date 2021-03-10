@@ -10,7 +10,7 @@ export class conferenceParticipantsList extends Command {
 
     static flags = {
         talk: flags.string({
-            char: "T",
+            char: "L",
             description: "Only show Participants with the talk privilege.",
             required: false,
             options: ["true", "false"],

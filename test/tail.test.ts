@@ -14,16 +14,16 @@ describe("Tests the calculateSinceTimestamp", function () {
     test.it("Checks calculateSinceTimestamp outputs error if starting number is missing", () => {
         expect(function () {
             calculateSinceTimestamp("d 1h")
-        }).to.throws("d 1h")
+        }).to.throw("d 1h")
     })
     test.it("Checks calculateSinceTimestamp outputs error if input is missing a unit", () => {
         expect(function () {
             calculateSinceTimestamp("2d 1")
-        }).to.throws("2d 1")
+        }).to.throw("2d 1")
     })
     test.it("Checks calculateSinceTimestamp outputs error if an unit used is not valid", () => {
         expect(function () {
             calculateSinceTimestamp("2d 1hh")
-        }).to.throws("hh")
+        }).to.throw("hh")
     })
 })

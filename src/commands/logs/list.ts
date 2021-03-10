@@ -17,6 +17,11 @@ export class logsList extends Command {
             char: "m",
             description: "Show only a certain number of the most recent logs on this page.",
         }),
+        tail: flags.boolean({
+            char: "t",
+            description: "Polls the FreeClimb API to retrieve and display new logs as they occur.",
+            default: false,
+        }),
         sleep: flags.integer({
             char: "q",
             description:
@@ -32,18 +37,11 @@ export class logsList extends Command {
         help: flags.help({ char: "h" }),
     }
 
-    static args = [
-        {
-            name: "tail",
-            description: "Polls the FreeClimb API to retrieve and display new logs as they occur.",
-            required: false,
-            options: ["tail"],
-        },
-    ]
+    static args = []
 
     async run() {
         const out = new Output(this)
-        const { args, flags } = (() => {
+        const { flags } = (() => {
             try {
                 return this.parse(logsList)
             } catch (error) {
@@ -102,7 +100,7 @@ export class logsList extends Command {
             return
         }
 
-        if (args.tail) {
+        if (flags.tail) {
             lastTime = 0
 
             if (flags.since) {
@@ -118,7 +116,7 @@ export class logsList extends Command {
                 lastTime = currentTime - sinceTimestamp
             }
             tailMax = flags.maxItem ? flags.maxItem : 100
-            while (args.tail) {
+            while (flags.tail) {
                 await fcApi.apiCall(
                     "POST",
                     {

@@ -10,7 +10,7 @@ export class callsList extends Command {
 
     static flags = {
         to: flags.string({
-            char: "t",
+            char: "T",
             description: "Only show Calls to this phone number.",
             required: false,
         }),

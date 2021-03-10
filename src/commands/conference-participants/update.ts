@@ -10,7 +10,7 @@ export class conferenceParticipantsUpdate extends Command {
 
     static flags = {
         talk: flags.string({
-            char: "T",
+            char: "L",
             description:
                 "(Optional) Default is true. Setting to false mutes the Participant. FreeClimb returns an error and ignores any other value.",
             required: false,

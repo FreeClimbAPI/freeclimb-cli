@@ -12,7 +12,6 @@ const { isEmpty } = require("lodash")
 const apiInfo = require("../schema/generated-api-schema.json")
 const descriptionOverrides = require("../schema/description-overrides.json")
 const localFlags = require("../schema/local-flags.json")
-const localArgs = require("../schema/local-args.json")
 const ApiCommand = require("./api-command.js")
 const mapChars = require("./character-mapping")
 
@@ -229,7 +228,7 @@ function getAdditionalFlags(topicName, tail, pagination) {
         data += `\n\t\tmaxItem: flags.integer({ char: "m", description: "${localFlags.maxItem.description}"}),`
     }
     if (tail) {
-        data += `\n\t\tsleep: flags.integer({ char: "${localFlags.sleep.char}", description: "${localFlags.sleep.description}", default: ${localFlags.sleep.default}}),\n\t\tsince: flags.string({ char: "${localFlags.since.char}", description: "${localFlags.since.description}",}),`
+        data += `\n\t\ttail: flags.boolean({char: '${localFlags.tail.char}', description: '${localFlags.tail.description}',default : ${localFlags.tail.default}}),\n\t\tsleep: flags.integer({ char: "${localFlags.sleep.char}", description: "${localFlags.sleep.description}", default: ${localFlags.sleep.default}}),\n\t\tsince: flags.string({ char: "${localFlags.since.char}", description: "${localFlags.since.description}",}),`
     }
     if (pagination) {
         data += `\n\t\tnext: flags.boolean({char: 'n', description: '${localFlags.next.description}'}),`
@@ -251,9 +250,6 @@ function getAxiosArgs(args, tail) {
         args.forEach((arg) => {
             data += `\t\t{name: "${arg.name}", description: "${arg.description}", required: ${arg.required}},\n`
         })
-        if (tail) {
-            data += `\t\t{name: "${localArgs.tail.name}", description: "${localArgs.tail.description}", required: ${localArgs.tail.required}, options: ${localArgs.tail.options}},\n`
-        }
         data += "]\n"
     }
 
@@ -264,7 +260,7 @@ function getAxiosArgs(args, tail) {
 // "freeclimb topic:command -h" will not work if flags are not in deconstructor. So flags
 // must be in the deconstructor even when no Axios flags are present.
 function setConstArgs(args, tail) {
-    return isEmpty(args) && !tail ? "" : "args, "
+    return isEmpty(args) ? "" : "args, "
 }
 
 // Return Error Handling
@@ -444,7 +440,7 @@ function addToPQL() {
 function getTailApi(command) {
     const includesPQL = hasPQLClassName.includes(command.className)
     return `
-    if (args.tail) {
+    if (flags.tail) {
         lastTime = 0
         ${includesPQL ? includesTimestamp() : ""}
         if (flags.since) {
@@ -460,7 +456,7 @@ function getTailApi(command) {
             lastTime = currentTime - sinceTimestamp
         }
         tailMax = flags.maxItem ? flags.maxItem : 100
-        while (args.tail) {
+        while (flags.tail) {
             await fcApi.apiCall(
                 "POST",
                 {

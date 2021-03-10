@@ -17,6 +17,11 @@ export class logsFilter extends Command {
             char: "m",
             description: "Show only a certain number of the most recent logs on this page.",
         }),
+        tail: flags.boolean({
+            char: "t",
+            description: "Polls the FreeClimb API to retrieve and display new logs as they occur.",
+            default: false,
+        }),
         sleep: flags.integer({
             char: "q",
             description:
@@ -38,12 +43,6 @@ export class logsFilter extends Command {
             description:
                 "The filter query for retrieving logs. See Performance Query Language below.",
             required: true,
-        },
-        {
-            name: "tail",
-            description: "Polls the FreeClimb API to retrieve and display new logs as they occur.",
-            required: false,
-            options: ["tail"],
         },
     ]
 
@@ -115,7 +114,7 @@ export class logsFilter extends Command {
             )
         }
 
-        if (args.tail) {
+        if (flags.tail) {
             lastTime = 0
             if (args.pql.includes("timestamp")) {
                 const err = new Errors.NoTimestamp()
@@ -135,7 +134,7 @@ export class logsFilter extends Command {
                 lastTime = currentTime - sinceTimestamp
             }
             tailMax = flags.maxItem ? flags.maxItem : 100
-            while (args.tail) {
+            while (flags.tail) {
                 await fcApi.apiCall(
                     "POST",
                     {

@@ -1,8 +1,0 @@
-{
-  "tail": {
-    "name": "tail",
-    "description": "Polls the FreeClimb API to retrieve and display new logs as they occur.",
-    "required": false,
-    "options": "['tail']"
-  }
-}

@@ -10,6 +10,11 @@
     "description": "Displays the next page of output.",
     "char": "n"
   },
+  "tail": {
+    "description": "Polls the FreeClimb API to retrieve and display new logs as they occur.",
+    "char": "t",
+    "default": false
+  },
   "sleep": {
     "description": "Determines time waited between request for tail command. Defaults at 1 second.",
     "char": "q",
