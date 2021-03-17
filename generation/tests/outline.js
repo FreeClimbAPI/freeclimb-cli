@@ -199,7 +199,7 @@ TestOutline.prototype.testOutline = function () {
     })`
 }
 
-TestOutline.prototype.testErrorResponseOuline = function () {
+TestOutline.prototype.testErrorResponseOutline = function () {
     this.setParams(this.additionalParam)
     return `test.nock("https://www.freeclimb.com", async (api) =>
     api
