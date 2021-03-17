@@ -37,11 +37,6 @@ export class smsList extends Command {
                 "Either inbound or outbound. Only show Messages that were either sent from or received by FreeClimb.",
             required: false,
         }),
-        accountID: flags.string({
-            char: "a",
-            description: "String that uniquely identifies this account resource.",
-            required: false,
-        }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
     }
@@ -100,7 +95,6 @@ export class smsList extends Command {
                     beginTime: flags.beginTime,
                     endTime: flags.endTime,
                     direction: flags.direction,
-                    accountID: flags.accountID,
                 },
             },
             normalResponse

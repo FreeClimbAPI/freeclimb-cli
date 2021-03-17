@@ -1,7 +1,7 @@
 `freeclimb available-numbers`
 =============================
 
-Available Numbers are FreeClimb phone numbers available for purchase. The properties of the Available Phone Numbers resource provides a means to search for phone numbers that are available to buy. You use pattern matching to search for phone numbers that match your needs. When an available number is identified for purchase, make an HTTP POST request to the IncomingPhoneNumbers endpoint using the number as the phoneNumber parameter. The list of Available Phone Number resources is accessible to all accounts.
+Available Numbers are FreeClimb phone numbers available for purchase. The properties of the Available Phone Numbers resource provides a means to search for phone numbers that are available to buy.
 
 * [`freeclimb available-numbers:list`](#freeclimb-available-numberslist)
 

@@ -10,7 +10,7 @@ let lastTime: number
 let tailMax: number
 
 export class logsFilter extends Command {
-    static description = ` Returns the first page of Logs associated with the specified account. The Performance Query Language, or PQL, is a simple query language that uses key-comparator-value triplets joined by boolean operators to build queries capable of searching through logs. PQL is inspired heavily by the syntax of SQL's WHERE clauses. The Dot Operator (.) can be used to search for nested key / value pairs. In the example above, metadata.test is used to access the value of the nested test key under metadata. PQL supports the following comparator operators: =, !=, <, <=, >, >=, as well as the use of () to indicate the order in which parts are evaluated.`
+    static description = ` Returns the first page of Logs associated with the specified account.`
 
     static flags = {
         maxItem: flags.integer({

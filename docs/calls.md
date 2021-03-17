@@ -1,7 +1,7 @@
 `freeclimb calls`
 =================
 
-A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound (when a person calls a FreeClimb number) or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account. FreeClimb currently does not support direct SIP user agent endpoints. If you are interested in SIP trunking, please contact Support. A Call resource is represented by the following properties:
+A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound (when a person calls a FreeClimb number) or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.
 
 * [`freeclimb calls:get CALLID`](#freeclimb-callsget-callid)
 * [`freeclimb calls:list`](#freeclimb-callslist)
@@ -23,7 +23,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/calls/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/calls/get.ts)_
@@ -96,22 +95,27 @@ _See code: [src/commands/calls/list-call-logs.ts](https://github.com/FreeClimbAP
 
 ## `freeclimb calls:make FROM TO APPLICATIONID`
 
-Making a Call may take time. A 202 status code is returned if the Call request was successfully queued by FreeClimb, otherwise, a 500 error is returned. The asynchronous callback for the result will occur after some time through the callConnectUrl. Note: International Calling is disabled by default. A synchronous callback for the result will occur after some time through the callConnectUrl of the associated application. The pause duration is equal to n × 0.5 s (the default pause interval). As a result, {2} equals a 1-second pause, {3} equals a 1.5-second pause, and so on.  A digits string such as 12{2}34{4}# is rendered as follows:  This attribute can be set to one of the following values: if the ifMachine attribute is empty, processing of the Call continues normally. Note ifMachine uses the tone stream to detect an answering machine. Therefore, it is not perfectly accurate and may not work reliably in all countries.
+Making a Call may take time. A 202 status code is returned if the Call request was successfully queued by FreeClimb, otherwise, a 500 error is returned. The asynchronous callback for the result will occur after some time through the callConnectUrl.
 
 ```
 USAGE
   $ freeclimb calls:make FROM TO APPLICATIONID
 
 ARGUMENTS
-  FROM           Phone number to use as the caller ID. This can be: (a) The To or From number provided in FreeClimb's
-                 initial request to your app or (b) Any incoming phone number you have purchased from FreeClimb.
+  FROM
+      Phone number to use as the caller ID. This can be: (a) The To or From number provided in FreeClimb's initial request 
+      to your app or (b) Any incoming phone number you have purchased from FreeClimb.
 
-  TO             Phone number to place the Call to. For trial accounts, this must be a Verified Number.
+  TO
+      Phone number to place the Call to. For trial accounts, this must be a Verified Number.
 
-  APPLICATIONID  ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the
-                 callConnectUrl and statusCallbackUrl set on the application. The application must have a callConnectUrl
-                 associated with it or an error will be returned. The application’s voiceUrl parameter is not used for
-                 outbound calls.
+  APPLICATIONID
+      ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the callConnectUrl and 
+      statusCallbackUrl set on the application unless the callConnectUrl attribute is also provided with the request. In 
+      this case, the URL specified in that callConnectUrl attribute will be used as a replacement of the callConnectUrl 
+      originally assigned in the application. See applicationId v. callConnectUrl below. The application must have a 
+      callConnectUrl associated with it or an error will be returned. The application’s voiceUrl parameter is not used for 
+      outbound calls.
 
 OPTIONS
   -I, --ifMachineUrl=ifMachineUrl
@@ -120,11 +124,18 @@ OPTIONS
       ifMachineUrl must not be included in the request. For more information, see ifMachineUrl example below.
 
   -P, --parentCallId=parentCallId
-      The ID of the parent Call in the case that this new Call is meant to be treated as a child of an existing Call. This 
-      attribute should be included when possible to reduce latency when adding child calls to Conferences containing the 
-      parent Call. A call can only be used as a parent once the call is in progress or as an inbound call that is still 
-      ringing.  An outbound call is considered to be in progress once the outdialConnect or outdialApiConnect webhook is 
-      invoked.  An inbound call is ringing when the inbound webhook is invoked.
+      Required if no applicationId or callConnecturl have been provided. The ID of the parent Call in the case that this 
+      new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to 
+      reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a 
+      parent once the call is in progress or as an inbound call that is still ringing.  An outbound call is considered to 
+      be in progress once the outdialConnect or outdialApiConnect webhook is invoked.  An inbound call is ringing when the 
+      inbound webhook is invoked. If a callConnectUrl attribute is also included with the parentCallId in the request, 
+      this URL will be used as a replacement of the callConnectUrl originally assigned in the parent call.
+
+  -c, --callConnectUrl=callConnectUrl
+      The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been 
+      provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in 
+      the application or parent call. See applicationId v. callConnectUrl below.
 
   -h, --help
       show CLI help
@@ -132,8 +143,12 @@ OPTIONS
   -i, --ifMachine=ifMachine
       Specifies how FreeClimb should handle this Call if an answering machine answers it.
 
+  -p, --privacyMode=true|false
+      Indicates if the request contains sensitive information which should be hidden. When set to true, the contents of 
+      the sendDigits field will be replaced with the string XXXXX in the logs.
+
   -s, --sendDigits=sendDigits
-      String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a 
+      String of digits to dial after connecting to the number. It can include digits 0-9, , and #, and allows embedding a 
       pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# 
       will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified 
       by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below.
@@ -142,12 +157,6 @@ OPTIONS
       Number of seconds that FreeClimb should allow the phone to ring before assuming there is no answer. Default is 30 
       seconds. Maximum allowed ring-time is determined by the target phone's provider. Note that most providers limit 
       ring-time to 120 seconds.
-
-DESCRIPTION
-  callConnectUrl almost always is invoked before the ifMachineUrl. Therefore, if PerCL returned by callConnectUrl is 
-  being executed when a machine is detected, the execution is affected as follows if this flag is set to redirect or 
-  hangup: Note A PerCL response is expected to control the Call. ifMachineUrl is invoked using HTTP POST with the 
-  following parameters (in addition to the standard request parameters):
 ```
 
 _See code: [src/commands/calls/make.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/calls/make.ts)_
@@ -168,10 +177,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-
-DESCRIPTION
-  Any Call which is currently ringing is in progress from the point of view of FreeClimb, and requires a  
-  status=completed to cancel it.
 ```
 
 _See code: [src/commands/calls/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/calls/update.ts)_

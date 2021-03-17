@@ -123,6 +123,7 @@ describe("sms:send Data Test", function () {
         .exit(3)
         .it("Test error resulting in an unreadable response")
 
+<<<<<<< HEAD
     test.nock("https://www.freeclimb.com", async (api) =>
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Messages`, {
@@ -154,6 +155,8 @@ describe("sms:send Data Test", function () {
             }
         )
 
+=======
+>>>>>>> update cli
     describe("sms:send body param flags", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api
@@ -178,34 +181,6 @@ describe("sms:send Data Test", function () {
             ])
             .it(
                 "required params and a body param is sent through with request-notificationUrl",
-                async (ctx) => {
-                    expect(ctx.stdout).to.contain(nockServerResponse)
-                }
-            )
-
-        test.nock("https://www.freeclimb.com", async (api) =>
-            api
-                .post(`/apiserver/Accounts/${await cred.accountId}/Messages`, {
-                    from: "userInput-from",
-                    to: "userInput-to",
-                    text: "userInput-text",
-                    accountId: "userInput-accountId",
-                })
-                .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
-                .reply(200, testJson)
-        )
-            .stdout()
-            .command([
-                "sms:send",
-                "userInput-from",
-                "userInput-to",
-                "userInput-text",
-                "--accountId",
-                "userInput-accountId",
-            ])
-            .it(
-                "required params and a body param is sent through with request-accountId",
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponse)
                 }

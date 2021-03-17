@@ -12,7 +12,7 @@ export class incomingNumbersList extends Command {
         phoneNumber: flags.string({
             char: "p",
             description:
-                "Only show incoming phone number resources that match this PCRE-compatible  regular expression.",
+                "Only show incoming phone number resources that match this <a href=https://www.pcre.org/ target=blank>PCRE-compatible</a>  regular expression.",
             required: false,
         }),
         alias: flags.string({

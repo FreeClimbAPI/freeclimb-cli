@@ -1,7 +1,7 @@
 `freeclimb sms`
 ===============
 
-A Message instance resource represents an SMS Message sent between FreeClimb and a remote endpoint. The Message may be inbound (when a person messages a FreeClimb number ) or outbound (when an Application initiates sending the Message, either via the REST API or the PerCL Sms command). The Messages list resource represents the set of all Messages made to and from an Account. Messages can exist in one of the following states:
+A Message instance resource represents an SMS Message sent between FreeClimb and a remote endpoint.
 
 * [`freeclimb sms:get MESSAGEID`](#freeclimb-smsget-messageid)
 * [`freeclimb sms:list`](#freeclimb-smslist)
@@ -20,7 +20,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/sms/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/get.ts)_
@@ -34,8 +33,11 @@ USAGE
   $ freeclimb sms:list
 
 OPTIONS
+<<<<<<< HEAD
   -T, --to=to                Only show Messages to this phone number.
   -a, --accountID=accountID  String that uniquely identifies this account resource.
+=======
+>>>>>>> update cli
   -b, --beginTime=beginTime  Only show Messages sent at or after this time (GMT), given as YYYY-MM-DD hh:mm:ss.
 
   -d, --direction=direction  Either inbound or outbound. Only show Messages that were either sent from or received by
@@ -66,10 +68,9 @@ ARGUMENTS
   TO    Phone number to receive the message. Must be within FreeClimb's service area. For trial accounts, must be a
         Verified Number.
 
-  TEXT  Text contained in the message (maximum 160 characters).   Note: For text, only ASCII characters are supported.
+  TEXT  Text contained in the message.
 
 OPTIONS
-  -a, --accountId=accountId              String that uniquely identifies this account resource.
   -h, --help                             show CLI help
 
   -n, --notificationUrl=notificationUrl  When the Message changes status, this URL is invoked using HTTP POST with the

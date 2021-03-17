@@ -6,7 +6,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class applicationsUpdate extends Command {
-    static description = ` Update the properties of the specified application. Note For voiceUrl and fallbackVoiceUrl a PerCL response is expected to control the inbound call.`
+    static description = ` Update the properties of the specified application.`
 
     static flags = {
         alias: flags.string({

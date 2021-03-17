@@ -10,7 +10,7 @@ A Conference represents a call between two or more participants.
 
 ## `freeclimb conferences:create`
 
-Create an empty Conference within the specified account. The status of a conference will be reported to the statusCallbackUrl when: Participants can be added to a Conference once the statusCallbackUrl is invoked, signifying the Conference has been created and is empty. When a populated or inProgress Conference is terminated, this URL is called twice — once when the Conference becomes empty and then again when it is terminated. Note This is a notification only. Any PerCL returned by the application is ignored. The statusCallbackUrl is invoked using HTTP POST with the following parameters (in addition to the standard request parameters).
+Create an empty Conference within the specified account.
 
 ```
 USAGE
@@ -32,7 +32,7 @@ OPTIONS
   -w, --waitUrl=waitUrl                      If specified, a URL for the audio file that provides custom hold music for
                                              the Conference when it is in the populated state. Otherwise, FreeClimb uses
                                              a system default audio file. This is always fetched using HTTP GET and is
-                                             fetched just once — when the Conference is created.
+                                             fetched just once &mdash; when the Conference is created.
 ```
 
 _See code: [src/commands/conferences/create.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/conferences/create.ts)_
@@ -50,7 +50,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/conferences/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/conferences/get.ts)_
@@ -83,7 +82,7 @@ _See code: [src/commands/conferences/list.ts](https://github.com/FreeClimbAPI/fr
 
 ## `freeclimb conferences:update CONFERENCEID`
 
-Update the properties of the specified conference. The statusCallbackUrl (specified upon creating the Conference) is invoked whenever a Conference is emptied or terminated. Participants are automatically disconnected. When updating the Conference status to terminated, FreeClimb returns an HTTP 204 response with no body. Once a Conference is terminated,FreeClimb will not reuse the conferenceId.
+Update the properties of the specified conference.
 
 ```
 USAGE
@@ -94,7 +93,7 @@ ARGUMENTS
 
 OPTIONS
   -S, --status=status      New status of the conference. Valid values: empty or terminated. For more information, see
-                           Status Parameter below.**
+                           Status Parameter below.
 
   -a, --alias=alias        Description for this conference. Maximum 64 characters.
 
