@@ -37,6 +37,11 @@ const errorWithSugNockServerResponse = ["nockServerResponseErrorWithSuggestion",
 let requiredParamTest = function (additionalParams) {
     let test = ""
     const requiredTestInstance = new TestInstance(this, additionalParams)
+    const newUrlTestInstance = new TestInstance(
+        this,
+        additionalParams,
+        "Sends API requests to the base URL from an environment variable"
+    )
     const requiredTestError = new TestInstance(
         this,
         additionalParams,
@@ -64,8 +69,8 @@ let requiredParamTest = function (additionalParams) {
     requiredWrongInputParse.additionalFlags = `"additionalArguments"`
     requiredWrongInputParse.statusCode = 500
     requiredWrongInputParse.exitCode = 2
-    
-    test += `${requiredTestInstance.variableOutline()}\n\n${requiredTestInstance.testOutline()}\n\n${requiredTestError.variableOutline()}\n\n${requiredTestError.testErrorResponseOuline()}\n\n${requiredTestErrorSuggestion.variableOutline()}\n\n${requiredTestErrorSuggestion.testErrorResponseOuline()}\n\n${requiredWrongInputParse.testExitCodeOutline()}\n\n`
+
+    test += `${requiredTestInstance.variableOutline()}\n\n${requiredTestInstance.testOutline()}\n\n${requiredTestError.variableOutline()}\n\n${requiredTestError.testErrorResponseOuline()}\n\n${newUrlTestInstance.testCustomBaseUrlOutline()}\n\n${requiredTestErrorSuggestion.variableOutline()}\n\n${requiredTestErrorSuggestion.testErrorResponseOuline()}\n\n${requiredWrongInputParse.testExitCodeOutline()}\n\n`
 
     if (formatedPQL.includes(this.commandName)) {
         test += formatedPQLTest(this, additionalParams)
