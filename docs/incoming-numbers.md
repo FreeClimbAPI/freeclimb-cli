@@ -75,8 +75,8 @@ OPTIONS
   -h, --help                     show CLI help
   -n, --next                     Displays the next page of output.
 
-  -p, --phoneNumber=phoneNumber  Only show incoming phone number resources that match this <a href=https://www.pcre.org/
-                                 target=blank>PCRE-compatible</a>  regular expression.
+  -p, --phoneNumber=phoneNumber  Only show incoming phone number resources that match this PCRE-compatible  regular
+                                 expression.
 ```
 
 _See code: [src/commands/incoming-numbers/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/incoming-numbers/list.ts)_

@@ -32,7 +32,7 @@ OPTIONS
   -w, --waitUrl=waitUrl                      If specified, a URL for the audio file that provides custom hold music for
                                              the Conference when it is in the populated state. Otherwise, FreeClimb uses
                                              a system default audio file. This is always fetched using HTTP GET and is
-                                             fetched just once &mdash; when the Conference is created.
+                                             fetched just once - when the Conference is created.
 ```
 
 _See code: [src/commands/conferences/create.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/conferences/create.ts)_
