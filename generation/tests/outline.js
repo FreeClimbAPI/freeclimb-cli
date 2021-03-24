@@ -227,6 +227,7 @@ TestOutline.prototype.testErrorUndefinedResponseOutline = function () {
     .command(["${this.commandName}"${this.paramCommandInput()}${this.additionalCommandInput()}])
     .exit(${this.exitCode})
     .it("${this.message}")`
+}
 
 TestOutline.prototype.testCustomBaseUrlOutline = function () {
     this.setParams(this.additionalParam)
@@ -235,7 +236,6 @@ TestOutline.prototype.testCustomBaseUrlOutline = function () {
         .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
         ${this.query()}
         .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
-
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
     .stdout()
