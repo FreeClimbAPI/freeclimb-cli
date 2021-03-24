@@ -1,5 +1,6 @@
 import axios from "axios"
 import { cred } from "./credentials"
+import { Environment } from "./environment"
 import * as Errors from "./errors"
 
 type Errorer = { error(message: string, exitCode: { exit: number }): any }
@@ -39,10 +40,14 @@ export class FreeClimbApi {
 
     private authenticate: boolean
 
+    private baseUrl: string
+
     constructor(endpoint: string, authenticate: boolean, errorHandler: Errorer) {
         this.endpoint = endpoint.length > 0 ? `/${endpoint}` : ""
         this.authenticate = authenticate
         this.errorHandler = errorHandler
+        this.baseUrl =
+            Environment.getString("FREECLIMB_CLI_BASE_URL") || "https://www.freeclimb.com/apiserver"
     }
 
     async apiCall(
@@ -64,9 +69,7 @@ export class FreeClimbApi {
         const accountId = await cred.accountId
         const authToken = await cred.authToken
         await axios(
-            `https://www.freeclimb.com/apiserver${
-                this.authenticate ? `/Accounts/${accountId}` : ``
-            }${this.endpoint}`,
+            `${this.baseUrl}${this.authenticate ? `/Accounts/${accountId}` : ``}${this.endpoint}`,
             {
                 method: method,
                 auth: { username: accountId, password: authToken },

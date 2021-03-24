@@ -37,6 +37,11 @@ const errorWithSugNockServerResponse = ["nockServerResponseErrorWithSuggestion",
 let requiredParamTest = function (additionalParams) {
     let test = ""
     const requiredTestInstance = new TestInstance(this, additionalParams)
+    const newUrlTestInstance = new TestInstance(
+        this,
+        additionalParams,
+        "Sends API requests to the base URL from an environment variable"
+    )
     const requiredTestError = new TestInstance(
         this,
         additionalParams,

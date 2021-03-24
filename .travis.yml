@@ -1,0 +1,46 @@
+language: node_js
+
+# BEGIN config for keytar from https://github.com/atom/node-keytar/blob/3b7c00b37e58258ae15b43d78c48cf4d05e9a751/.travis.yml
+
+addons:
+  apt:
+    packages:
+      - xvfb
+      - gnome-keyring
+      - libsecret-1-dev
+      - xorg
+      - dbus
+      - dbus-x11
+env:
+  - CC=clang CXX=clang++ npm_config_clang=1
+# END config for keytar
+
+os:
+  - osx
+  # Windows tests are disabled unil logon session error can be resolved
+  #- windows
+  - linux
+
+node_js:
+  - 12
+  - 14
+  - node
+
+branches:
+  only:
+    - main
+
+before_install:
+  - if [ "$TRAVIS_OS_NAME" = "linux" ]; then mkdir -p ~/.local/share/keyrings; export $(dbus-launch); echo "" | gnome-keyring-daemon --unlock; /usr/bin/gnome-keyring-daemon --components=secrets,pkcs11,ssh --start --daemonize; export $(echo "" | /usr/bin/gnome-keyring-daemon -r -d --unlock); fi
+
+jobs:
+  exclude: # for efficiency, just run Linux and Node.js 12 for pull requests
+    # Windows tests are disabled unil logon session error can be resolved
+    #- if: type = pull_request
+    #  os: windows
+    - if: type = pull_request
+      os: osx
+    - if: type = pull_request
+      node_js: node
+    - if: type = pull_request
+      node_js: 14
