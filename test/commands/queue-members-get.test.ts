@@ -57,6 +57,23 @@ describe("queue-members:get Data Test", function () {
         .exit(3)
         .it("Test Freeclimb Api error repsonce is process correctly without a suggestion")
 
+    test.nock("https://user-custom-domain.example.com", async (api) =>
+        api
+            .get(
+                `/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/${callId}`,
+                {}
+            )
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, testJson)
+    )
+        .stdout()
+        .env({ FREECLIMB_CLI_BASE_URL: "https://user-custom-domain.example.com/apiserver" })
+        .command(["queue-members:get", "userInput-queueId", "userInput-callId"])
+        .it("Sends API requests to the base URL from an environment variable", async (ctx) => {
+            expect(ctx.stdout).to.contain(nockServerResponse)
+        })
+
     const testJsonErrorWithSuggestion = {
         code: 50,
         message: "Unauthorized To Make Request",
@@ -90,6 +107,21 @@ describe("queue-members:get Data Test", function () {
         ])
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(
+                `/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/${callId}`,
+                {}
+            )
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["queue-members:get", "userInput-queueId", "userInput-callId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
 
     describe("queue-members:get next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
@@ -185,6 +217,24 @@ describe("queue-members:get Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(
+                    `/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/${callId}`
+                )
+                .query({ cursor: "71756575652d6d656d626572733a676574" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_QUEUE_MEMBERS_GET_NEXT: "71756575652d6d656d626572733a676574" })
+            .command(["queue-members:get", "userInput-queueId", "userInput-callId", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

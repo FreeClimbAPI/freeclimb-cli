@@ -17,6 +17,10 @@ errorMessage.set(
     6,
     "Update your profile to ensure you have the correct information on file: https://freeclimb.com/dashboard/portal/account/profile."
 )
+errorMessage.set(
+    9,
+    "Check formatting of flags and arguements. Note: Numbers should be in e.164 format: +12223334444"
+)
 errorMessage.set(10, "Use a different number that is SMS enabled.")
 errorMessage.set(
     11,

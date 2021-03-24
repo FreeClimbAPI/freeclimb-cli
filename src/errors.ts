@@ -1,7 +1,7 @@
 import { errorWithSuggestions, returnFormat } from "./error-messages"
 import { parse } from "./parse-errors"
 
-abstract class FreeClimbError {
+export abstract class FreeClimbError {
     message: string
 
     code: number
@@ -31,6 +31,33 @@ export class FreeClimbAPIError extends FreeClimbError {
     }
 }
 
+export class UndefinedResponseError extends FreeClimbError {
+    constructor() {
+        super(
+            returnFormat(
+                1020,
+                "Reponse Undefined",
+                "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                "Re-run the command. If error persists, something went wrong on FreeClimb's end. Our engineers are hard at work resolving this problem."
+            ),
+            3
+        )
+    }
+}
+
+export class DefaultFatalError extends FreeClimbError {
+    constructor(error: any) {
+        super(
+            returnFormat(
+                1021,
+                "Program Error",
+                "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                `Please contact vail \n${error}`
+            ),
+            4
+        )
+    }
+}
 export class NoNextPage extends FreeClimbError {
     constructor() {
         super(

@@ -52,6 +52,22 @@ describe("logs:filter Data Test", function () {
         .exit(3)
         .it("Test Freeclimb Api error repsonce is process correctly without a suggestion")
 
+    test.nock("https://user-custom-domain.example.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Logs`, {
+                pql: "userInput-pql",
+            })
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, testJson)
+    )
+        .stdout()
+        .env({ FREECLIMB_CLI_BASE_URL: "https://user-custom-domain.example.com/apiserver" })
+        .command(["logs:filter", "userInput-pql"])
+        .it("Sends API requests to the base URL from an environment variable", async (ctx) => {
+            expect(ctx.stdout).to.contain(nockServerResponse)
+        })
+
     const testJsonErrorWithSuggestion = {
         code: 50,
         message: "Unauthorized To Make Request",
@@ -79,6 +95,20 @@ describe("logs:filter Data Test", function () {
         .command(["logs:filter", "userInput-pql", "additionalArguments"])
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Logs`, {
+                pql: "userInput-pql",
+            })
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["logs:filter", "userInput-pql"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
 
     test.nock("https://www.freeclimb.com", async (api) =>
         api
@@ -278,6 +308,22 @@ describe("logs:filter Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Logs`)
+                .query({ cursor: "6c6f67733a66696c746572" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_LOGS_FILTER_NEXT: "6c6f67733a66696c746572" })
+            .command(["logs:filter", "userInput-pql", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

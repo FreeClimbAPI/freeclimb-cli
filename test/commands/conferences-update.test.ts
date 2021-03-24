@@ -47,6 +47,20 @@ describe("conferences:update Data Test", function () {
         .exit(3)
         .it("Test Freeclimb Api error repsonce is process correctly without a suggestion")
 
+    test.nock("https://user-custom-domain.example.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, testJson)
+    )
+        .stdout()
+        .env({ FREECLIMB_CLI_BASE_URL: "https://user-custom-domain.example.com/apiserver" })
+        .command(["conferences:update", "userInput-conferenceId"])
+        .it("Sends API requests to the base URL from an environment variable", async (ctx) => {
+            expect(ctx.stdout).to.contain(nockServerResponse)
+        })
+
     const testJsonErrorWithSuggestion = {
         code: 50,
         message: "Unauthorized To Make Request",
@@ -72,6 +86,18 @@ describe("conferences:update Data Test", function () {
         .command(["conferences:update", "userInput-conferenceId", "additionalArguments"])
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["conferences:update", "userInput-conferenceId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
 
     test.nock("https://www.freeclimb.com", async (api) =>
         api

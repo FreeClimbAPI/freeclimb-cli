@@ -55,7 +55,7 @@ _See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-
 
 ## `freeclimb sms:send FROM TO TEXT`
 
-Responses:
+This command allows a user to send a sms message.
 
 ```
 USAGE
