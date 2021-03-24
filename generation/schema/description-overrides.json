@@ -10,7 +10,7 @@
     },
     "sms": {
       "commands": {
-        "send": "This command allows user to send a sms message."
+        "send": "This command a allows user to send a sms message."
       }
     }
   }
