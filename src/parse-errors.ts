@@ -100,7 +100,7 @@ function renderList(inputs: any) {
     let i
     let output = ""
     for (i = 0; i < mapInfo.length; i++) {
-        output += mapInfo[i]
+        output += `${mapInfo[i]}\n`
     }
     return output
 }
