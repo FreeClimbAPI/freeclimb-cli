@@ -77,7 +77,7 @@ let requiredParamTest = function (additionalParams) {
     )
     requiredTestUndefinedError.exitCode = 3
 
-    test += `${requiredTestInstance.variableOutline()}\n\n${requiredTestInstance.testOutline()}\n\n${requiredTestError.variableOutline()}\n\n${requiredTestError.testErrorResponseOutline()}\n\n${newUrlTestInstance.testCustomBaseUrlOutline()}\n\n${requiredTestErrorSuggestion.variableOutline()}\n\n${requiredTestErrorSuggestion.testErrorResponseOuline()}\n\n${requiredWrongInputParse.testExitCodeOutline()}\n\n${requiredTestUndefinedError.testErrorUndefinedResponseOutline()}\n\n`
+    test += `${requiredTestInstance.variableOutline()}\n\n${requiredTestInstance.testOutline()}\n\n${requiredTestError.variableOutline()}\n\n${requiredTestError.testErrorResponseOutline()}\n\n${newUrlTestInstance.testCustomBaseUrlOutline()}\n\n${requiredTestErrorSuggestion.variableOutline()}\n\n${requiredTestErrorSuggestion.testErrorResponseOutline()}\n\n${requiredWrongInputParse.testExitCodeOutline()}\n\n${requiredTestUndefinedError.testErrorUndefinedResponseOutline()}\n\n`
 
     if (formatedPQL.includes(this.commandName)) {
         test += formatedPQLTest(this, additionalParams)
