@@ -91,6 +91,18 @@ describe("available-numbers:list Data Test", function () {
     test.nock("https://www.freeclimb.com", async (api) =>
         api
             .get(`/apiserver/AvailablePhoneNumbers`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["available-numbers:list"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(`/apiserver/AvailablePhoneNumbers`, {})
             .query({
                 alias: "123-456-7890",
                 phoneNumber: "userInput-phoneNumber",
@@ -258,6 +270,25 @@ describe("available-numbers:list Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/AvailablePhoneNumbers`)
+                .query({ cursor: "617661696c61626c652d6e756d626572733a6c697374" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({
+                FREECLIMB_AVAILABLE_NUMBERS_LIST_NEXT:
+                    "617661696c61626c652d6e756d626572733a6c697374",
+            })
+            .command(["available-numbers:list", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

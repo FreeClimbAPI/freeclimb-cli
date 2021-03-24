@@ -99,6 +99,20 @@ describe("logs:filter Data Test", function () {
     test.nock("https://www.freeclimb.com", async (api) =>
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Logs`, {
+                pql: "userInput-pql",
+            })
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["logs:filter", "userInput-pql"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(`/apiserver/Accounts/${await cred.accountId}/Logs`, {
                 pql: "userInput-pql='error'",
             })
             .query({})
@@ -294,6 +308,22 @@ describe("logs:filter Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Logs`)
+                .query({ cursor: "6c6f67733a66696c746572" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_LOGS_FILTER_NEXT: "6c6f67733a66696c746572" })
+            .command(["logs:filter", "userInput-pql", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

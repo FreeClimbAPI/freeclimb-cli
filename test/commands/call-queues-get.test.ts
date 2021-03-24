@@ -90,6 +90,18 @@ describe("call-queues:get Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["call-queues:get", "userInput-queueId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("call-queues:get next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api
@@ -177,6 +189,22 @@ describe("call-queues:get Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}`)
+                .query({ cursor: "63616c6c2d7175657565733a676574" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_CALL_QUEUES_GET_NEXT: "63616c6c2d7175657565733a676574" })
+            .command(["call-queues:get", "userInput-queueId", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

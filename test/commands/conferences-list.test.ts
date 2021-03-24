@@ -91,6 +91,18 @@ describe("conferences:list Data Test", function () {
     test.nock("https://www.freeclimb.com", async (api) =>
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["conferences:list"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
             .query({
                 status: "userInput-status",
                 alias: "userInput-alias",
@@ -280,6 +292,22 @@ describe("conferences:list Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Conferences`)
+                .query({ cursor: "636f6e666572656e6365733a6c697374" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_CONFERENCES_LIST_NEXT: "636f6e666572656e6365733a6c697374" })
+            .command(["conferences:list", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

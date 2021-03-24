@@ -214,6 +214,21 @@ TestOutline.prototype.testErrorResponseOuline = function () {
     .it("${this.message}")`
 }
 
+TestOutline.prototype.testErrorUndefinedResponseOutline = function () {
+    this.setParams(this.additionalParam)
+    return `test.nock("https://www.freeclimb.com", async (api) =>
+    api
+        .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
+        ${this.query()}
+        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .reply(${this.statusCode}, undefined )
+    )
+    .stdout()
+    .command(["${this.commandName}"${this.paramCommandInput()}${this.additionalCommandInput()}])
+    .exit(${this.exitCode})
+    .it("${this.message}")`
+}
+
 TestOutline.prototype.testCustomBaseUrlOutline = function () {
     this.setParams(this.additionalParam)
     return `test.nock("https://user-custom-domain.example.com", async (api) =>
@@ -322,6 +337,30 @@ TestOutline.prototype.testNextFlagExitCodeOutline = function () {
     .command(["${this.commandName}"${this.paramCommandInput()}${this.additionalCommandInput()}])
     .exit(${this.exitCode})
     .it("${this.message}")\n`
+}
+
+TestOutline.prototype.testNextFlagExitCodeUndefinedOutline = function () {
+    this.setParams(this.additionalParam)
+    let envVariable = this.formatCommandNameUnderscores()
+    const cursorForCommand = this.commandName
+        .split("")
+        .map((char) => char.charCodeAt(0).toString(16))
+        .join("")
+    return `
+    
+    test.nock("https://www.freeclimb.com", async (api) =>
+    api
+        .get(${"`"}${this.url}${"`"})
+        .query({cursor : "${cursorForCommand}"})
+        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .reply(${this.statusCode}, undefined)
+    )
+    .stdout()
+    .env({"${envVariable}":"${cursorForCommand}"})
+    .command(["${this.commandName}"${this.paramCommandInput()}${this.additionalCommandInput()}])
+    .exit(${this.exitCode})
+    .it("${this.message}", async (ctx) => {
+    })`
 }
 
 TestOutline.prototype.testWarnOutline = function () {

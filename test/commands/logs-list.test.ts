@@ -88,6 +88,18 @@ describe("logs:list Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(`/apiserver/Accounts/${await cred.accountId}/Logs`, {})
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["logs:list"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("logs:list maxItem flag test", function () {
         const testJsonLogs = {
             message: "Response from server",
@@ -268,6 +280,22 @@ describe("logs:list Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Logs`)
+                .query({ cursor: "6c6f67733a6c697374" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_LOGS_LIST_NEXT: "6c6f67733a6c697374" })
+            .command(["logs:list", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

@@ -109,6 +109,21 @@ describe("conference-participants:update Data Test", function () {
         api
             .post(
                 `/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}/Participants/${callId}`,
+                {}
+            )
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["conference-participants:update", "userInput-conferenceId", "userInput-callId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .post(
+                `/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}/Participants/${callId}`,
                 {
                     talk: true,
                     listen: true,

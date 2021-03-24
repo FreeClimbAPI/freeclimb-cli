@@ -102,6 +102,21 @@ describe("recordings:download Data Test", function () {
         .exit(2)
         .it("Test parse error gets triggered when there is an additional argument")
 
+    test.nock("https://www.freeclimb.com", async (api) =>
+        api
+            .get(
+                `/apiserver/Accounts/${await cred.accountId}/Recordings/${recordingId}/Download`,
+                {}
+            )
+            .query({})
+            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .reply(200, undefined)
+    )
+        .stdout()
+        .command(["recordings:download", "userInput-recordingId"])
+        .exit(3)
+        .it("Test error resulting in an unreadable response")
+
     describe("recordings:download next flag test", function () {
         test.nock("https://www.freeclimb.com", async (api) =>
             api
@@ -196,6 +211,24 @@ describe("recordings:download Data Test", function () {
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponseNext2)
                 }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(
+                    `/apiserver/Accounts/${await cred.accountId}/Recordings/${recordingId}/Download`
+                )
+                .query({ cursor: "7265636f7264696e67733a646f776e6c6f6164" })
+                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .reply(200, undefined)
+        )
+            .stdout()
+            .env({ FREECLIMB_RECORDINGS_DOWNLOAD_NEXT: "7265636f7264696e67733a646f776e6c6f6164" })
+            .command(["recordings:download", "userInput-recordingId", "--next"])
+            .exit(3)
+            .it(
+                "Test error is caught when when using next flag and no reponse is given",
+                async (ctx) => {}
             )
     })
 })

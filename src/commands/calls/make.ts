@@ -76,11 +76,13 @@ callConnectUrl almost always is invoked before the ifMachineUrl. Therefore, if P
         })()
         const fcApi = new FreeClimbApi(`Calls`, true, this)
         const normalResponse = (response: FreeClimbResponse) => {
-            const resp =
-                response.status === 204
-                    ? "Received a success code from FreeClimb. There is no further output."
-                    : JSON.stringify(response.data, null, 2)
-            out.out(resp)
+            if (response.status === 204) {
+                out.out("Received a success code from FreeClimb. There is no further output.")
+            } else if (response.data) {
+                out.out(JSON.stringify(response.data, null, 2))
+            } else {
+                throw new Errors.UndefinedResponseError()
+            }
         }
         if (flags.next) {
             const error = new Errors.NoNextPage()

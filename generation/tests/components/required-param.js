@@ -70,7 +70,14 @@ let requiredParamTest = function (additionalParams) {
     requiredWrongInputParse.statusCode = 500
     requiredWrongInputParse.exitCode = 2
 
-    test += `${requiredTestInstance.variableOutline()}\n\n${requiredTestInstance.testOutline()}\n\n${requiredTestError.variableOutline()}\n\n${requiredTestError.testErrorResponseOuline()}\n\n${newUrlTestInstance.testCustomBaseUrlOutline()}\n\n${requiredTestErrorSuggestion.variableOutline()}\n\n${requiredTestErrorSuggestion.testErrorResponseOuline()}\n\n${requiredWrongInputParse.testExitCodeOutline()}\n\n`
+    const requiredTestUndefinedError = new TestInstance(
+        this,
+        additionalParams,
+        "Test error resulting in an unreadable response"
+    )
+    requiredTestUndefinedError.exitCode = 3
+
+    test += `${requiredTestInstance.variableOutline()}\n\n${requiredTestInstance.testOutline()}\n\n${requiredTestError.variableOutline()}\n\n${requiredTestError.testErrorResponseOuline()}\n\n${newUrlTestInstance.testCustomBaseUrlOutline()}\n\n${requiredTestErrorSuggestion.variableOutline()}\n\n${requiredTestErrorSuggestion.testErrorResponseOuline()}\n\n${requiredWrongInputParse.testExitCodeOutline()}\n\n${requiredTestUndefinedError.testErrorUndefinedResponseOutline()}\n\n`
 
     if (formatedPQL.includes(this.commandName)) {
         test += formatedPQLTest(this, additionalParams)
