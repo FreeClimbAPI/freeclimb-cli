@@ -376,8 +376,8 @@ function getAxiosParams(bodyParams, queryParams) {
 // Return response of Axios request
 function getAxiosResponse(topicName) {
     return topicName === "logs"
-        ? `if (response.status === 204) { out.out(chalk.green("Received a success code from FreeClimb. There is no further output.")) } else if (response.data) { out.out(flags.maxItem?JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2): JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }`
-        : `if (response.status === 204) { out.out(chalk.green("Received a success code from FreeClimb. There is no further output.")) } else if (response.data) { out.out(JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }`
+        ? `if (response.status === 204) { out.out( chalk.green("Received a success code from FreeClimb. There is no further output.") ) } else if (response.data) { out.out(flags.maxItem?JSON.stringify(response.data.logs.splice(0, flags.maxItem), null, 2): JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }`
+        : `if (response.status === 204) { out.out( chalk.green("Received a success code from FreeClimb. There is no further output.") ) } else if (response.data) { out.out(JSON.stringify(response.data, null, 2)) } else { throw new Errors.UndefinedResponseError() }`
 }
 
 function getAxiosResponseNextFlag(topicName) {
