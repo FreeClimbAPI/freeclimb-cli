@@ -1,7 +1,7 @@
 `freeclimb calls`
 =================
 
-A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound  or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.
+A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.
 
 * [`freeclimb calls:get CALLID`](#freeclimb-callsget-callid)
 * [`freeclimb calls:list`](#freeclimb-callslist)
@@ -127,8 +127,8 @@ OPTIONS
       Required if no applicationId or callConnecturl have been provided. The ID of the parent Call in the case that this 
       new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to 
       reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a 
-      parent once the call is in progress or as an inbound call that is still ringing.  An outbound call is considered to 
-      be in progress once the outdialConnect or outdialApiConnect webhook is invoked.  An inbound call is ringing when the 
+      parent once the call is in progress or as an inbound call that is still ringing. An outbound call is considered to 
+      be in progress once the outdialConnect or outdialApiConnect webhook is invoked. An inbound call is ringing when the 
       inbound webhook is invoked. If a callConnectUrl attribute is also included with the parentCallId in the request, 
       this URL will be used as a replacement of the callConnectUrl originally assigned in the parent call.
 
@@ -172,7 +172,7 @@ USAGE
 ARGUMENTS
   CALLID  String that uniquely identifies this call resource.
 
-  STATUS  Either canceled or completed.  Specifying canceled attempts to hang up calls that are queued without affecting
+  STATUS  Either canceled or completed. Specifying canceled attempts to hang up calls that are queued without affecting
           calls already in progress. Specifying completed attempts to hang up a call already in progress.
 
 OPTIONS

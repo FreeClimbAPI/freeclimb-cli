@@ -252,28 +252,28 @@
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "The URL that FreeClimb will request when an outbound call request is complete. Used for outbound calls only.  Note: A PerCL response is expected if the outbound call is connected (status=InProgress) to control the call."
+            "description": "The URL that FreeClimb will request when an outbound call request is complete. Used for outbound calls only. Note: A PerCL response is expected if the outbound call is connected (status=InProgress) to control the call."
           },
           {
             "name": "statusCallbackUrl",
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "The URL that FreeClimb will request to pass call status (such as call ended) to the application.  Note: This is a notification only; any PerCL returned will be ignored."
+            "description": "The URL that FreeClimb will request to pass call status (such as call ended) to the application. Note: This is a notification only; any PerCL returned will be ignored."
           },
           {
             "name": "smsUrl",
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "The URL that FreeClimb will request when a phone number assigned to this application receives an incoming SMS message. Used for inbound SMS only.  Note: Any PerCL returned will be ignored."
+            "description": "The URL that FreeClimb will request when a phone number assigned to this application receives an incoming SMS message. Used for inbound SMS only. Note: Any PerCL returned will be ignored."
           },
           {
             "name": "smsFallbackUrl",
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.  Note: Any PerCL returned will be ignored."
+            "description": "The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only. Note: Any PerCL returned will be ignored."
           }
         ]
       }
@@ -441,7 +441,7 @@
   },
   {
     "topic": "calls",
-    "description": " A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound  or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.",
+    "description": " A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.",
     "slug": "calls-1",
     "commands": [
       {
@@ -635,7 +635,7 @@
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "Required if no applicationId or callConnecturl have been provided. The ID of the parent Call in the case that this new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a parent once the call is in progress or as an inbound call that is still ringing.  An outbound call is considered to be in progress once the outdialConnect or outdialApiConnect webhook is invoked.  An inbound call is ringing when the inbound webhook is invoked. If a callConnectUrl attribute is also included with the parentCallId in the request, this URL will be used as a replacement of the callConnectUrl originally assigned in the parent call."
+            "description": "Required if no applicationId or callConnecturl have been provided. The ID of the parent Call in the case that this new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a parent once the call is in progress or as an inbound call that is still ringing. An outbound call is considered to be in progress once the outdialConnect or outdialApiConnect webhook is invoked. An inbound call is ringing when the inbound webhook is invoked. If a callConnectUrl attribute is also included with the parentCallId in the request, this URL will be used as a replacement of the callConnectUrl originally assigned in the parent call."
           },
           {
             "name": "sendDigits",
@@ -702,7 +702,7 @@
             "paramType": "body",
             "required": true,
             "dataType": "string",
-            "description": "Either canceled or completed.  Specifying canceled attempts to hang up calls that are queued without affecting calls already in progress. Specifying completed attempts to hang up a call already in progress."
+            "description": "Either canceled or completed. Specifying canceled attempts to hang up calls that are queued without affecting calls already in progress. Specifying completed attempts to hang up a call already in progress."
           }
         ]
       }
@@ -1149,7 +1149,7 @@
             "paramType": "query",
             "required": false,
             "dataType": "string",
-            "description": "Only show incoming phone number resources that match this PCRE-compatible  regular expression."
+            "description": "Only show incoming phone number resources that match this PCRE-compatible regular expression."
           },
           {
             "name": "alias",
@@ -1675,7 +1675,7 @@
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  Note: This is a notification only; any PerCL returned is ignored."
+            "description": "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters. Note: This is a notification only; any PerCL returned is ignored."
           }
         ]
       }

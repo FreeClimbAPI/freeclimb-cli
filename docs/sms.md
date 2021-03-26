@@ -74,8 +74,8 @@ OPTIONS
   -h, --help                             show CLI help
 
   -n, --notificationUrl=notificationUrl  When the Message changes status, this URL is invoked using HTTP POST with the
-                                         messageStatus parameters.  Note: This is a notification only; any PerCL
-                                         returned is ignored.
+                                         messageStatus parameters. Note: This is a notification only; any PerCL returned
+                                         is ignored.
 ```
 
 _See code: [src/commands/sms/send.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/send.ts)_

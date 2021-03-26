@@ -12,7 +12,7 @@ export class smsSend extends Command {
         notificationUrl: flags.string({
             char: "n",
             description:
-                "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  Note: This is a notification only; any PerCL returned is ignored.",
+                "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters. Note: This is a notification only; any PerCL returned is ignored.",
             required: false,
         }),
         next: flags.boolean({ hidden: true }),

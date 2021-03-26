@@ -75,7 +75,7 @@ OPTIONS
   -h, --help                     show CLI help
   -n, --next                     Displays the next page of output.
 
-  -p, --phoneNumber=phoneNumber  Only show incoming phone number resources that match this PCRE-compatible  regular
+  -p, --phoneNumber=phoneNumber  Only show incoming phone number resources that match this PCRE-compatible regular
                                  expression.
 ```
 

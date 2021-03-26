@@ -30,25 +30,25 @@ export class applicationsUpdate extends Command {
         callConnectUrl: flags.string({
             char: "c",
             description:
-                "The URL that FreeClimb will request when an outbound call request is complete. Used for outbound calls only.  Note: A PerCL response is expected if the outbound call is connected (status=InProgress) to control the call.",
+                "The URL that FreeClimb will request when an outbound call request is complete. Used for outbound calls only. Note: A PerCL response is expected if the outbound call is connected (status=InProgress) to control the call.",
             required: false,
         }),
         statusCallbackUrl: flags.string({
             char: "s",
             description:
-                "The URL that FreeClimb will request to pass call status (such as call ended) to the application.  Note: This is a notification only; any PerCL returned will be ignored.",
+                "The URL that FreeClimb will request to pass call status (such as call ended) to the application. Note: This is a notification only; any PerCL returned will be ignored.",
             required: false,
         }),
         smsUrl: flags.string({
             char: "u",
             description:
-                "The URL that FreeClimb will request when a phone number assigned to this application receives an incoming SMS message. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.",
+                "The URL that FreeClimb will request when a phone number assigned to this application receives an incoming SMS message. Used for inbound SMS only. Note: Any PerCL returned will be ignored.",
             required: false,
         }),
         smsFallbackUrl: flags.string({
             char: "F",
             description:
-                "The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only.  Note: Any PerCL returned will be ignored.",
+                "The URL that FreeClimb will request if it times out waiting for a response from the smsUrl. Used for inbound SMS only. Note: Any PerCL returned will be ignored.",
             required: false,
         }),
         next: flags.boolean({ hidden: true }),

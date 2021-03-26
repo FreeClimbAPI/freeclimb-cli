@@ -22,7 +22,7 @@ export class callsUpdate extends Command {
         {
             name: "status",
             description:
-                "Either canceled or completed.  Specifying canceled attempts to hang up calls that are queued without affecting calls already in progress. Specifying completed attempts to hang up a call already in progress.",
+                "Either canceled or completed. Specifying canceled attempts to hang up calls that are queued without affecting calls already in progress. Specifying completed attempts to hang up a call already in progress.",
             required: true,
         },
     ]

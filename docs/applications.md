@@ -112,7 +112,7 @@ ARGUMENTS
 
 OPTIONS
   -F, --smsFallbackUrl=smsFallbackUrl        The URL that FreeClimb will request if it times out waiting for a response
-                                             from the smsUrl. Used for inbound SMS only.  Note: Any PerCL returned will
+                                             from the smsUrl. Used for inbound SMS only. Note: Any PerCL returned will
                                              be ignored.
 
   -V, --voiceFallbackUrl=voiceFallbackUrl    The URL that FreeClimb will request if it times out waiting for a response
@@ -123,13 +123,13 @@ OPTIONS
                                              characters.
 
   -c, --callConnectUrl=callConnectUrl        The URL that FreeClimb will request when an outbound call request is
-                                             complete. Used for outbound calls only.  Note: A PerCL response is expected
+                                             complete. Used for outbound calls only. Note: A PerCL response is expected
                                              if the outbound call is connected (status=InProgress) to control the call.
 
   -h, --help                                 show CLI help
 
   -s, --statusCallbackUrl=statusCallbackUrl  The URL that FreeClimb will request to pass call status (such as call
-                                             ended) to the application.  Note: This is a notification only; any PerCL
+                                             ended) to the application. Note: This is a notification only; any PerCL
                                              returned will be ignored.
 
   -u, --smsUrl=smsUrl                        The URL that FreeClimb will request when a phone number assigned to this
