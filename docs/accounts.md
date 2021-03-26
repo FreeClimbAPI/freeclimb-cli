@@ -1,7 +1,11 @@
 `freeclimb accounts`
 ====================
 
+<<<<<<< HEAD
 You get a FreeClimb Account at signup. This includes an account ID (accountId) and an API key (apiKey). These two properties enable you to connect and communicate with FreeClimb.
+=======
+You get a FreeClimb Account at signup. This includes an account ID  and an authentication token . These two properties enable you to connect and communicate with FreeClimb.
+>>>>>>> remove issues with *
 
 * [`freeclimb accounts:get`](#freeclimb-accountsget)
 * [`freeclimb accounts:manage`](#freeclimb-accountsmanage)

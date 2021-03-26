@@ -1,7 +1,7 @@
 [
   {
     "topic": "accounts",
-    "description": " You get a FreeClimb Account at signup. This includes an account ID (accountId) and an API key (apiKey). These two properties enable you to connect and communicate with FreeClimb.",
+    "description": " You get a FreeClimb Account at signup. This includes an account ID and an API key. These two properties enable you to connect and communicate with FreeClimb.",
     "slug": "account",
     "commands": [
       {
@@ -441,7 +441,7 @@
   },
   {
     "topic": "calls",
-    "description": " A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound (when a person calls a FreeClimb number) or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.",
+    "description": " A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound  or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.",
     "slug": "calls-1",
     "commands": [
       {
@@ -642,7 +642,7 @@
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "String of digits to dial after connecting to the number. It can include digits 0-9, , and #, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below."
+            "description": "String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below."
           },
           {
             "name": "ifMachine",
@@ -1269,7 +1269,7 @@
         "commandName": "dequeue",
         "pagination": false,
         "endpoint": "https://www.freeclimb.com/apiserver/Accounts/accountId/Queues/queueId/Members/callId",
-        "description": " Dequeue the specified Member. The Member's Call will begin executing the PerCL script returned from the callback specified in the actionUrl parameter when the Member was added. For more information about actionUrl, see the [Enqueue](ref:enqueue-1) PerCL command.",
+        "description": " Dequeue the specified Member. The Member's Call will begin executing the PerCL script returned from the callback specified in the actionUrl parameter when the Member was added. For more information about actionUrl, see the Enqueue PerCL command.",
         "method": "post",
         "params": [
           {

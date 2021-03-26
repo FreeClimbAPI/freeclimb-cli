@@ -24,7 +24,7 @@ export class callsMake extends Command {
         sendDigits: flags.string({
             char: "s",
             description:
-                "String of digits to dial after connecting to the number. It can include digits 0-9, , and #, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below.",
+                "String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below.",
             required: false,
         }),
         ifMachine: flags.string({

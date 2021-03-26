@@ -1,7 +1,7 @@
 `freeclimb calls`
 =================
 
-A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound (when a person calls a FreeClimb number) or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.
+A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound  or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account.
 
 * [`freeclimb calls:get CALLID`](#freeclimb-callsget-callid)
 * [`freeclimb calls:list`](#freeclimb-callslist)
@@ -148,7 +148,7 @@ OPTIONS
       the sendDigits field will be replaced with the string XXXXX in the logs.
 
   -s, --sendDigits=sendDigits
-      String of digits to dial after connecting to the number. It can include digits 0-9, , and #, and allows embedding a 
+      String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a 
       pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# 
       will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified 
       by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below.
