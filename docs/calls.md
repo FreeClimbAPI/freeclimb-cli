@@ -113,15 +113,14 @@ ARGUMENTS
       ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the callConnectUrl and 
       statusCallbackUrl set on the application unless the callConnectUrl attribute is also provided with the request. In 
       this case, the URL specified in that callConnectUrl attribute will be used as a replacement of the callConnectUrl 
-      originally assigned in the application. See applicationId v. callConnectUrl below. The application must have a 
-      callConnectUrl associated with it or an error will be returned. The application’s voiceUrl parameter is not used for 
-      outbound calls.
+      originally assigned in the application. The application must have a callConnectUrl associated with it or an error 
+      will be returned. The application’s voiceUrl parameter is not used for outbound calls.
 
 OPTIONS
   -I, --ifMachineUrl=ifMachineUrl
       This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax 
       machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, 
-      ifMachineUrl must not be included in the request. For more information, see ifMachineUrl example below.
+      ifMachineUrl must not be included in the request.
 
   -P, --parentCallId=parentCallId
       Required if no applicationId or callConnecturl have been provided. The ID of the parent Call in the case that this 
@@ -135,7 +134,7 @@ OPTIONS
   -c, --callConnectUrl=callConnectUrl
       The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been 
       provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in 
-      the application or parent call. See applicationId v. callConnectUrl below.
+      the application or parent call.
 
   -h, --help
       show CLI help
@@ -151,7 +150,7 @@ OPTIONS
       String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a 
       pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# 
       will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified 
-      by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below.
+      by including a positive integer wrapped in curly braces: {n}.
 
   -t, --timeout=timeout
       Number of seconds that FreeClimb should allow the phone to ring before assuming there is no answer. Default is 30 

@@ -15,7 +15,7 @@ USAGE
   $ freeclimb logs:filter PQL
 
 ARGUMENTS
-  PQL  The filter query for retrieving logs. See Performance Query Language below.
+  PQL  The filter query for retrieving logs.
 
 OPTIONS
   -Q, --since=since      Determines time frame of logs to be printed out before starting tail. Ex.2h9m

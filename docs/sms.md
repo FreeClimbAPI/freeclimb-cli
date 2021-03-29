@@ -43,7 +43,7 @@ OPTIONS
   -d, --direction=direction  Either inbound or outbound. Only show Messages that were either sent from or received by
                              FreeClimb.
 
-  -e, --endTime=endTime      Only show messages sent at or before this time (GMT), given as YYYY-MM-DD hh:mm..
+  -e, --endTime=endTime      Only show messages sent at or before this time (GMT), given as YYYY-MM-DD hh:mm.
 
   -f, --from=from            Only show Messages from this phone number.
 
@@ -56,7 +56,11 @@ _See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-
 
 ## `freeclimb sms:send FROM TO TEXT`
 
+<<<<<<< HEAD
 This command allows you to send a sms message.
+=======
+Responses: .
+>>>>>>> remove instances of see below
 
 ```
 USAGE

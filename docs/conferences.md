@@ -26,8 +26,7 @@ OPTIONS
 
   -r, --record=true|false                    Setting to true records the entire Conference.
 
-  -s, --statusCallbackUrl=statusCallbackUrl  This URL is invoked when the status of the Conference changes. For more
-                                             information, see statusCallbackUrl (below).
+  -s, --statusCallbackUrl=statusCallbackUrl  This URL is invoked when the status of the Conference changes.
 
   -w, --waitUrl=waitUrl                      If specified, a URL for the audio file that provides custom hold music for
                                              the Conference when it is in the populated state. Otherwise, FreeClimb uses
@@ -92,13 +91,9 @@ ARGUMENTS
   CONFERENCEID  String that uniquely identifies this conference resource.
 
 OPTIONS
-  -S, --status=status      New status of the conference. Valid values: empty or terminated. For more information, see
-                           Status Parameter below.
-
+  -S, --status=status      New status of the conference. Valid values: empty or terminated.
   -a, --alias=alias        Description for this conference. Maximum 64 characters.
-
   -b, --playBeep=playBeep  Controls when a beep is played. Valid values: always, never, entryOnly, exitOnly.
-
   -h, --help               show CLI help
 ```
 

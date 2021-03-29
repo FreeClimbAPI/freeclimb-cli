@@ -21,7 +21,7 @@ export class queueMembersGet extends Command {
         },
         {
             name: "callId",
-            description: "ID of the Call that the Member belongs to",
+            description: "ID of the Call that the Member belongs to.",
             required: true,
         },
     ]

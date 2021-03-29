@@ -12,7 +12,7 @@ export class callsMake extends Command {
         callConnectUrl: flags.string({
             char: "c",
             description:
-                "The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application or parent call. See applicationId v. callConnectUrl below.",
+                "The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application or parent call.",
             required: false,
         }),
         parentCallId: flags.string({
@@ -24,7 +24,7 @@ export class callsMake extends Command {
         sendDigits: flags.string({
             char: "s",
             description:
-                "String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below.",
+                "String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}.",
             required: false,
         }),
         ifMachine: flags.string({
@@ -36,7 +36,7 @@ export class callsMake extends Command {
         ifMachineUrl: flags.string({
             char: "I",
             description:
-                "This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, ifMachineUrl must not be included in the request. For more information, see ifMachineUrl example below.",
+                "This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, ifMachineUrl must not be included in the request.",
             required: false,
         }),
         timeout: flags.integer({
@@ -72,7 +72,7 @@ export class callsMake extends Command {
         {
             name: "applicationId",
             description:
-                "ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the callConnectUrl and statusCallbackUrl set on the application unless the callConnectUrl attribute is also provided with the request. In this case, the URL specified in that callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application. See applicationId v. callConnectUrl below. The application must have a callConnectUrl associated with it or an error will be returned. The application’s voiceUrl parameter is not used for outbound calls.",
+                "ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the callConnectUrl and statusCallbackUrl set on the application unless the callConnectUrl attribute is also provided with the request. In this case, the URL specified in that callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application. The application must have a callConnectUrl associated with it or an error will be returned. The application’s voiceUrl parameter is not used for outbound calls.",
             required: true,
         },
     ]

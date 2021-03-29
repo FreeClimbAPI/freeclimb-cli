@@ -103,7 +103,7 @@
         "description": " A Call represents a voice connection between FreeClimb and a remote end point. This connection may be inbound or outbound (when an application initiates the Call, either via the REST API or the OutDial PerCL command. The Calls list resource represents the set of all phone Calls made to and from an account."
       },
       "call-queues": {
-        "description": " Queues are the primary means of keeping callers waiting. A Queue is an object to hold callers until they can be provided the service they seek. Queues can be created ahead of time and are deleted automatically when they change state from populated to empty."
+        "description": " Queues are the primary means of keeping callers waiting. Queues can be created ahead of time and are deleted automatically when they change state from populated to empty."
       },
       "available-numbers": {
         "description": " Available Numbers are FreeClimb phone numbers available for purchase. The properties of the Available Phone Numbers resource provides a means to search for phone numbers that are available to buy."

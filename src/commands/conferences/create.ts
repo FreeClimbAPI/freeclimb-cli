@@ -34,8 +34,7 @@ export class conferencesCreate extends Command {
         }),
         statusCallbackUrl: flags.string({
             char: "s",
-            description:
-                "This URL is invoked when the status of the Conference changes. For more information, see statusCallbackUrl (below).",
+            description: "This URL is invoked when the status of the Conference changes.",
             required: false,
         }),
         next: flags.boolean({ hidden: true }),

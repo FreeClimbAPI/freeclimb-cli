@@ -22,8 +22,7 @@ export class conferencesUpdate extends Command {
         }),
         status: flags.string({
             char: "S",
-            description:
-                "New status of the conference. Valid values: empty or terminated. For more information, see Status Parameter below.",
+            description: "New status of the conference. Valid values: empty or terminated.",
             required: false,
         }),
         next: flags.boolean({ hidden: true }),

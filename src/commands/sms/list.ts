@@ -28,7 +28,7 @@ export class smsList extends Command {
         endTime: flags.string({
             char: "e",
             description:
-                "Only show messages sent at or before this time (GMT), given as YYYY-MM-DD hh:mm..",
+                "Only show messages sent at or before this time (GMT), given as YYYY-MM-DD hh:mm.",
             required: false,
         }),
         direction: flags.string({

@@ -39,12 +39,7 @@ export class logsFilter extends Command {
     }
 
     static args = [
-        {
-            name: "pql",
-            description:
-                "The filter query for retrieving logs. See Performance Query Language below.",
-            required: true,
-        },
+        { name: "pql", description: "The filter query for retrieving logs.", required: true },
     ]
 
     async run() {

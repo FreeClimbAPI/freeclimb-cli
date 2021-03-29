@@ -313,7 +313,7 @@
   },
   {
     "topic": "call-queues",
-    "description": " Queues are the primary means of keeping callers waiting. A Queue is an object to hold callers until they can be provided the service they seek. Queues can be created ahead of time and are deleted automatically when they change state from populated to empty.",
+    "description": " Queues are the primary means of keeping callers waiting. Queues can be created ahead of time and are deleted automatically when they change state from populated to empty.",
     "slug": "call-queues",
     "commands": [
       {
@@ -621,14 +621,14 @@
             "paramType": "body",
             "required": true,
             "dataType": "string",
-            "description": "ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the callConnectUrl and statusCallbackUrl set on the application unless the callConnectUrl attribute is also provided with the request. In this case, the URL specified in that callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application. See applicationId v. callConnectUrl below. The application must have a callConnectUrl associated with it or an error will be returned. The application’s voiceUrl parameter is not used for outbound calls."
+            "description": "ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the callConnectUrl and statusCallbackUrl set on the application unless the callConnectUrl attribute is also provided with the request. In this case, the URL specified in that callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application. The application must have a callConnectUrl associated with it or an error will be returned. The application’s voiceUrl parameter is not used for outbound calls."
           },
           {
             "name": "callConnectUrl",
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application or parent call. See applicationId v. callConnectUrl below."
+            "description": "The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in the application or parent call."
           },
           {
             "name": "parentCallId",
@@ -642,7 +642,7 @@
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}. For more information, see sendDigits examples below."
+            "description": "String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified by including a positive integer wrapped in curly braces: {n}."
           },
           {
             "name": "ifMachine",
@@ -656,7 +656,7 @@
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, ifMachineUrl must not be included in the request. For more information, see ifMachineUrl example below."
+            "description": "This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, ifMachineUrl must not be included in the request."
           },
           {
             "name": "timeout",
@@ -918,7 +918,7 @@
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "This URL is invoked when the status of the Conference changes. For more information, see statusCallbackUrl (below)."
+            "description": "This URL is invoked when the status of the Conference changes."
           }
         ]
       },
@@ -1035,7 +1035,7 @@
             "paramType": "body",
             "required": false,
             "dataType": "string",
-            "description": "New status of the conference. Valid values: empty or terminated. For more information, see Status Parameter below."
+            "description": "New status of the conference. Valid values: empty or terminated."
           }
         ]
       }
@@ -1234,7 +1234,7 @@
             "paramType": "body",
             "required": true,
             "dataType": "string",
-            "description": "The filter query for retrieving logs. See Performance Query Language below."
+            "description": "The filter query for retrieving logs."
           }
         ]
       },
@@ -1269,7 +1269,7 @@
         "commandName": "dequeue",
         "pagination": false,
         "endpoint": "https://www.freeclimb.com/apiserver/Accounts/accountId/Queues/queueId/Members/callId",
-        "description": " Dequeue the specified Member. The Member's Call will begin executing the PerCL script returned from the callback specified in the actionUrl parameter when the Member was added. For more information about actionUrl, see the Enqueue PerCL command.",
+        "description": " Dequeue the specified Member. The Member's Call will begin executing the PerCL script returned from the callback specified in the actionUrl parameter when the Member was added.",
         "method": "post",
         "params": [
           {
@@ -1277,7 +1277,7 @@
             "paramType": "path",
             "required": true,
             "dataType": "string",
-            "description": "ID of the account that created the Queue"
+            "description": "ID of the account that created the Queue."
           },
           {
             "name": "queueId",
@@ -1291,7 +1291,7 @@
             "paramType": "path",
             "required": true,
             "dataType": "string",
-            "description": "ID if the Call that the Member belongs to"
+            "description": "ID if the Call that the Member belongs to."
           }
         ]
       },
@@ -1334,7 +1334,7 @@
             "paramType": "path",
             "required": true,
             "dataType": "string",
-            "description": "ID of the account that created this Queue"
+            "description": "ID of the account that created this Queue."
           },
           {
             "name": "queueId",
@@ -1348,7 +1348,7 @@
             "paramType": "path",
             "required": true,
             "dataType": "string",
-            "description": "ID of the Call that the Member belongs to"
+            "description": "ID of the Call that the Member belongs to."
           }
         ]
       },
@@ -1366,7 +1366,7 @@
             "paramType": "path",
             "required": true,
             "dataType": "string",
-            "description": "ID of the account that created this Queue"
+            "description": "ID of the account that created this Queue."
           },
           {
             "name": "queueId",
@@ -1391,7 +1391,7 @@
             "paramType": "path",
             "required": true,
             "dataType": "string",
-            "description": "ID of the account that created this Queue"
+            "description": "ID of the account that created this Queue."
           },
           {
             "name": "queueId",
@@ -1615,7 +1615,7 @@
             "paramType": "query",
             "required": false,
             "dataType": "string",
-            "description": "Only show messages sent at or before this time (GMT), given as YYYY-MM-DD hh:mm.."
+            "description": "Only show messages sent at or before this time (GMT), given as YYYY-MM-DD hh:mm."
           },
           {
             "name": "direction",
@@ -1639,7 +1639,7 @@
         "commandName": "send",
         "pagination": false,
         "endpoint": "https://www.freeclimb.com/apiserver/Accounts/accountId/Messages",
-        "description": " Responses: ",
+        "description": " Responses: .",
         "method": "post",
         "params": [
           {

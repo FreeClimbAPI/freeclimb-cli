@@ -11,7 +11,7 @@ A Queue Member is a subresource of a Queue resource and represents a Call curren
 
 ## `freeclimb queue-members:dequeue QUEUEID CALLID`
 
-Dequeue the specified Member. The Member's Call will begin executing the PerCL script returned from the callback specified in the actionUrl parameter when the Member was added. For more information about actionUrl, see the Enqueue PerCL command.
+Dequeue the specified Member. The Member's Call will begin executing the PerCL script returned from the callback specified in the actionUrl parameter when the Member was added.
 
 ```
 USAGE
@@ -19,7 +19,7 @@ USAGE
 
 ARGUMENTS
   QUEUEID  String that uniquely identifies the Queue that the Member belongs to.
-  CALLID   ID if the Call that the Member belongs to
+  CALLID   ID if the Call that the Member belongs to.
 
 OPTIONS
   -h, --help  show CLI help
@@ -54,7 +54,7 @@ USAGE
 
 ARGUMENTS
   QUEUEID  String that uniquely identifies the Queue that the Member belongs to.
-  CALLID   ID of the Call that the Member belongs to
+  CALLID   ID of the Call that the Member belongs to.
 
 OPTIONS
   -h, --help  show CLI help
