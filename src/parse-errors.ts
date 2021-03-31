@@ -39,10 +39,10 @@ export function parse(output: any) {
         suggestion += `\n${formatArg()}`
     } else if (output instanceof UnexpectedArgsError) {
         code = 1010
-        title = `Unexpected argument${output.args.length === 1 ? "" : "s"}: ${output.args.join(
+        title = `Unexpected argument${output.args.length === 1 ? "" : "s"}: "${output.args.join(
             ", "
-        )}`
-        suggestion = `Please check for any argument and option flag typos. /nThis error also typically occurs as a result of improper option flag formatting for inputs with spaces.\n ${formatFlag()}`
+        )}"`
+        suggestion = `Please check for any argument and option flag typos. \nThis error also typically occurs as a result of improper option flag formatting for inputs with spaces.\n ${formatFlag()}`
         url = "https://docs.freeclimb.com/reference/error-and-warning-dictionary"
     } else if (output instanceof RequiredFlagError) {
         code = 1009
