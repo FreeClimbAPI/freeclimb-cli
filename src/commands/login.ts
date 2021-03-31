@@ -1,6 +1,7 @@
 import { Command, flags } from "@oclif/command"
 import cli from "cli-ux"
 import * as keytar from "keytar"
+import chalk from "chalk"
 import { cred } from "../credentials"
 import * as Errors from "../errors"
 import { FreeClimbApi, FreeClimbResponse, FreeClimbErrorResponse } from "../freeclimb"
@@ -17,12 +18,12 @@ export class login extends Command {
         const verifyResponse = (response: FreeClimbResponse) => {
             const resp =
                 "\n<---Your ACCOUNT_ID and AUTH_TOKEN have been verified through Freeclimb.---> \n\nWhat Can I Do Next?\n\n  To check account information run: \n\t freeclimb accounts:get \n\n  To see all commands available through the api, run freeclimb with the help flag: \n\t freeclimb --help \n\n"
-            this.log(resp)
+            this.log(chalk.green(resp))
         }
         const verifyErrorResponse = (error: FreeClimbErrorResponse) => {
             const respError =
                 "\n<---Inputted ACCOUNT_ID and AUTH_TOKEN where not valid. Please try again.--> \n"
-            this.log(respError)
+            this.log(chalk.red(respError))
         }
 
         const { flags } = this.parse(login)
@@ -51,12 +52,16 @@ export class login extends Command {
             await fcApi.apiCall("GET", {}, verifyResponse, verifyErrorResponse)
             if (/^AC[0-9a-fA-F]{40}$/gm.exec(accountId) === null) {
                 this.warn(
-                    "Your Account ID has been saved, but it does not appear to match the correct Account ID format"
+                    chalk.yellow(
+                        "Your Account ID has been saved, but it does not appear to match the correct Account ID format"
+                    )
                 )
             }
             if (/^[0-9a-fA-F]{40}$/gm.exec(authToken) === null) {
                 this.warn(
-                    "Your Auth Token has been saved, but it does not appear to match the correct Auth Token format"
+                    chalk.yellow(
+                        "Your Auth Token has been saved, but it does not appear to match the correct Auth Token format"
+                    )
                 )
             }
         } else {

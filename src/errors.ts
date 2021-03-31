@@ -1,3 +1,4 @@
+import chalk from "chalk"
 import { errorWithSuggestions, returnFormat } from "./error-messages"
 import { parse } from "./parse-errors"
 
@@ -7,7 +8,7 @@ export abstract class FreeClimbError {
     code: number
 
     constructor(newMessage: string, newCode: number) {
-        this.message = newMessage
+        this.message = chalk.red(newMessage)
         this.code = newCode
     }
 }
@@ -26,7 +27,7 @@ export class FreeClimbAPIError extends FreeClimbError {
         } else if (errorMessage.code) {
             super(errorWithSuggestions(errorMessage), 3)
         } else {
-            super(errorMessage, 3)
+            super(JSON.stringify(errorMessage, null, 2), 3)
         }
     }
 }
