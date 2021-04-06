@@ -1,0 +1,81 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  test-single:
+    if: github.event_name == 'pull_request'
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
+        os: [ ubuntu-latest ]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: bash test.sh
+  test-all:
+    if: github.event_name == 'push'
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [ 12.x, 14.x, 15.x ]
+        os: [ macos-latest, ubuntu-latest, windows-latest ]
+        exclude:
+          - os: windows-latest
+            node-version: 15.x # for some reason yarn install does not work with this specific version
+          - os: macos-latest
+            node-version: 15.x # there was a (temporary?) error with a socket connection in this version
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: bash deployment-scripts/test.sh
+  deploy:
+    needs: test-all
+    if: github.event_name == 'push'
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      matrix:
+        node-version: [ 14.x ]
+        os: [ ubuntu-latest ]
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0 # specifies that all commits should be pulled
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: bash deployment-scripts/deploy.sh
+      env:
+        GITHUB_REPOSITORY_SLUG: ${{ github.repository }}
+        HOMEBREW_REPOSITORY_SLUG: FreeClimbAPI/homebrew-brew
+        AWS_REGION: us-east-2
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} 
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} 
+        NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        HOMEBREW_REPO_TOKEN: ${{ secrets.HOMEBREW_ACCESS_TOKEN }}

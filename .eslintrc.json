@@ -104,6 +104,14 @@
       "rules": {
         "import/no-default-export": "off" // OCLIF internally requires the default export for this class
       }
+    },
+    {
+      // overrides for the deployment scripts
+      "files": ["deployment-scripts/*.js"],
+      "rules": {
+        "no-process-exit": "off",
+        "unicorn/no-process-exit": "off"
+      }
     }
   ]
 }
