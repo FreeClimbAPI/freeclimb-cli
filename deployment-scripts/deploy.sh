@@ -2,23 +2,23 @@
 
 # Initialization
 if [[ -z "$AWS_REGION" ]]; then
-    echo "Missing AWS region. No deployments will be made."
+    echo "ERROR: Missing AWS region. No deployments will be made."
     exit 1
 fi
 if [[ -z "$GITHUB_REPOSITORY_SLUG" ]]; then
-    echo "Missing GitHub repository slug, e.g. octocat/hello-world. No deployments will be made."
+    echo "ERROR: Missing GitHub repository slug, e.g. octocat/hello-world. No deployments will be made."
     exit 2
 fi
 if [[ -z "$AWS_ACCESS_KEY_ID" || -z "$AWS_SECRET_ACCESS_KEY" ]]; then
-    echo "Missing AWS credentials. No deployments will be made."
+    echo "ERROR: Missing AWS credentials. No deployments will be made."
     exit 3
 fi
 if [[ -z "$HOMEBREW_REPO_TOKEN" ]]; then
-    echo "Missing GitHub credentials for the Homebrew repository. No deployments will be made."
+    echo "ERROR: Missing GitHub credentials for the Homebrew repository. No deployments will be made."
     exit 4
 fi
 if [[ -z "$NPM_AUTH_TOKEN" ]]; then
-    echo "Missing NPM credentials. No deployments will be made."
+    echo "ERROR: Missing NPM credentials. No deployments will be made."
     exit 5
 fi
 
@@ -27,9 +27,12 @@ EXISTING_VERSION=$(node deployment-scripts/get-existing-version.js)
 TARGET_VERSION=$(node deployment-scripts/get-target-version.js)
 
 node deployment-scripts/compare-versions.js $EXISTING_VERSION $TARGET_VERSION
-
-if [[ $? -ne 0 ]]; then
-    echo "Version numbers were not valid. No deployments will be made."
+VERSION_RESULT=$?
+if [[ $VERSION_RESULT -eq 3 ]]; then
+    echo "WARNING: Version numbers did not indicate a newer release. No deployments will be made, but exiting with success."
+    exit 0
+elif [[ $VERSION_RESULT -ne 0 ]]; then
+    echo "ERROR: Version numbers were not valid. No deployments will be made."
     exit 6
 fi
 
