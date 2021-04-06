@@ -68,6 +68,11 @@
     "macos": {
       "identifier": "freeclimb-cli"
     },
+    "update": {
+      "s3": {
+        "bucket": "vail-freeclimb-cli"
+      }
+    },
     "plugins": [
       "@oclif/plugin-help"
     ],
