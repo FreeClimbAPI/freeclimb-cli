@@ -9,6 +9,35 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="0.2.0"></a>
+
+## [0.2.0] - 2021-04-06
+
+### Added
+
+-   Color to the CLI
+-   Quotes around responses so that trailing spaces can be seen by the user
+-   Automated deployment scripts
+
+### Changed
+
+-   Now using GitHub Actions instead of Travis CI
+
+### Fixed
+
+-   Bug where if tsbuildinfo was present, then JS code would not get generated for NPM releases
+-   Uncaught error from SMS responses
+-   Typo in spelling of test outline
+
+<a name="0.1.2"></a>
+
+## [0.1.2] - 2020-12-04
+
+### Fixed
+
+-   Incorrect license link
+-   TypeScript not being emitted
+
 <a name="0.1.0"></a>
 
 ## [0.1.0] - 2020-11-18
