@@ -81,7 +81,7 @@
     ],
     "warn-if-update-available": {
       "timeoutInDays": 7,
-      "message": "<%= config.name %> update available from <%= chalk.red(config.version) %> to <%= chalk.green(latest) %>. Run npm update -g freeclimb-cli",
+      "message": "<%= config.name %> update available from <%= chalk.red(config.version) %> to <%= chalk.green(latest) %>. Run npm update -g freeclimb-cli.",
       "registry": "https://www.npmjs.com/package/freeclimb-cli"
     },
     "topics": {
