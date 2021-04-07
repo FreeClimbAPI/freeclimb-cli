@@ -9,6 +9,14 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="0.2.1"></a>
+
+## [0.2.1] - 2021-04-07
+
+### Fixed
+
+-   AWS and Git bugs preventing deployment to Homebrew
+
 <a name="0.2.0"></a>
 
 ## [0.2.0] - 2021-04-06

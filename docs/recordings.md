@@ -24,7 +24,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/recordings/delete.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/recordings/delete.ts)_
+_See code: [src/commands/recordings/delete.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.0/src/commands/recordings/delete.ts)_
 
 ## `freeclimb recordings:download RECORDINGID`
 
@@ -42,7 +42,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/recordings/download.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/recordings/download.ts)_
+_See code: [src/commands/recordings/download.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.0/src/commands/recordings/download.ts)_
 
 ## `freeclimb recordings:get RECORDINGID`
 
@@ -60,7 +60,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/recordings/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/recordings/get.ts)_
+_See code: [src/commands/recordings/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.0/src/commands/recordings/get.ts)_
 
 ## `freeclimb recordings:list`
 
@@ -78,7 +78,7 @@ OPTIONS
   -n, --next                       Displays the next page of output.
 ```
 
-_See code: [src/commands/recordings/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/recordings/list.ts)_
+_See code: [src/commands/recordings/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.0/src/commands/recordings/list.ts)_
 
 ## `freeclimb recordings:stream RECORDINGID`
 
@@ -96,4 +96,4 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/recordings/stream.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.1.2/src/commands/recordings/stream.ts)_
+_See code: [src/commands/recordings/stream.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.0/src/commands/recordings/stream.ts)_

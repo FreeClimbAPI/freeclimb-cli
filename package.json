@@ -28,6 +28,7 @@
     "@types/node": "^10",
     "@typescript-eslint/eslint-plugin": "^3.2.0",
     "@typescript-eslint/parser": "^3.2.0",
+    "aws-sdk": "^2.881.0",
     "chai": "^4",
     "eslint": "^7.2.0",
     "eslint-config-import": "^0.13.0",
@@ -126,9 +127,9 @@
     "postpack": "rm -f oclif.manifest.json",
     "lint": "eslint . --ext .js,.ts --config .eslintrc.json",
     "lint-write": "eslint . --fix --ext .js,.ts --config .eslintrc.json && prettier --write **.{js,ts,json,md}",
-    "prepack": "rm -rf lib; rm -f tsconfig.tsbuildinfo; tsc -b && oclif-dev manifest && oclif-dev readme",
+    "prepack": "rm -rf lib; rm -f tsconfig.tsbuildinfo; tsc -b && oclif-dev manifest && oclif-dev readme --multi",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\" --runInBand",
-    "version": "oclif-dev readme && git add README.md"
+    "version": "oclif-dev readme --multi && git add README.md docs/"
   },
   "types": "lib/index.d.ts",
   "husky": {
