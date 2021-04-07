@@ -58,11 +58,8 @@ npm publish
 yarn oclif-dev pack
 yarn oclif-dev publish
 
-push() {
-  git push --quiet --set-upstream origin main
-  git push --tags
-}
-push
+git push --quiet --set-upstream origin main
+git push --tags
 
 # Update Homebrew deployment
 NEW_SHA=$(shasum -a 256 "dist/freeclimb-v${TARGET_VERSION}/freeclimb-v${TARGET_VERSION}.tar.gz" | awk '{ print $1 }')
@@ -74,4 +71,4 @@ EXISTING_VERSION_PATTERN=$(echo $EXISTING_VERSION | sed "s/\./\\\./g") # prevent
 sed -E -i "s/$EXISTING_VERSION_PATTERN/$TARGET_VERSION/g" Formula/freeclimb.rb
 git add .
 git commit -m "Update to version $TARGET_VERSION"
-push
+git push --quiet --set-upstream origin master
