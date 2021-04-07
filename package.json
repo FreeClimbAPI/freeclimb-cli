@@ -44,7 +44,8 @@
     "nyc": "^14",
     "prettier": "^2.0.5",
     "ts-node": "^8",
-    "typescript": "^3.3"
+    "typescript": "^3.3",
+    "aws-sdk": "^2.843.0"
   },
   "engines": {
     "node": ">=12.9.0"
