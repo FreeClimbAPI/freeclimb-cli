@@ -60,6 +60,7 @@ yarn oclif-dev publish
 
 push() {
   git push --quiet --set-upstream origin main
+  git push --tags
 }
 push
 
