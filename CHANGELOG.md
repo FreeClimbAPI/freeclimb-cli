@@ -9,6 +9,18 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 None
 
+<a name="0.2.2"></a>
+
+## [0.2.2] - 2021-04-14
+
+### Changed
+
+-   Deployments are now built on MacOS instead of Ubuntu
+
+### Fixed
+
+-   Homebrew no suitable image error when running any command that required keytar
+
 <a name="0.2.1"></a>
 
 ## [0.2.1] - 2021-04-07
