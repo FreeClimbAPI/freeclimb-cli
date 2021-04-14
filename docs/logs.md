@@ -23,7 +23,7 @@ OPTIONS
   -n, --next             Displays the next page of output.
 ```
 
-_See code: [src/commands/logs/filter.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/logs/filter.ts)_
+_See code: [src/commands/logs/filter.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/logs/filter.ts)_
 
 ## `freeclimb logs:list`
 
@@ -39,4 +39,4 @@ OPTIONS
   -n, --next             Displays the next page of output.
 ```
 
-_See code: [src/commands/logs/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/logs/list.ts)_
+_See code: [src/commands/logs/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/logs/list.ts)_

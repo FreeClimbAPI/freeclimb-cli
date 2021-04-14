@@ -23,7 +23,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/sms/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/sms/get.ts)_
+_See code: [src/commands/sms/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/get.ts)_
 
 ## `freeclimb sms:list`
 
@@ -51,7 +51,7 @@ OPTIONS
   -t, --to=to                Only show Messages to this phone number.
 ```
 
-_See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/sms/list.ts)_
+_See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/list.ts)_
 
 ## `freeclimb sms:send FROM TO TEXT`
 
@@ -78,4 +78,4 @@ OPTIONS
                                          returned is ignored.
 ```
 
-_See code: [src/commands/sms/send.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/sms/send.ts)_
+_See code: [src/commands/sms/send.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/send.ts)_

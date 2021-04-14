@@ -25,7 +25,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/queue-members/dequeue.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/queue-members/dequeue.ts)_
+_See code: [src/commands/queue-members/dequeue.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/queue-members/dequeue.ts)_
 
 ## `freeclimb queue-members:dequeue-head QUEUEID`
 
@@ -42,7 +42,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/queue-members/dequeue-head.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/queue-members/dequeue-head.ts)_
+_See code: [src/commands/queue-members/dequeue-head.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/queue-members/dequeue-head.ts)_
 
 ## `freeclimb queue-members:get QUEUEID CALLID`
 
@@ -61,7 +61,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/queue-members/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/queue-members/get.ts)_
+_See code: [src/commands/queue-members/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/queue-members/get.ts)_
 
 ## `freeclimb queue-members:get-head QUEUEID`
 
@@ -79,7 +79,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/queue-members/get-head.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/queue-members/get-head.ts)_
+_See code: [src/commands/queue-members/get-head.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/queue-members/get-head.ts)_
 
 ## `freeclimb queue-members:list QUEUEID`
 
@@ -97,4 +97,4 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/queue-members/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.1/src/commands/queue-members/list.ts)_
+_See code: [src/commands/queue-members/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/queue-members/list.ts)_
