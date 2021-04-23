@@ -15,7 +15,7 @@ describe("conferences:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -37,7 +37,7 @@ describe("conferences:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -49,7 +49,7 @@ describe("conferences:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -72,7 +72,7 @@ describe("conferences:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -89,7 +89,7 @@ describe("conferences:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -107,7 +107,7 @@ describe("conferences:create Data Test", function () {
                 statusCallbackUrl: "userInput-statusCallbackUrl",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -138,7 +138,7 @@ describe("conferences:create Data Test", function () {
                     alias: "userInput-alias",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -156,7 +156,7 @@ describe("conferences:create Data Test", function () {
                     playBeep: "userInput-playBeep",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -174,7 +174,7 @@ describe("conferences:create Data Test", function () {
                     record: true,
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -192,7 +192,7 @@ describe("conferences:create Data Test", function () {
                     waitUrl: "userInput-waitUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -210,7 +210,7 @@ describe("conferences:create Data Test", function () {
                     statusCallbackUrl: "userInput-statusCallbackUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -228,7 +228,7 @@ describe("conferences:create Data Test", function () {
             api
                 .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -250,7 +250,7 @@ describe("conferences:create Data Test", function () {
                     statusCallbackUrl: "userInput-statusCallbackUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -288,7 +288,7 @@ describe("conferences:create Status Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

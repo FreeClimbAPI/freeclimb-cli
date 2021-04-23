@@ -188,7 +188,7 @@ TestOutline.prototype.testOutline = function () {
     api
         .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
         ${this.query()}
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
     .stdout()
@@ -205,7 +205,7 @@ TestOutline.prototype.testErrorResponseOutline = function () {
     api
         .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
         ${this.query()}
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
     .stdout()
@@ -220,7 +220,7 @@ TestOutline.prototype.testErrorUndefinedResponseOutline = function () {
     api
         .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
         ${this.query()}
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, undefined )
     )
     .stdout()
@@ -235,7 +235,7 @@ TestOutline.prototype.testCustomBaseUrlOutline = function () {
     api
         .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
         ${this.query()}
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
     .stdout()
@@ -273,7 +273,7 @@ TestOutline.prototype.testNextFlagOutline = function () {
     api
         .get(${"`"}${this.url}${"`"})
         .query({cursor : "${cursorForCommand}"})
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
     .stdout()
@@ -309,7 +309,7 @@ TestOutline.prototype.testNextFlagOutline2 = function () {
     api
         .get(${"`"}${this.url}${"`"})
         .query({cursor : "${cursorForCommand}"})
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
     .stdout()
@@ -328,7 +328,7 @@ TestOutline.prototype.testNextFlagExitCodeOutline = function () {
     api
         .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
         ${this.query()}
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
     .stdout()
@@ -352,7 +352,7 @@ TestOutline.prototype.testNextFlagExitCodeUndefinedOutline = function () {
     api
         .get(${"`"}${this.url}${"`"})
         .query({cursor : "${cursorForCommand}"})
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, undefined)
     )
     .stdout()
@@ -369,7 +369,7 @@ TestOutline.prototype.testWarnOutline = function () {
     api
         .${this.command.method.toLowerCase()}(${"`"}${this.url}${"`"} ${this.body()})
         ${this.query()}
-        .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+        .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
         .reply(${this.statusCode}, ${this.testJson[0]})
     )
     .stdout()

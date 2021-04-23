@@ -18,7 +18,7 @@ describe("incoming-numbers:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -40,7 +40,7 @@ describe("incoming-numbers:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -52,7 +52,7 @@ describe("incoming-numbers:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -75,7 +75,7 @@ describe("incoming-numbers:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -92,7 +92,7 @@ describe("incoming-numbers:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -107,7 +107,7 @@ describe("incoming-numbers:list Data Test", function () {
                 phoneNumber: "userInput-phoneNumber",
                 alias: "userInput-alias",
             })
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -132,7 +132,7 @@ describe("incoming-numbers:list Data Test", function () {
                 .query({
                     phoneNumber: "userInput-phoneNumber",
                 })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -150,7 +150,7 @@ describe("incoming-numbers:list Data Test", function () {
                 .query({
                     alias: "userInput-alias",
                 })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -168,7 +168,7 @@ describe("incoming-numbers:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -206,7 +206,7 @@ describe("incoming-numbers:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`)
                 .query({ cursor: "696e636f6d696e672d6e756d626572733a6c697374" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext)
         )
             .stdout()
@@ -241,7 +241,7 @@ describe("incoming-numbers:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`)
                 .query({ cursor: "696e636f6d696e672d6e756d626572733a6c697374" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext2)
         )
             .stdout()
@@ -260,7 +260,7 @@ describe("incoming-numbers:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`)
                 .query({ cursor: "696e636f6d696e672d6e756d626572733a6c697374" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, undefined)
         )
             .stdout()
@@ -286,7 +286,7 @@ describe("incoming-numbers:list Status Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

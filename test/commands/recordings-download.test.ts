@@ -23,7 +23,7 @@ describe("recordings:download Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -48,7 +48,7 @@ describe("recordings:download Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -63,7 +63,7 @@ describe("recordings:download Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -89,7 +89,7 @@ describe("recordings:download Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -109,7 +109,7 @@ describe("recordings:download Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -125,7 +125,7 @@ describe("recordings:download Data Test", function () {
                     {}
                 )
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -165,7 +165,7 @@ describe("recordings:download Data Test", function () {
                     `/apiserver/Accounts/${await cred.accountId}/Recordings/${recordingId}/Download`
                 )
                 .query({ cursor: "7265636f7264696e67733a646f776e6c6f6164" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext)
         )
             .stdout()
@@ -200,7 +200,7 @@ describe("recordings:download Data Test", function () {
                     `/apiserver/Accounts/${await cred.accountId}/Recordings/${recordingId}/Download`
                 )
                 .query({ cursor: "7265636f7264696e67733a646f776e6c6f6164" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext2)
         )
             .stdout()
@@ -219,7 +219,7 @@ describe("recordings:download Data Test", function () {
                     `/apiserver/Accounts/${await cred.accountId}/Recordings/${recordingId}/Download`
                 )
                 .query({ cursor: "7265636f7264696e67733a646f776e6c6f6164" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, undefined)
         )
             .stdout()
@@ -246,7 +246,7 @@ describe("recordings:download Status Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

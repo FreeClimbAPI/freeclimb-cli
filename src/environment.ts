@@ -67,7 +67,7 @@ export const env = {
     get accountId() {
         return Environment.getString("ACCOUNT_ID")
     },
-    get authToken() {
-        return Environment.getString("AUTH_TOKEN")
+    get apiKey() {
+        return Environment.getString("API_KEY")
     },
 }
