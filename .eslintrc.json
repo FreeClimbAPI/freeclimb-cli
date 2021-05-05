@@ -112,6 +112,12 @@
         "no-process-exit": "off",
         "unicorn/no-process-exit": "off"
       }
+    },
+    {
+      "files": ["src/error-messages.js"],
+      "rules": {
+        "@typescript-eslint/no-var-requires": "off"
+      }
     }
   ]
 }
