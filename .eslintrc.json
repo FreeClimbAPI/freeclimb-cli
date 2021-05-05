@@ -116,7 +116,7 @@
     {
       "files": ["src/error-messages.js"],
       "rules": {
-        "@typescript-eslint/no-var-requires": "off"
+        "no-template-curly-in-string": "off"
       }
     }
   ]
