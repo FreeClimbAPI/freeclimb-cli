@@ -116,7 +116,7 @@
     {
       "files": ["src/error-messages.js"],
       "rules": {
-        "array-bracket-spacing": "off"
+        "array-bracket-newline": "off"
       }
     }
   ]
