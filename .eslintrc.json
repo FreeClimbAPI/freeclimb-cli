@@ -116,7 +116,7 @@
     {
       "files": ["src/error-messages.js"],
       "rules": {
-        "no-template-curly-in-string": "off"
+        "array-bracket-spacing": "off"
       }
     }
   ]
