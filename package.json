@@ -67,7 +67,7 @@
     "bin": "freeclimb",
     "helpClass": "./lib/help",
     "macos": {
-      "identifier": "freeclimb-cli"
+      "identifier": "com.freeclimb.cli"
     },
     "update": {
       "s3": {
@@ -129,14 +129,10 @@
     "lint-write": "eslint . --fix --ext .js,.ts --config .eslintrc.json && prettier --write **.{js,ts,json,md}",
     "prepack": "rm -rf lib; rm -f tsconfig.tsbuildinfo; tsc -b && oclif-dev manifest && oclif-dev readme --multi",
     "test": "nyc --extension .ts mocha --forbid-only \"test/**/*.test.ts\" --runInBand",
-    "version": "oclif-dev readme --multi && git add README.md docs/"
+    "version": "oclif-dev readme --multi && git add README.md docs/",
+    "prepare": "husky install"
   },
   "types": "lib/index.d.ts",
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && oclif-dev readme --multi && git add ."
-    }
-  },
   "lint-staged": {
     "*.{js,ts,json,md}": [
       "prettier --write",
