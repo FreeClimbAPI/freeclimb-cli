@@ -8,7 +8,7 @@ describe("Test for Logout command", function () {
         .command(["logout"])
         .it("Test the logout command produces the expected response", (ctx) => {
             expect(ctx.stdout).to.contain(
-                "Successfully removed the saved Account ID and Auth Token from this computer"
+                "Successfully removed the saved Account ID and API Key from this computer"
             )
         })
 })
