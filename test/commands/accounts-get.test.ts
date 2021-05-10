@@ -15,7 +15,7 @@ describe("accounts:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -37,7 +37,7 @@ describe("accounts:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -49,7 +49,7 @@ describe("accounts:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -72,7 +72,7 @@ describe("accounts:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -89,7 +89,7 @@ describe("accounts:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -102,7 +102,7 @@ describe("accounts:get Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}`, {})
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -124,7 +124,7 @@ describe("accounts:get Status Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

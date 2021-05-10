@@ -1,7 +1,7 @@
 `freeclimb accounts`
 ====================
 
-You get a FreeClimb Account at signup. This includes an account ID (accountId) and an authentication token (authToken). These two properties enable you to connect and communicate with FreeClimb. An Account resource is represented by the following properties:
+You get a FreeClimb Account at signup. This includes an account ID (accountId) and an API key (apiKey). These two properties enable you to connect and communicate with FreeClimb. An Account resource is represented by the following properties:
 
 * [`freeclimb accounts:get`](#freeclimb-accountsget)
 * [`freeclimb accounts:manage`](#freeclimb-accountsmanage)

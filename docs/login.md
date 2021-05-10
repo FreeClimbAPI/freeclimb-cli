@@ -1,13 +1,13 @@
 `freeclimb login`
 =================
 
-Log in to FreeClimb with your credentials. Alternatively you can set the ACCOUNT_ID and AUTH_TOKEN environment variables. To learn how to put them in a file, run freeclimb data -h
+Log in to FreeClimb with your credentials. Alternatively you can set the ACCOUNT_ID and API_KEY environment variables. To learn how to put them in a file, run freeclimb data -h
 
 * [`freeclimb login`](#freeclimb-login)
 
 ## `freeclimb login`
 
-Log in to FreeClimb with your credentials. Alternatively you can set the ACCOUNT_ID and AUTH_TOKEN environment variables. To learn how to put them in a file, run freeclimb data -h
+Log in to FreeClimb with your credentials. Alternatively you can set the ACCOUNT_ID and API_KEY environment variables. To learn how to put them in a file, run freeclimb data -h
 
 ```
 USAGE

@@ -20,7 +20,7 @@ describe("queue-members:get-head Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -42,7 +42,7 @@ describe("queue-members:get-head Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -54,7 +54,7 @@ describe("queue-members:get-head Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -77,7 +77,7 @@ describe("queue-members:get-head Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -94,7 +94,7 @@ describe("queue-members:get-head Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -110,7 +110,7 @@ describe("queue-members:get-head Data Test", function () {
                     {}
                 )
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -148,7 +148,7 @@ describe("queue-members:get-head Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`)
                 .query({ cursor: "71756575652d6d656d626572733a6765742d68656164" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext)
         )
             .stdout()
@@ -184,7 +184,7 @@ describe("queue-members:get-head Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`)
                 .query({ cursor: "71756575652d6d656d626572733a6765742d68656164" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext2)
         )
             .stdout()
@@ -204,7 +204,7 @@ describe("queue-members:get-head Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`)
                 .query({ cursor: "71756575652d6d656d626572733a6765742d68656164" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, undefined)
         )
             .stdout()
@@ -231,7 +231,7 @@ describe("queue-members:get-head Status Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}/Members/Front`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

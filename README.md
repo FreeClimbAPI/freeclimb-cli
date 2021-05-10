@@ -56,8 +56,8 @@ Review [Explore FreeClimb's CLI](https://docs.freeclimb.com/docs/freeclimb-cli-q
 * [`freeclimb data`](docs/data.md) - Find your data directory
 * [`freeclimb help`](docs/help.md) - Display help information, including a list of topics, commands, and accompanying explanations
 * [`freeclimb incoming-numbers`](docs/incoming-numbers.md) - Manage your purchased FreeClimb numbers
-* [`freeclimb login`](docs/login.md) - Log in to FreeClimb with your Account ID and Auth Key
-* [`freeclimb logout`](docs/logout.md) - Log out and remove your saved FreeClimb Account ID and Auth Token from your computer's keychain
+* [`freeclimb login`](docs/login.md) - Log in to FreeClimb with your Account ID and API Key
+* [`freeclimb logout`](docs/logout.md) - Log out and remove your saved FreeClimb Account ID and API Key from your computer's keychain
 * [`freeclimb logs`](docs/logs.md) - Search and filter logs
 * [`freeclimb queue-members`](docs/queue-members.md) - Manage and remove queue members
 * [`freeclimb recordings`](docs/recordings.md) - Find, download, stream, and manage recordings

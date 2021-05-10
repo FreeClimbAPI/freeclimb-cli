@@ -30,7 +30,7 @@ describe("Test for login command", function () {
             "tests warning for an incorrect account id length and checks action on error for verification",
             async (ctx) => {
                 expect(ctx.stdout).to.contain(
-                    "<---Inputted ACCOUNT_ID and AUTH_TOKEN where not valid. Please try again.-->"
+                    "<---Inputted ACCOUNT_ID and API_KEY where not valid. Please try again.-->"
                 )
             }
         )
@@ -54,7 +54,7 @@ describe("Test for login command", function () {
             "tests warning for an incorrect auth token length and checks action on error for verification",
             async (ctx) => {
                 expect(ctx.stdout).to.contain(
-                    "<---Inputted ACCOUNT_ID and AUTH_TOKEN where not valid. Please try again.-->"
+                    "<---Inputted ACCOUNT_ID and API_KEY where not valid. Please try again.-->"
                 )
             }
         )
@@ -77,7 +77,7 @@ describe("Test for login command", function () {
         .hook("warn")
         .it("tests for response when account is verified", async (ctx) => {
             expect(ctx.stdout).to.contain(
-                "<---Your ACCOUNT_ID and AUTH_TOKEN have been verified through Freeclimb.--->"
+                "<---Your ACCOUNT_ID and API_KEY have been verified through Freeclimb.--->"
             )
         })
 

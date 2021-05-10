@@ -17,7 +17,7 @@ describe("conferences:update Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -39,7 +39,7 @@ describe("conferences:update Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -51,7 +51,7 @@ describe("conferences:update Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -74,7 +74,7 @@ describe("conferences:update Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -91,7 +91,7 @@ describe("conferences:update Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -107,7 +107,7 @@ describe("conferences:update Data Test", function () {
                 status: "userInput-status",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -135,7 +135,7 @@ describe("conferences:update Data Test", function () {
                     alias: "userInput-alias",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -153,7 +153,7 @@ describe("conferences:update Data Test", function () {
                     playBeep: "userInput-playBeep",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -176,7 +176,7 @@ describe("conferences:update Data Test", function () {
                     status: "userInput-status",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -199,7 +199,7 @@ describe("conferences:update Data Test", function () {
             api
                 .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -221,7 +221,7 @@ describe("conferences:update Status Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

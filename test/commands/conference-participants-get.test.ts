@@ -24,7 +24,7 @@ describe("conference-participants:get Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -49,7 +49,7 @@ describe("conference-participants:get Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -64,7 +64,7 @@ describe("conference-participants:get Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -90,7 +90,7 @@ describe("conference-participants:get Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -115,7 +115,7 @@ describe("conference-participants:get Data Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -131,7 +131,7 @@ describe("conference-participants:get Data Test", function () {
                     {}
                 )
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -176,7 +176,7 @@ describe("conference-participants:get Data Test", function () {
                     `/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}/Participants/${callId}`
                 )
                 .query({ cursor: "636f6e666572656e63652d7061727469636970616e74733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext)
         )
             .stdout()
@@ -219,7 +219,7 @@ describe("conference-participants:get Data Test", function () {
                     `/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}/Participants/${callId}`
                 )
                 .query({ cursor: "636f6e666572656e63652d7061727469636970616e74733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext2)
         )
             .stdout()
@@ -246,7 +246,7 @@ describe("conference-participants:get Data Test", function () {
                     `/apiserver/Accounts/${await cred.accountId}/Conferences/${conferenceId}/Participants/${callId}`
                 )
                 .query({ cursor: "636f6e666572656e63652d7061727469636970616e74733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, undefined)
         )
             .stdout()
@@ -281,7 +281,7 @@ describe("conference-participants:get Status Test", function () {
                 {}
             )
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

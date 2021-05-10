@@ -18,7 +18,7 @@ describe("recordings:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -40,7 +40,7 @@ describe("recordings:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -52,7 +52,7 @@ describe("recordings:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -75,7 +75,7 @@ describe("recordings:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -92,7 +92,7 @@ describe("recordings:list Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -108,7 +108,7 @@ describe("recordings:list Data Test", function () {
                 conferenceId: "userInput-conferenceId",
                 dateCreated: "userInput-dateCreated",
             })
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -135,7 +135,7 @@ describe("recordings:list Data Test", function () {
                 .query({
                     callId: "userInput-callId",
                 })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -153,7 +153,7 @@ describe("recordings:list Data Test", function () {
                 .query({
                     conferenceId: "userInput-conferenceId",
                 })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -171,7 +171,7 @@ describe("recordings:list Data Test", function () {
                 .query({
                     dateCreated: "userInput-dateCreated",
                 })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -189,7 +189,7 @@ describe("recordings:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`, {})
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -227,7 +227,7 @@ describe("recordings:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`)
                 .query({ cursor: "7265636f7264696e67733a6c697374" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext)
         )
             .stdout()
@@ -260,7 +260,7 @@ describe("recordings:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`)
                 .query({ cursor: "7265636f7264696e67733a6c697374" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext2)
         )
             .stdout()
@@ -277,7 +277,7 @@ describe("recordings:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`)
                 .query({ cursor: "7265636f7264696e67733a6c697374" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, undefined)
         )
             .stdout()
@@ -301,7 +301,7 @@ describe("recordings:list Status Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Recordings`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

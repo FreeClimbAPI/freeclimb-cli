@@ -15,7 +15,7 @@ describe("call-queues:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Queues`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -37,7 +37,7 @@ describe("call-queues:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Queues`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -49,7 +49,7 @@ describe("call-queues:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Queues`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -72,7 +72,7 @@ describe("call-queues:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Queues`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -89,7 +89,7 @@ describe("call-queues:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Queues`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -104,7 +104,7 @@ describe("call-queues:create Data Test", function () {
                 maxSize: 10,
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -123,7 +123,7 @@ describe("call-queues:create Data Test", function () {
                     alias: "userInput-alias",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -141,7 +141,7 @@ describe("call-queues:create Data Test", function () {
                     maxSize: 10,
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -169,7 +169,7 @@ describe("call-queues:create Data Test", function () {
             api
                 .post(`/apiserver/Accounts/${await cred.accountId}/Queues`, {})
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -191,7 +191,7 @@ describe("call-queues:create Status Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Queues`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

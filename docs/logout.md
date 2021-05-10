@@ -1,13 +1,13 @@
 `freeclimb logout`
 ==================
 
-Remove your saved FreeClimb Account ID and Auth Token from this computer's keychain. This will not remove them from environment variables or config files that you have manually edited.
+Remove your saved FreeClimb Account ID and API Key from this computer's keychain. This will not remove them from environment variables or config files that you have manually edited.
 
 * [`freeclimb logout`](#freeclimb-logout)
 
 ## `freeclimb logout`
 
-Remove your saved FreeClimb Account ID and Auth Token from this computer's keychain. This will not remove them from environment variables or config files that you have manually edited.
+Remove your saved FreeClimb Account ID and API Key from this computer's keychain. This will not remove them from environment variables or config files that you have manually edited.
 
 ```
 USAGE

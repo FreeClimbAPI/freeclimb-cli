@@ -20,7 +20,7 @@ describe("applications:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -42,7 +42,7 @@ describe("applications:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -54,7 +54,7 @@ describe("applications:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -77,7 +77,7 @@ describe("applications:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -94,7 +94,7 @@ describe("applications:get Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -110,7 +110,7 @@ describe("applications:get Data Test", function () {
                     {}
                 )
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -148,7 +148,7 @@ describe("applications:get Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`)
                 .query({ cursor: "6170706c69636174696f6e733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext)
         )
             .stdout()
@@ -181,7 +181,7 @@ describe("applications:get Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`)
                 .query({ cursor: "6170706c69636174696f6e733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext2)
         )
             .stdout()
@@ -198,7 +198,7 @@ describe("applications:get Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`)
                 .query({ cursor: "6170706c69636174696f6e733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, undefined)
         )
             .stdout()
@@ -222,7 +222,7 @@ describe("applications:get Status Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Applications/${applicationId}`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

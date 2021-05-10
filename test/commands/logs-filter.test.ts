@@ -20,7 +20,7 @@ describe("logs:filter Data Test", function () {
                 pql: "userInput-pql",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -44,7 +44,7 @@ describe("logs:filter Data Test", function () {
                 pql: "userInput-pql",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -58,7 +58,7 @@ describe("logs:filter Data Test", function () {
                 pql: "userInput-pql",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -83,7 +83,7 @@ describe("logs:filter Data Test", function () {
                 pql: "userInput-pql",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -102,7 +102,7 @@ describe("logs:filter Data Test", function () {
                 pql: "userInput-pql",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -116,7 +116,7 @@ describe("logs:filter Data Test", function () {
                 pql: "userInput-pql='error'",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -195,7 +195,7 @@ describe("logs:filter Data Test", function () {
                     pql: "userInput-pql",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonLogs)
         )
             .stdout()
@@ -208,7 +208,7 @@ describe("logs:filter Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Logs`)
                 .query({ cursor: "6c6f67733a66696c746572" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNextLogs)
         )
             .stdout()
@@ -226,7 +226,7 @@ describe("logs:filter Data Test", function () {
                     pql: "userInput-pql",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -264,7 +264,7 @@ describe("logs:filter Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Logs`)
                 .query({ cursor: "6c6f67733a66696c746572" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext)
         )
             .stdout()
@@ -297,7 +297,7 @@ describe("logs:filter Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Logs`)
                 .query({ cursor: "6c6f67733a66696c746572" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext2)
         )
             .stdout()
@@ -314,7 +314,7 @@ describe("logs:filter Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Logs`)
                 .query({ cursor: "6c6f67733a66696c746572" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, undefined)
         )
             .stdout()
@@ -340,7 +340,7 @@ describe("logs:filter Status Test", function () {
                 pql: "userInput-pql",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

@@ -26,14 +26,14 @@ export const cred = {
             }
         })()
     },
-    get authToken() {
+    get apiKey() {
         return (async () => {
             try {
                 const keyContents = await keytar.findCredentials("FreeClimb")
                 const { password } = keyContents[0]
                 return password
             } catch (error) {
-                return env.authToken
+                return env.apiKey
             }
         })()
     },

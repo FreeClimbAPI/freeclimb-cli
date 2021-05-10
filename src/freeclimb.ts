@@ -67,12 +67,12 @@ export class FreeClimbApi {
         }
     ) {
         const accountId = await cred.accountId
-        const authToken = await cred.authToken
+        const apiKey = await cred.apiKey
         await axios(
             `${this.baseUrl}${this.authenticate ? `/Accounts/${accountId}` : ``}${this.endpoint}`,
             {
                 method: method,
-                auth: { username: accountId, password: authToken },
+                auth: { username: accountId, password: apiKey },
                 params: (requestContent as Query) ? (requestContent as Query).params : undefined,
                 data: (requestContent as Body) ? (requestContent as Body).data : undefined,
             }

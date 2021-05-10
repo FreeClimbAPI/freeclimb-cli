@@ -20,7 +20,7 @@ describe("calls:list-call-logs Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -42,7 +42,7 @@ describe("calls:list-call-logs Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -54,7 +54,7 @@ describe("calls:list-call-logs Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -77,7 +77,7 @@ describe("calls:list-call-logs Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -94,7 +94,7 @@ describe("calls:list-call-logs Data Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -107,7 +107,7 @@ describe("calls:list-call-logs Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`, {})
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -145,7 +145,7 @@ describe("calls:list-call-logs Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`)
                 .query({ cursor: "63616c6c733a6c6973742d63616c6c2d6c6f6773" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext)
         )
             .stdout()
@@ -180,7 +180,7 @@ describe("calls:list-call-logs Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`)
                 .query({ cursor: "63616c6c733a6c6973742d63616c6c2d6c6f6773" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJsonNext2)
         )
             .stdout()
@@ -199,7 +199,7 @@ describe("calls:list-call-logs Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`)
                 .query({ cursor: "63616c6c733a6c6973742d63616c6c2d6c6f6773" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, undefined)
         )
             .stdout()
@@ -225,7 +225,7 @@ describe("calls:list-call-logs Status Test", function () {
         api
             .get(`/apiserver/Accounts/${await cred.accountId}/Calls/${callId}/Logs`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

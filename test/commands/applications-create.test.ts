@@ -15,7 +15,7 @@ describe("applications:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Applications`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -37,7 +37,7 @@ describe("applications:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Applications`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -49,7 +49,7 @@ describe("applications:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Applications`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -72,7 +72,7 @@ describe("applications:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Applications`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -89,7 +89,7 @@ describe("applications:create Data Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Applications`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -109,7 +109,7 @@ describe("applications:create Data Test", function () {
                 smsFallbackUrl: "userInput-smsFallbackUrl",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -144,7 +144,7 @@ describe("applications:create Data Test", function () {
                     alias: "userInput-alias",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -162,7 +162,7 @@ describe("applications:create Data Test", function () {
                     voiceUrl: "userInput-voiceUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -180,7 +180,7 @@ describe("applications:create Data Test", function () {
                     voiceFallbackUrl: "userInput-voiceFallbackUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -198,7 +198,7 @@ describe("applications:create Data Test", function () {
                     callConnectUrl: "userInput-callConnectUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -216,7 +216,7 @@ describe("applications:create Data Test", function () {
                     statusCallbackUrl: "userInput-statusCallbackUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -234,7 +234,7 @@ describe("applications:create Data Test", function () {
                     smsUrl: "userInput-smsUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -252,7 +252,7 @@ describe("applications:create Data Test", function () {
                     smsFallbackUrl: "userInput-smsFallbackUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -270,7 +270,7 @@ describe("applications:create Data Test", function () {
             api
                 .post(`/apiserver/Accounts/${await cred.accountId}/Applications`, {})
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -292,7 +292,7 @@ describe("applications:create Status Test", function () {
         api
             .post(`/apiserver/Accounts/${await cred.accountId}/Applications`, {})
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()

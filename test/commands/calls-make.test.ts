@@ -19,7 +19,7 @@ describe("calls:make Data Test", function () {
                 applicationId: "userInput-applicationId",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -45,7 +45,7 @@ describe("calls:make Data Test", function () {
                 applicationId: "userInput-applicationId",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorNoSuggestion)
     )
         .stdout()
@@ -61,7 +61,7 @@ describe("calls:make Data Test", function () {
                 applicationId: "userInput-applicationId",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -88,7 +88,7 @@ describe("calls:make Data Test", function () {
                 applicationId: "userInput-applicationId",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(500, testJsonErrorWithSuggestion)
     )
         .stdout()
@@ -115,7 +115,7 @@ describe("calls:make Data Test", function () {
                 applicationId: "userInput-applicationId",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, undefined)
     )
         .stdout()
@@ -136,7 +136,7 @@ describe("calls:make Data Test", function () {
                 parentCallId: "userInput-parentCallId",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
     )
         .stdout()
@@ -173,7 +173,7 @@ describe("calls:make Data Test", function () {
                     sendDigits: "userInput-sendDigits",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -201,7 +201,7 @@ describe("calls:make Data Test", function () {
                     ifMachine: "userInput-ifMachine",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -229,7 +229,7 @@ describe("calls:make Data Test", function () {
                     ifMachineUrl: "userInput-ifMachineUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -257,7 +257,7 @@ describe("calls:make Data Test", function () {
                     timeout: 10,
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -309,7 +309,7 @@ describe("calls:make Data Test", function () {
                     parentCallId: "userInput-parentCallId",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -338,7 +338,7 @@ describe("calls:make Data Test", function () {
                     applicationId: "userInput-applicationId",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -370,7 +370,7 @@ describe("calls:make Status Test", function () {
                 applicationId: "userInput-applicationId",
             })
             .query({})
-            .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+            .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(204, testJsonStatus)
     )
         .stdout()
