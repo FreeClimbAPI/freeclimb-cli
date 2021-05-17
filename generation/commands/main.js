@@ -228,7 +228,7 @@ function getAdditionalFlags(topicName, tail, pagination) {
         data += `\n\t\tmaxItem: flags.integer({ char: "m", description: "${localFlags.maxItem.description}"}),`
     }
     if (tail) {
-        data += `\n\t\ttail: flags.boolean({char: '${localFlags.tail.char}', description: '${localFlags.tail.description}',default : ${localFlags.tail.default}}),\n\t\tsleep: flags.integer({ char: "${localFlags.sleep.char}", description: "${localFlags.sleep.description}", default: ${localFlags.sleep.default}}),\n\t\tsince: flags.string({ char: "${localFlags.since.char}", description: "${localFlags.since.description}",}),`
+        data += `\n\t\ttail: flags.boolean({char: '${localFlags.tail.char}', description: '${localFlags.tail.description}',default : ${localFlags.tail.default}}),\n\t\tsleep: flags.integer({ char: "${localFlags.sleep.char}", description: "${localFlags.sleep.description}", default: ${localFlags.sleep.default}}),\n\t\tsince: flags.string({ char: "${localFlags.since.char}", description: "${localFlags.since.description}", dependsOn:${localFlags.since.dependsOn}}),`
     }
     if (pagination) {
         data += `\n\t\tnext: flags.boolean({char: 'n', description: '${localFlags.next.description}'}),`

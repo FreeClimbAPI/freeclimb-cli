@@ -32,6 +32,7 @@ export class logsList extends Command {
             char: "Q",
             description:
                 "Determines time frame of logs to be printed out before starting tail. Ex.2h9m",
+            dependsOn: ["tail"],
         }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
