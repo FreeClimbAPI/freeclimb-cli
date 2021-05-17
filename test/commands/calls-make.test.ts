@@ -179,7 +179,7 @@ describe("calls:make Data Test", function () {
                     callConnectUrl: "userInput-callConnectUrl",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -207,7 +207,7 @@ describe("calls:make Data Test", function () {
                     parentCallId: "userInput-parentCallId",
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
@@ -433,7 +433,7 @@ describe("calls:make Data Test", function () {
                     privacyMode: false,
                 })
                 .query({})
-                .basicAuth({ user: await cred.accountId, pass: await cred.authToken })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
