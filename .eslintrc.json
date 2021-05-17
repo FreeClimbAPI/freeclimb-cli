@@ -115,9 +115,7 @@
     },
     {
       "files": ["src/error-messages.js"],
-      "rules": {
-        "array-bracket-newline": "off"
-      }
+      "rules": {}
     }
   ]
 }
