@@ -1,11 +1,11 @@
 import { expect, test } from "@oclif/test"
 const mapChars = require("../../generation/commands/character-mapping")
 const apiInfo = require("../../generation/schema/generated-api-schema.json")
-const localFlags = require("../../generation/schema/local-flags.json")
+const localFlags = require("./test-local-flags.json")
 const testingJson = require("./character-mapping-test.json")
 
 describe("Tests the character-mapping", function () {
-    const testedMap = mapChars(testingJson)
+    const testedMap = mapChars(testingJson, localFlags)
     const charMap = new Map()
     charMap.set("variableOne", "v")
     charMap.set("variableTwo", "V")
@@ -99,7 +99,7 @@ describe("Tests the character-mapping", function () {
         expect(hasDuplicates(charMap, testingJson)).to.be.false
     })
     test.it("Does not assign any duplicate characters in the actual CLI", () => {
-        expect(hasDuplicates(mapChars(apiInfo), apiInfo)).to.be.false
+        expect(hasDuplicates(mapChars(apiInfo, localFlags), apiInfo)).to.be.false
     })
     test.stderr()
         .do((output) => {
@@ -116,7 +116,7 @@ describe("Tests the character-mapping", function () {
                     ],
                 },
             ]
-            const testMap = mapChars(generatedSchema)
+            const testMap = mapChars(generatedSchema, localFlags)
             expect(output.stderr).to.contain(
                 "There are more than 52 unique flags in a single scope. Some flags will not be assigned a character."
             )

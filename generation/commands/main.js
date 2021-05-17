@@ -16,7 +16,7 @@ const ApiCommand = require("./api-command.js")
 const mapChars = require("./character-mapping")
 
 // Mapping of the names of flags to the characters to use for those flags
-const charMap = mapChars(apiInfo)
+const charMap = mapChars(apiInfo, localFlags)
 
 // Create src/commands if directory does not already exist
 fs.mkdirSync("./src/commands", { recursive: true })

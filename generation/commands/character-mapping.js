@@ -8,9 +8,7 @@
 
 // Return a map of param names to flag characters
 
-const localFlags = require("../schema/local-flags.json")
-
-module.exports = (apiInfo) => {
+module.exports = (apiInfo, localFlags) => {
     const commands = apiInfo.map((topic) => topic.commands).flat(1)
     const frequency = new Map()
     const charMap = new Map()
