@@ -39,7 +39,7 @@ ARGUMENTS
   CONFERENCEID  ID of the conference this participant is in.
 
 OPTIONS
-  -T, --talk=true|false    Only show Participants with the talk privilege.
+  -L, --talk=true|false    Only show Participants with the talk privilege.
   -h, --help               show CLI help
   -l, --listen=true|false  Only show Participants with the listen privilege.
   -n, --next               Displays the next page of output.
@@ -78,7 +78,7 @@ ARGUMENTS
   CALLID        ID of the Call associated with this participant.
 
 OPTIONS
-  -T, --talk=true|false    (Optional) Default is true. Setting to false mutes the Participant. FreeClimb returns an
+  -L, --talk=true|false    (Optional) Default is true. Setting to false mutes the Participant. FreeClimb returns an
                            error and ignores any other value.
 
   -h, --help               show CLI help

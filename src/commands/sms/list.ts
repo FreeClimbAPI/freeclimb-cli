@@ -10,7 +10,7 @@ export class smsList extends Command {
 
     static flags = {
         to: flags.string({
-            char: "t",
+            char: "T",
             description: "Only show Messages to this phone number.",
             required: false,
         }),

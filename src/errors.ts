@@ -73,6 +73,20 @@ export class NoNextPage extends FreeClimbError {
     }
 }
 
+export class NoTimestamp extends FreeClimbError {
+    constructor() {
+        super(
+            returnFormat(
+                1019,
+                "Invalid Use of Timestamp",
+                "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                "You can not use tail and timestamp pql"
+            ),
+            2
+        )
+    }
+}
+
 export class OutOfRange extends FreeClimbError {
     constructor(param: string, bound: number, direction: string) {
         super(
@@ -121,5 +135,41 @@ export class LoginCancelled extends FreeClimbError {
             ),
             2
         )
+    }
+}
+
+export class SinceFormatError extends FreeClimbError {
+    constructor(errorMessage: any) {
+        if (errorMessage.name === "Incorrect Format - Invalid Unit") {
+            super(
+                returnFormat(
+                    1015,
+                    errorMessage.name,
+                    "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                    `Since is not compatible with the unit ${errorMessage.message}\n\n\t\tValid units of time include: \nw[weeks], d[day], h[hour], m[minute], s[second], ms[millisecond], ns[nanosecond]\n`
+                ),
+                2
+            )
+        } else if (errorMessage.name === "Incorrect Format - Missing Number or Unit") {
+            super(
+                returnFormat(
+                    1016,
+                    errorMessage.name,
+                    "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                    `${errorMessage.message} is missing a unit of time or number. For every time interval, a unit of time must be included. Ex 2h30m`
+                ),
+                2
+            )
+        } else {
+            super(
+                returnFormat(
+                    1017,
+                    "Since Format Error",
+                    "https://docs.freeclimb.com/reference/error-and-warning-dictionary",
+                    "Check the formatting of since flag"
+                ),
+                2
+            )
+        }
     }
 }

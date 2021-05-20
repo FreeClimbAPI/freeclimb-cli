@@ -4,6 +4,10 @@ import chalk from "chalk"
 import { Output } from "../../output"
 import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
+import { sleep, calculateSinceTimestamp } from "../../tail"
+
+let lastTime: number
+let tailMax: number
 
 export class logsList extends Command {
     static description = ` Returns all Logs associated with the specified account or a specific page of Logs as indicated by the URI in the request. Note: A PQL query should not be included with this GET request.`
@@ -13,9 +17,28 @@ export class logsList extends Command {
             char: "m",
             description: "Show only a certain number of the most recent logs on this page.",
         }),
+        tail: flags.boolean({
+            char: "t",
+            description: "Polls the FreeClimb API to retrieve and display new logs as they occur.",
+            default: false,
+        }),
+        sleep: flags.integer({
+            char: "q",
+            description:
+                "Determines time waited between request for tail command. Defaults at 1 second.",
+            default: 1000,
+        }),
+        since: flags.string({
+            char: "Q",
+            description:
+                "Determines time frame of logs to be printed out before starting tail. Ex.2h9m",
+            dependsOn: ["tail"],
+        }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
     }
+
+    static args = []
 
     async run() {
         const out = new Output(this)
@@ -45,6 +68,14 @@ export class logsList extends Command {
                 throw new Errors.UndefinedResponseError()
             }
         }
+
+        const tailResponse = (response: FreeClimbResponse) => {
+            if (response.data.end !== 0) {
+                lastTime = response.data.logs[0].timestamp
+                out.out(JSON.stringify(response.data.logs.splice(0, tailMax).reverse(), null, 2))
+            }
+        }
+
         const nextResponse = (response: FreeClimbResponse) => {
             if (response.data) {
                 out.out(
@@ -70,6 +101,37 @@ export class logsList extends Command {
             return
         }
 
-        await fcApi.apiCall("GET", {}, normalResponse)
+        if (flags.tail) {
+            lastTime = 0
+
+            if (flags.since) {
+                const currentTime = Date.now() * 1000
+                const sinceTimestamp = (() => {
+                    try {
+                        return calculateSinceTimestamp(flags.since)
+                    } catch (error) {
+                        const err = new Errors.SinceFormatError(error)
+                        this.error(err.message, { exit: err.code })
+                    }
+                })()
+                lastTime = currentTime - sinceTimestamp
+            }
+            tailMax = flags.maxItem ? flags.maxItem : 100
+            while (flags.tail) {
+                await fcApi.apiCall(
+                    "POST",
+                    {
+                        data: {
+                            pql: `timestamp>${lastTime}`,
+                        },
+                    },
+                    tailResponse
+                )
+                await sleep(flags.sleep)
+                tailMax = 100
+            }
+        } else {
+            await fcApi.apiCall("GET", {}, normalResponse)
+        }
     }
 }

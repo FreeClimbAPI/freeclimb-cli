@@ -42,6 +42,8 @@ OPTIONS
   -S, --status=status              Only show Calls currently in this status. May be queued, ringing, inProgress,
                                    canceled, completed, failed, busy, or noAnswer.
 
+  -T, --to=to                      Only show Calls to this phone number.
+
   -e, --endTime=endTime            Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.
 
   -f, --from=from                  Only show Calls from this phone number.
@@ -51,8 +53,6 @@ OPTIONS
   -n, --next                       Displays the next page of output.
 
   -s, --startTime=startTime        Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss.
-
-  -t, --to=to                      Only show Calls to this phone number.
 ```
 
 _See code: [src/commands/calls/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/calls/list.ts)_

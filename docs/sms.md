@@ -34,6 +34,7 @@ USAGE
   $ freeclimb sms:list
 
 OPTIONS
+  -T, --to=to                Only show Messages to this phone number.
   -a, --accountID=accountID  String that uniquely identifies this account resource.
   -b, --beginTime=beginTime  Only show Messages sent at or after this time (GMT), given as YYYY-MM-DD hh:mm:ss.
 
@@ -47,8 +48,6 @@ OPTIONS
   -h, --help                 show CLI help
 
   -n, --next                 Displays the next page of output.
-
-  -t, --to=to                Only show Messages to this phone number.
 ```
 
 _See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/list.ts)_

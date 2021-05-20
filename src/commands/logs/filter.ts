@@ -4,6 +4,10 @@ import chalk from "chalk"
 import { Output } from "../../output"
 import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
+import { sleep, calculateSinceTimestamp } from "../../tail"
+
+let lastTime: number
+let tailMax: number
 
 export class logsFilter extends Command {
     static description = ` Returns the first page of Logs associated with the specified account. The Performance Query Language, or PQL, is a simple query language that uses key-comparator-value triplets joined by boolean operators to build queries capable of searching through logs. PQL is inspired heavily by the syntax of SQL's WHERE clauses. The Dot Operator (.) can be used to search for nested key / value pairs. In the example above, metadata.test is used to access the value of the nested test key under metadata. PQL supports the following comparator operators: =, !=, <, <=, >, >=, as well as the use of () to indicate the order in which parts are evaluated.`
@@ -12,6 +16,23 @@ export class logsFilter extends Command {
         maxItem: flags.integer({
             char: "m",
             description: "Show only a certain number of the most recent logs on this page.",
+        }),
+        tail: flags.boolean({
+            char: "t",
+            description: "Polls the FreeClimb API to retrieve and display new logs as they occur.",
+            default: false,
+        }),
+        sleep: flags.integer({
+            char: "q",
+            description:
+                "Determines time waited between request for tail command. Defaults at 1 second.",
+            default: 1000,
+        }),
+        since: flags.string({
+            char: "Q",
+            description:
+                "Determines time frame of logs to be printed out before starting tail. Ex.2h9m",
+            dependsOn: ["tail"],
         }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
@@ -54,6 +75,14 @@ export class logsFilter extends Command {
                 throw new Errors.UndefinedResponseError()
             }
         }
+
+        const tailResponse = (response: FreeClimbResponse) => {
+            if (response.data.end !== 0) {
+                lastTime = response.data.logs[0].timestamp
+                out.out(JSON.stringify(response.data.logs.splice(0, tailMax).reverse(), null, 2))
+            }
+        }
+
         const nextResponse = (response: FreeClimbResponse) => {
             if (response.data) {
                 out.out(
@@ -86,14 +115,49 @@ export class logsFilter extends Command {
             )
         }
 
-        await fcApi.apiCall(
-            "POST",
-            {
-                data: {
-                    pql: args.pql,
+        if (flags.tail) {
+            lastTime = 0
+            if (args.pql.includes("timestamp")) {
+                const err = new Errors.NoTimestamp()
+                this.error(err.message, { exit: err.code })
+            }
+
+            if (flags.since) {
+                const currentTime = Date.now() * 1000
+                const sinceTimestamp = (() => {
+                    try {
+                        return calculateSinceTimestamp(flags.since)
+                    } catch (error) {
+                        const err = new Errors.SinceFormatError(error)
+                        this.error(err.message, { exit: err.code })
+                    }
+                })()
+                lastTime = currentTime - sinceTimestamp
+            }
+            tailMax = flags.maxItem ? flags.maxItem : 100
+            while (flags.tail) {
+                await fcApi.apiCall(
+                    "POST",
+                    {
+                        data: {
+                            pql: `${args.pql} AND timestamp>${lastTime}`,
+                        },
+                    },
+                    tailResponse
+                )
+                await sleep(flags.sleep)
+                tailMax = 100
+            }
+        } else {
+            await fcApi.apiCall(
+                "POST",
+                {
+                    data: {
+                        pql: args.pql,
+                    },
                 },
-            },
-            normalResponse
-        )
+                normalResponse
+            )
+        }
     }
 }
