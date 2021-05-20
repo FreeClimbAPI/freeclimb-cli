@@ -33,11 +33,8 @@ USAGE
   $ freeclimb sms:list
 
 OPTIONS
-<<<<<<< HEAD
   -T, --to=to                Only show Messages to this phone number.
-  -a, --accountID=accountID  String that uniquely identifies this account resource.
-=======
->>>>>>> update cli
+
   -b, --beginTime=beginTime  Only show Messages sent at or after this time (GMT), given as YYYY-MM-DD hh:mm:ss.
 
   -d, --direction=direction  Either inbound or outbound. Only show Messages that were either sent from or received by
