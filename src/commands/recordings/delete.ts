@@ -6,7 +6,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class recordingsDelete extends Command {
-    static description = ` Delete the specified recording. Both the audio file and the resource metadata are deleted. If successful, FreeClimb will return an HTTP 204 response with no body.`
+    static description = ` Delete the specified recording. Both the audio file and the resource metadata are deleted.`
 
     static flags = {
         next: flags.boolean({ hidden: true }),

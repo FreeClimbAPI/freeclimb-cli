@@ -4,9 +4,6 @@ import { cred } from "../../src/credentials"
 
 const queueId = "userInput-queueId"
 
-import { data } from "../../src/commands/data"
-import { Environment } from "../../src/environment"
-
 describe("call-queues:get Data Test", function () {
     const testJson = {
         message: "Response from server",
@@ -116,96 +113,6 @@ describe("call-queues:get Data Test", function () {
             .command(["call-queues:get", "userInput-queueId", "--next"])
             .exit(3)
             .it("Tests return of Exit Code 3 when flag next is not available")
-
-        const testJsonNext = {
-            total: 1,
-            start: 0,
-            end: 0,
-            page: 1,
-            numPages: 1,
-            pageSize: 100,
-            nextPageUri: null,
-        }
-
-        const nockServerResponseNext = `== You are on the last page of output. ==`
-
-        const testJsonNext2 = {
-            total: 2,
-            start: 0,
-            end: 0,
-            page: 1,
-            numPages: 2,
-            pageSize: 100,
-            nextPageUri: "",
-        }
-
-        const nockServerResponseNext2 = `== Currently on page 1. Run this command again with the -n flag to go to the next page. ==`
-
-        test.nock("https://www.freeclimb.com", async (api) =>
-            api
-                .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}`)
-                .query({ cursor: "63616c6c2d7175657565733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
-                .reply(200, testJsonNext)
-        )
-            .stdout()
-            .env({ FREECLIMB_CALL_QUEUES_GET_NEXT: "63616c6c2d7175657565733a676574" })
-            .command(["call-queues:get", "userInput-queueId", "--next"])
-            .it(
-                "Test flag next works as expected when available with on last page",
-                async (ctx) => {
-                    expect(ctx.stdout).to.contain(nockServerResponseNext)
-                }
-            )
-
-        const finalCursor = "freeClimbCLIAutomatedTestCursor"
-
-        before(() => {
-            ;(async () => {
-                testJsonNext2.nextPageUri = `https://www.freeclimb.com/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}?cursor=${finalCursor}`
-            })()
-        })
-        after(() => {
-            const dataDir = data.run([]).then(
-                (dataDir) => {
-                    const environment = new Environment(dataDir)
-                    environment.clearString("FREECLIMB_CALL_QUEUES_GET_NEXT")
-                },
-                (reason) => console.log(reason)
-            )
-        })
-        test.nock("https://www.freeclimb.com", async (api) =>
-            api
-                .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}`)
-                .query({ cursor: "63616c6c2d7175657565733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
-                .reply(200, testJsonNext2)
-        )
-            .stdout()
-            .env({ FREECLIMB_CALL_QUEUES_GET_NEXT: "63616c6c2d7175657565733a676574" })
-            .command(["call-queues:get", "userInput-queueId", "--next"])
-            .it(
-                "Test flag next works as expected when available with has more pages",
-                async (ctx) => {
-                    expect(ctx.stdout).to.contain(nockServerResponseNext2)
-                }
-            )
-
-        test.nock("https://www.freeclimb.com", async (api) =>
-            api
-                .get(`/apiserver/Accounts/${await cred.accountId}/Queues/${queueId}`)
-                .query({ cursor: "63616c6c2d7175657565733a676574" })
-                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
-                .reply(200, undefined)
-        )
-            .stdout()
-            .env({ FREECLIMB_CALL_QUEUES_GET_NEXT: "63616c6c2d7175657565733a676574" })
-            .command(["call-queues:get", "userInput-queueId", "--next"])
-            .exit(3)
-            .it(
-                "Test error is caught when when using next flag and no reponse is given",
-                async (ctx) => {}
-            )
     })
 })
 

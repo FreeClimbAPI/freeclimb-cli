@@ -6,7 +6,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class conferencesCreate extends Command {
-    static description = ` Create an empty Conference within the specified account. The status of a conference will be reported to the statusCallbackUrl when: Participants can be added to a Conference once the statusCallbackUrl is invoked, signifying the Conference has been created and is empty. When a populated or inProgress Conference is terminated, this URL is called twice — once when the Conference becomes empty and then again when it is terminated. Note This is a notification only. Any PerCL returned by the application is ignored. The statusCallbackUrl is invoked using HTTP POST with the following parameters (in addition to the standard request parameters).`
+    static description = ` Create an empty Conference within the specified account.`
 
     static flags = {
         alias: flags.string({
@@ -29,13 +29,12 @@ export class conferencesCreate extends Command {
         waitUrl: flags.string({
             char: "w",
             description:
-                "If specified, a URL for the audio file that provides custom hold music for the Conference when it is in the populated state. Otherwise, FreeClimb uses a system default audio file. This is always fetched using HTTP GET and is fetched just once — when the Conference is created.",
+                "If specified, a URL for the audio file that provides custom hold music for the Conference when it is in the populated state. Otherwise, FreeClimb uses a system default audio file. This is always fetched using HTTP GET and is fetched just once - when the Conference is created.",
             required: false,
         }),
         statusCallbackUrl: flags.string({
             char: "s",
-            description:
-                "This URL is invoked when the status of the Conference changes. For more information, see statusCallbackUrl (below).",
+            description: "This URL is invoked when the status of the Conference changes.",
             required: false,
         }),
         next: flags.boolean({ hidden: true }),

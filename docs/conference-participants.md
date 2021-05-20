@@ -22,7 +22,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/conference-participants/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/conference-participants/get.ts)_

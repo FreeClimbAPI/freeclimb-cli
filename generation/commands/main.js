@@ -223,7 +223,6 @@ function getAxiosFlagsBooleanHelper(flag) {
 // Return flags not used in axios request
 function getAdditionalFlags(topicName, tail, pagination) {
     data = ""
-
     if (topicName === "logs") {
         data += `\n\t\tmaxItem: flags.integer({ char: "m", description: "${localFlags.maxItem.description}"}),`
     }

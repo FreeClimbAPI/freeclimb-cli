@@ -6,10 +6,10 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class recordingsStream extends Command {
-    static description = ` Stream a Recording File. Authentication is required to stream a Recording, as with any other request made to the REST API. The bytes of the WAV audio file with mime-type audio/x-wav are returned as the content of the HTTP response message.`
+    static description = ` Stream a Recording File. Authentication is required to stream a Recording, as with any other request made to the REST API.`
 
     static flags = {
-        next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
+        next: flags.boolean({ hidden: true }),
         help: flags.help({ char: "h" }),
     }
 
@@ -45,25 +45,9 @@ export class recordingsStream extends Command {
                 throw new Errors.UndefinedResponseError()
             }
         }
-        const nextResponse = (response: FreeClimbResponse) => {
-            if (response.data) {
-                out.out(JSON.stringify(response.data, null, 2))
-            } else {
-                throw new Errors.UndefinedResponseError()
-            }
-            if (out.next === null) {
-                out.out("== You are on the last page of output. ==")
-            }
-        }
-
         if (flags.next) {
-            if (out.next === undefined || out.next === "freeclimbUnnamedTest") {
-                const error = new Errors.NoNextPage()
-                this.error(error.message, { exit: error.code })
-            } else {
-                await fcApi.apiCall("GET", { params: { cursor: out.next } }, nextResponse)
-            }
-            return
+            const error = new Errors.NoNextPage()
+            this.error(error.message, { exit: error.code })
         }
 
         await fcApi.apiCall("GET", {}, normalResponse)

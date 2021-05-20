@@ -28,18 +28,13 @@ export class smsList extends Command {
         endTime: flags.string({
             char: "e",
             description:
-                "Only show messages sent at or before this time (GMT), given as YYYY-MM-DD hh:mm..",
+                "Only show messages sent at or before this time (GMT), given as YYYY-MM-DD hh:mm.",
             required: false,
         }),
         direction: flags.string({
             char: "d",
             description:
                 "Either inbound or outbound. Only show Messages that were either sent from or received by FreeClimb.",
-            required: false,
-        }),
-        accountID: flags.string({
-            char: "a",
-            description: "String that uniquely identifies this account resource.",
             required: false,
         }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
@@ -100,7 +95,6 @@ export class smsList extends Command {
                     beginTime: flags.beginTime,
                     endTime: flags.endTime,
                     direction: flags.direction,
-                    accountID: flags.accountID,
                 },
             },
             normalResponse

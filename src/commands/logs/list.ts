@@ -10,7 +10,7 @@ let lastTime: number
 let tailMax: number
 
 export class logsList extends Command {
-    static description = ` Returns all Logs associated with the specified account or a specific page of Logs as indicated by the URI in the request. Note: A PQL query should not be included with this GET request.`
+    static description = ` Returns all Logs associated with the specified account or a specific page of Logs as indicated by the URI in the request.`
 
     static flags = {
         maxItem: flags.integer({

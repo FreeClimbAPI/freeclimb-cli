@@ -1,7 +1,7 @@
 `freeclimb incoming-numbers`
 ============================
 
-This is the collection of all the phone numbers that you have purchased from FreeClimb and which now belong to the account. These phone numbers can receive and send calls. An Incoming number resource is represented by the following properties:
+This is the collection of all the phone numbers that you have purchased from FreeClimb and which now belong to the account. These phone numbers can receive and send calls.
 
 * [`freeclimb incoming-numbers:buy PHONENUMBER`](#freeclimb-incoming-numbersbuy-phonenumber)
 * [`freeclimb incoming-numbers:delete PHONENUMBERID`](#freeclimb-incoming-numbersdelete-phonenumberid)
@@ -30,7 +30,7 @@ _See code: [src/commands/incoming-numbers/buy.ts](https://github.com/FreeClimbAP
 
 ## `freeclimb incoming-numbers:delete PHONENUMBERID`
 
-Delete the specified incoming number. FreeClimb will no longer answer calls to the number. When the phone number is no longer configured as an incoming phone number, it will be recycled and made available for purchase again after a three-day holding period. If successful, FreeClimb will return an HTTP 204 response with no body.
+Delete the specified incoming number. FreeClimb will no longer answer calls to the number.
 
 ```
 USAGE
@@ -58,7 +58,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/incoming-numbers/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/incoming-numbers/get.ts)_
@@ -76,7 +75,7 @@ OPTIONS
   -h, --help                     show CLI help
   -n, --next                     Displays the next page of output.
 
-  -p, --phoneNumber=phoneNumber  Only show incoming phone number resources that match this PCRE-compatible  regular
+  -p, --phoneNumber=phoneNumber  Only show incoming phone number resources that match this PCRE-compatible regular
                                  expression.
 ```
 

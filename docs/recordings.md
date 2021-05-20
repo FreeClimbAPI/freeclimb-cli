@@ -1,7 +1,7 @@
 `freeclimb recordings`
 ======================
 
-A Recording instance resource represents an audio file created by FreeClimb during a Call or Conference. The Recording resource is a subresource of a Call resource and Conference resource. This enables navigating directly from a Call or Conference to the Recordings generated from them. Recordings are owned by an account and are stored for the account holder on FreeClimb until deleted. There are two ways to begin a Recording:
+A Recording instance resource represents an audio file created by FreeClimb during a Call or Conference.
 
 * [`freeclimb recordings:delete RECORDINGID`](#freeclimb-recordingsdelete-recordingid)
 * [`freeclimb recordings:download RECORDINGID`](#freeclimb-recordingsdownload-recordingid)
@@ -11,7 +11,7 @@ A Recording instance resource represents an audio file created by FreeClimb duri
 
 ## `freeclimb recordings:delete RECORDINGID`
 
-Delete the specified recording. Both the audio file and the resource metadata are deleted. If successful, FreeClimb will return an HTTP 204 response with no body.
+Delete the specified recording. Both the audio file and the resource metadata are deleted.
 
 ```
 USAGE
@@ -28,7 +28,7 @@ _See code: [src/commands/recordings/delete.ts](https://github.com/FreeClimbAPI/f
 
 ## `freeclimb recordings:download RECORDINGID`
 
-Download a Recording. Authentication is required to download a Recording, as with any other request made to the REST API. Returns a binary WAV audio file as an attachment in the HTTP response with mime-type audio/x-wav.
+Download a Recording. Authentication is required to download a Recording, as with any other request made to the REST API.
 
 ```
 USAGE
@@ -39,7 +39,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/recordings/download.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/recordings/download.ts)_
@@ -57,7 +56,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/recordings/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/recordings/get.ts)_
@@ -82,7 +80,7 @@ _See code: [src/commands/recordings/list.ts](https://github.com/FreeClimbAPI/fre
 
 ## `freeclimb recordings:stream RECORDINGID`
 
-Stream a Recording File. Authentication is required to stream a Recording, as with any other request made to the REST API. The bytes of the WAV audio file with mime-type audio/x-wav are returned as the content of the HTTP response message.
+Stream a Recording File. Authentication is required to stream a Recording, as with any other request made to the REST API.
 
 ```
 USAGE
@@ -93,7 +91,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/recordings/stream.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/recordings/stream.ts)_

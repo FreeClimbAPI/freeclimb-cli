@@ -6,7 +6,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class queueMembersDequeue extends Command {
-    static description = ` Dequeue the specified Member. The Member's Call will begin executing the PerCL script returned from the callback specified in the actionUrl parameter when the Member was added. For more information about actionUrl, see the Enqueue PerCL command.`
+    static description = ` Dequeue the specified Member. The Member's Call will begin executing the PerCL script returned from the callback specified in the actionUrl parameter when the Member was added.`
 
     static flags = {
         next: flags.boolean({ hidden: true }),
@@ -21,7 +21,7 @@ export class queueMembersDequeue extends Command {
         },
         {
             name: "callId",
-            description: "ID if the Call that the Member belongs to",
+            description: "ID if the Call that the Member belongs to.",
             required: true,
         },
     ]

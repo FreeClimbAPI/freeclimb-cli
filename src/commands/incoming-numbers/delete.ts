@@ -6,7 +6,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class incomingNumbersDelete extends Command {
-    static description = ` Delete the specified incoming number. FreeClimb will no longer answer calls to the number. When the phone number is no longer configured as an incoming phone number, it will be recycled and made available for purchase again after a three-day holding period. If successful, FreeClimb will return an HTTP 204 response with no body.`
+    static description = ` Delete the specified incoming number. FreeClimb will no longer answer calls to the number.`
 
     static flags = {
         next: flags.boolean({ hidden: true }),

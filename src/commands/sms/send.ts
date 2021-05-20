@@ -12,12 +12,7 @@ export class smsSend extends Command {
         notificationUrl: flags.string({
             char: "n",
             description:
-                "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters.  Note: This is a notification only; any PerCL returned is ignored.",
-            required: false,
-        }),
-        accountId: flags.string({
-            char: "a",
-            description: "String that uniquely identifies this account resource.",
+                "When the Message changes status, this URL is invoked using HTTP POST with the messageStatus parameters. Note: This is a notification only; any PerCL returned is ignored.",
             required: false,
         }),
         next: flags.boolean({ hidden: true }),
@@ -37,12 +32,7 @@ export class smsSend extends Command {
                 "Phone number to receive the message. Must be within FreeClimb's service area. For trial accounts, must be a Verified Number.",
             required: true,
         },
-        {
-            name: "text",
-            description:
-                "Text contained in the message (maximum 160 characters).   Note: For text, only ASCII characters are supported.",
-            required: true,
-        },
+        { name: "text", description: "Text contained in the message.", required: true },
     ]
 
     async run() {
@@ -82,7 +72,6 @@ export class smsSend extends Command {
                     to: args.to,
                     text: args.text,
                     notificationUrl: flags.notificationUrl,
-                    accountId: flags.accountId,
                 },
             },
             normalResponse

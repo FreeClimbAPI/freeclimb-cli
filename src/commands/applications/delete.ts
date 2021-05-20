@@ -6,8 +6,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class applicationsDelete extends Command {
-    static description = ` Delete the specified application. If this application's ID is assigned to any Incoming phone number, that relationship will be cleared.
-If successful, FreeClimb will return an HTTP 204 response with no body.`
+    static description = ` Delete the specified application. If this application's ID is assigned to any Incoming phone number, that relationship will be cleared.`
 
     static flags = {
         next: flags.boolean({ hidden: true }),

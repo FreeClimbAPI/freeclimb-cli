@@ -129,11 +129,13 @@ describe("calls:make Data Test", function () {
                 from: "userInput-from",
                 to: "userInput-to",
                 applicationId: "userInput-applicationId",
+                callConnectUrl: "userInput-callConnectUrl",
+                parentCallId: "userInput-parentCallId",
                 sendDigits: "userInput-sendDigits",
                 ifMachine: "userInput-ifMachine",
                 ifMachineUrl: "userInput-ifMachineUrl",
                 timeout: 10,
-                parentCallId: "userInput-parentCallId",
+                privacyMode: true,
             })
             .query({})
             .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
@@ -145,6 +147,10 @@ describe("calls:make Data Test", function () {
             "userInput-from",
             "userInput-to",
             "userInput-applicationId",
+            "--callConnectUrl",
+            "userInput-callConnectUrl",
+            "--parentCallId",
+            "userInput-parentCallId",
             "--sendDigits",
             "userInput-sendDigits",
             "--ifMachine",
@@ -153,8 +159,8 @@ describe("calls:make Data Test", function () {
             "userInput-ifMachineUrl",
             "--timeout",
             "10",
-            "--parentCallId",
-            "userInput-parentCallId",
+            "--privacyMode",
+            "true",
         ])
         .it(
             "testing all body parameters together and required query are sent through with request",
@@ -164,6 +170,62 @@ describe("calls:make Data Test", function () {
         )
 
     describe("calls:make body param flags", function () {
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .post(`/apiserver/Accounts/${await cred.accountId}/Calls`, {
+                    from: "userInput-from",
+                    to: "userInput-to",
+                    applicationId: "userInput-applicationId",
+                    callConnectUrl: "userInput-callConnectUrl",
+                })
+                .query({})
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command([
+                "calls:make",
+                "userInput-from",
+                "userInput-to",
+                "userInput-applicationId",
+                "--callConnectUrl",
+                "userInput-callConnectUrl",
+            ])
+            .it(
+                "required params and a body param is sent through with request-callConnectUrl",
+                async (ctx) => {
+                    expect(ctx.stdout).to.contain(nockServerResponse)
+                }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .post(`/apiserver/Accounts/${await cred.accountId}/Calls`, {
+                    from: "userInput-from",
+                    to: "userInput-to",
+                    applicationId: "userInput-applicationId",
+                    parentCallId: "userInput-parentCallId",
+                })
+                .query({})
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command([
+                "calls:make",
+                "userInput-from",
+                "userInput-to",
+                "userInput-applicationId",
+                "--parentCallId",
+                "userInput-parentCallId",
+            ])
+            .it(
+                "required params and a body param is sent through with request-parentCallId",
+                async (ctx) => {
+                    expect(ctx.stdout).to.contain(nockServerResponse)
+                }
+            )
+
         test.nock("https://www.freeclimb.com", async (api) =>
             api
                 .post(`/apiserver/Accounts/${await cred.accountId}/Calls`, {
@@ -306,7 +368,7 @@ describe("calls:make Data Test", function () {
                     from: "userInput-from",
                     to: "userInput-to",
                     applicationId: "userInput-applicationId",
-                    parentCallId: "userInput-parentCallId",
+                    privacyMode: true,
                 })
                 .query({})
                 .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
@@ -318,11 +380,11 @@ describe("calls:make Data Test", function () {
                 "userInput-from",
                 "userInput-to",
                 "userInput-applicationId",
-                "--parentCallId",
-                "userInput-parentCallId",
+                "--privacyMode",
+                "true",
             ])
             .it(
-                "required params and a body param is sent through with request-parentCallId",
+                "required params and a body param is sent through with request-privacyMode",
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponse)
                 }
@@ -353,6 +415,63 @@ describe("calls:make Data Test", function () {
             ])
             .exit(3)
             .it("Tests return of Exit Code 3 when flag next is not available")
+    })
+
+    describe("calls:make boolean input test", function () {
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .post(`/apiserver/Accounts/${await cred.accountId}/Calls`, {
+                    from: "userInput-from",
+                    to: "userInput-to",
+                    applicationId: "userInput-applicationId",
+                    callConnectUrl: "userInput-callConnectUrl",
+                    parentCallId: "userInput-parentCallId",
+                    sendDigits: "userInput-sendDigits",
+                    ifMachine: "userInput-ifMachine",
+                    ifMachineUrl: "userInput-ifMachineUrl",
+                    timeout: 10,
+                    privacyMode: false,
+                })
+                .query({})
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command([
+                "calls:make",
+                "userInput-from",
+                "userInput-to",
+                "userInput-applicationId",
+                "--callConnectUrl",
+                "userInput-callConnectUrl",
+                "--parentCallId",
+                "userInput-parentCallId",
+                "--sendDigits",
+                "userInput-sendDigits",
+                "--ifMachine",
+                "userInput-ifMachine",
+                "--ifMachineUrl",
+                "userInput-ifMachineUrl",
+                "--timeout",
+                "10",
+                "--privacyMode",
+                "false",
+            ])
+            .it("tests that value false can be used with boolean flags and args", async (ctx) => {
+                expect(ctx.stdout).to.contain(nockServerResponse)
+            })
+
+        test.stdout()
+            .command([
+                "calls:make",
+                "userInput-from",
+                "userInput-to",
+                "userInput-applicationId",
+                "--privacyMode",
+                "flse",
+            ])
+            .exit(2)
+            .it("tests incorrect privacyMode input results in exit code 2")
     })
 })
 

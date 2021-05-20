@@ -1,7 +1,7 @@
 `freeclimb call-queues`
 =======================
 
-Queues are the primary means of keeping callers waiting. A Queue is an object to hold callers until they can be provided the service they seek. Queues can be created ahead of time and are deleted automatically when they change state from populated to empty.
+Queues are the primary means of keeping callers waiting. Queues can be created ahead of time and are deleted automatically when they change state from populated to empty.
 
 * [`freeclimb call-queues:create`](#freeclimb-call-queuescreate)
 * [`freeclimb call-queues:get QUEUEID`](#freeclimb-call-queuesget-queueid)
@@ -37,7 +37,6 @@ ARGUMENTS
 
 OPTIONS
   -h, --help  show CLI help
-  -n, --next  Displays the next page of output.
 ```
 
 _See code: [src/commands/call-queues/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/call-queues/get.ts)_

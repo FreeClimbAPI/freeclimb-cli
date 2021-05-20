@@ -6,7 +6,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class conferencesUpdate extends Command {
-    static description = ` Update the properties of the specified conference. The statusCallbackUrl (specified upon creating the Conference) is invoked whenever a Conference is emptied or terminated. Participants are automatically disconnected. When updating the Conference status to terminated, FreeClimb returns an HTTP 204 response with no body. Once a Conference is terminated,FreeClimb will not reuse the conferenceId.`
+    static description = ` Update the properties of the specified conference.`
 
     static flags = {
         alias: flags.string({
@@ -22,8 +22,7 @@ export class conferencesUpdate extends Command {
         }),
         status: flags.string({
             char: "S",
-            description:
-                "New status of the conference. Valid values: empty or terminated. For more information, see Status Parameter below.**",
+            description: "New status of the conference. Valid values: empty or terminated.",
             required: false,
         }),
         next: flags.boolean({ hidden: true }),

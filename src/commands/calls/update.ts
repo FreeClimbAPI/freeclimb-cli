@@ -6,8 +6,7 @@ import { FreeClimbApi, FreeClimbResponse } from "../../freeclimb"
 import * as Errors from "../../errors"
 
 export class callsUpdate extends Command {
-    static description = ` Call hang up may take time. A 202 status code is returned if the hangup request was successfully queued by FreeClimb. Otherwise, an error code is returned. If successfully queued, the asynchronous callback for the result will occur after some time through the statusCallbackUrl.
-Any Call which is currently ringing is in progress from the point of view of FreeClimb, and requires a  status=completed to cancel it.`
+    static description = ` Call hang up may take time. A 202 status code is returned if the hangup request was successfully queued by FreeClimb. Otherwise, an error code is returned. If successfully queued, the asynchronous callback for the result will occur after some time through the statusCallbackUrl.`
 
     static flags = {
         next: flags.boolean({ hidden: true }),
@@ -23,7 +22,7 @@ Any Call which is currently ringing is in progress from the point of view of Fre
         {
             name: "status",
             description:
-                "Either canceled or completed.  Specifying canceled attempts to hang up calls that are queued without affecting calls already in progress. Specifying completed attempts to hang up a call already in progress.",
+                "Either canceled or completed. Specifying canceled attempts to hang up calls that are queued without affecting calls already in progress. Specifying completed attempts to hang up a call already in progress.",
             required: true,
         },
     ]

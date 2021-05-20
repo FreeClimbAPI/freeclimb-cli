@@ -109,7 +109,6 @@ describe("sms:list Data Test", function () {
                 beginTime: "userInput-beginTime",
                 endTime: "userInput-endTime",
                 direction: "userInput-direction",
-                accountID: "userInput-accountID",
             })
             .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
@@ -127,8 +126,6 @@ describe("sms:list Data Test", function () {
             "userInput-endTime",
             "--direction",
             "userInput-direction",
-            "--accountID",
-            "userInput-accountID",
         ])
         .it(
             "testing all query parameters and required body are sent through with request",
@@ -223,24 +220,6 @@ describe("sms:list Data Test", function () {
             .command(["sms:list", "--direction", "userInput-direction"])
             .it(
                 "required params and a query param is sent through with request-direction",
-                async (ctx) => {
-                    expect(ctx.stdout).to.contain(nockServerResponse)
-                }
-            )
-
-        test.nock("https://www.freeclimb.com", async (api) =>
-            api
-                .get(`/apiserver/Accounts/${await cred.accountId}/Messages`, {})
-                .query({
-                    accountID: "userInput-accountID",
-                })
-                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
-                .reply(200, testJson)
-        )
-            .stdout()
-            .command(["sms:list", "--accountID", "userInput-accountID"])
-            .it(
-                "required params and a query param is sent through with request-accountID",
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponse)
                 }
