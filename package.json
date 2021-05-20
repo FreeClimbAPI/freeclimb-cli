@@ -112,7 +112,7 @@
         "description": " An Application in FreeClimb is just a set of configuration data and URLs that FreeClimb invokes to notify the app of an event or to retrieve instructions on how to behave in response to an event, such as when one of the phone numbers associated with the Application receives a Call."
       },
       "accounts": {
-        "description": " You get a FreeClimb Account at signup. This includes an account ID and an authentication token . These two properties enable you to connect and communicate with FreeClimb."
+        "description": " You get a FreeClimb Account at signup. This includes an account ID (accountId) and an API key (apiKey). These two properties enable you to connect and communicate with FreeClimb." 
       }
     }
   },
