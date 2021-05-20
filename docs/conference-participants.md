@@ -24,7 +24,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/conference-participants/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/conference-participants/get.ts)_
+_See code: [src/commands/conference-participants/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/conference-participants/get.ts)_
 
 ## `freeclimb conference-participants:list CONFERENCEID`
 
@@ -44,7 +44,7 @@ OPTIONS
   -n, --next               Displays the next page of output.
 ```
 
-_See code: [src/commands/conference-participants/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/conference-participants/list.ts)_
+_See code: [src/commands/conference-participants/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/conference-participants/list.ts)_
 
 ## `freeclimb conference-participants:remove CONFERENCEID CALLID`
 
@@ -62,7 +62,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/conference-participants/remove.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/conference-participants/remove.ts)_
+_See code: [src/commands/conference-participants/remove.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/conference-participants/remove.ts)_
 
 ## `freeclimb conference-participants:update CONFERENCEID CALLID`
 
@@ -86,4 +86,4 @@ OPTIONS
                            FreeClimb returns an error and ignores any other value.
 ```
 
-_See code: [src/commands/conference-participants/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/conference-participants/update.ts)_
+_See code: [src/commands/conference-participants/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/conference-participants/update.ts)_

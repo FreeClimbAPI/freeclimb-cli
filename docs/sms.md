@@ -22,7 +22,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/sms/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/get.ts)_
+_See code: [src/commands/sms/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/sms/get.ts)_
 
 ## `freeclimb sms:list`
 
@@ -34,7 +34,6 @@ USAGE
 
 OPTIONS
   -T, --to=to                Only show Messages to this phone number.
-
   -b, --beginTime=beginTime  Only show Messages sent at or after this time (GMT), given as YYYY-MM-DD hh:mm:ss.
 
   -d, --direction=direction  Either inbound or outbound. Only show Messages that were either sent from or received by
@@ -49,7 +48,7 @@ OPTIONS
   -n, --next                 Displays the next page of output.
 ```
 
-_See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/list.ts)_
+_See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/sms/list.ts)_
 
 ## `freeclimb sms:send FROM TO TEXT`
 
@@ -75,4 +74,4 @@ OPTIONS
                                          is ignored.
 ```
 
-_See code: [src/commands/sms/send.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/sms/send.ts)_
+_See code: [src/commands/sms/send.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/sms/send.ts)_
