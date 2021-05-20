@@ -1,7 +1,7 @@
 `freeclimb accounts`
 ====================
 
-You get a FreeClimb Account at signup. This includes an account ID (accountId) and an API key (apiKey). These two properties enable you to connect and communicate with FreeClimb.
+You get a FreeClimb Account at signup. This includes an account ID and an API key. These two properties enable you to connect and communicate with FreeClimb.
 
 * [`freeclimb accounts:get`](#freeclimb-accountsget)
 * [`freeclimb accounts:manage`](#freeclimb-accountsmanage)
@@ -18,7 +18,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/accounts/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/accounts/get.ts)_
+_See code: [src/commands/accounts/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/accounts/get.ts)_
 
 ## `freeclimb accounts:manage`
 
@@ -34,4 +34,4 @@ OPTIONS
   -l, --label=label  Group to which this account belongs.
 ```
 
-_See code: [src/commands/accounts/manage.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.2.2/src/commands/accounts/manage.ts)_
+_See code: [src/commands/accounts/manage.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/accounts/manage.ts)_
