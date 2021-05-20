@@ -112,10 +112,6 @@
         "no-process-exit": "off",
         "unicorn/no-process-exit": "off"
       }
-    },
-    {
-      "files": ["src/error-messages.js"],
-      "rules": {}
     }
   ]
 }
