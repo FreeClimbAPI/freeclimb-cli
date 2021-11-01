@@ -7,7 +7,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ## [Unreleased]
 
-None
+- Upgraded dependancies  
 
 <a name="0.3.0"></a>
 
