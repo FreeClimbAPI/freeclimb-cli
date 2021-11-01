@@ -43,7 +43,7 @@ export class login extends Command {
             await cred.removeCredentials(-1)
             try {
                 await keytar.setPassword("FreeClimb", accountId, apiKey)
-            } catch (error) {
+            } catch (error: any) {
                 const err = new Errors.SetPasswordError(error.message)
                 this.error(err.message, { exit: err.code })
             }
