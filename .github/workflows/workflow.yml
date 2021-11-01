@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 16.x ]
+        node-version: [ 14.x ]
         os: [ ubuntu-latest ]
 
     steps:
@@ -34,14 +34,8 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 12.x, 14.x, 15.x ]
+        node-version: [ 12.x, 14.x, 16.x ]
         os: [ macos-latest, ubuntu-latest, windows-latest ]
-        exclude:
-          - os: windows-latest
-            node-version: 15.x # for some reason yarn install does not work with this specific version
-          - os: macos-latest
-            node-version: 15.x # there was a (temporary?) error with a socket connection in this version
-
     steps:
     - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
