@@ -39,7 +39,7 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-no-only-tests": "^2.4.0",
     "husky": "^7.0.2",
-    "lint-staged": "^11",
+    "lint-staged": "^12",
     "mocha": "^7",
     "nock": "^12.0.3",
     "nyc": "^15",
