@@ -106,12 +106,12 @@ describe("incoming-numbers:list Data Test", function () {
             .query({
                 phoneNumber: "userInput-phoneNumber",
                 alias: "userInput-alias",
-                applicationID: "userInput-applicationID",
+                applicationId: "userInput-applicationId",
                 hasApplication: true,
                 country: "userInput-country",
                 region: "userInput-region",
                 smsEnabled: true,
-                voiceEnables: true,
+                voiceEnabled: true,
             })
             .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
@@ -123,8 +123,8 @@ describe("incoming-numbers:list Data Test", function () {
             "userInput-phoneNumber",
             "--alias",
             "userInput-alias",
-            "--applicationID",
-            "userInput-applicationID",
+            "--applicationId",
+            "userInput-applicationId",
             "--hasApplication",
             "true",
             "--country",
@@ -133,7 +133,7 @@ describe("incoming-numbers:list Data Test", function () {
             "userInput-region",
             "--smsEnabled",
             "true",
-            "--voiceEnables",
+            "--voiceEnabled",
             "true",
         ])
         .it(
@@ -184,15 +184,15 @@ describe("incoming-numbers:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
                 .query({
-                    applicationID: "userInput-applicationID",
+                    applicationId: "userInput-applicationId",
                 })
                 .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
-            .command(["incoming-numbers:list", "--applicationID", "userInput-applicationID"])
+            .command(["incoming-numbers:list", "--applicationId", "userInput-applicationId"])
             .it(
-                "required params and a query param is sent through with request-applicationID",
+                "required params and a query param is sent through with request-applicationId",
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponse)
                 }
@@ -274,15 +274,15 @@ describe("incoming-numbers:list Data Test", function () {
             api
                 .get(`/apiserver/Accounts/${await cred.accountId}/IncomingPhoneNumbers`, {})
                 .query({
-                    voiceEnables: true,
+                    voiceEnabled: true,
                 })
                 .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
-            .command(["incoming-numbers:list", "--voiceEnables", "true"])
+            .command(["incoming-numbers:list", "--voiceEnabled", "true"])
             .it(
-                "required params and a query param is sent through with request-voiceEnables",
+                "required params and a query param is sent through with request-voiceEnabled",
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponse)
                 }
@@ -408,12 +408,12 @@ describe("incoming-numbers:list Data Test", function () {
                 .query({
                     phoneNumber: "userInput-phoneNumber",
                     alias: "userInput-alias",
-                    applicationID: "userInput-applicationID",
+                    applicationId: "userInput-applicationId",
                     hasApplication: false,
                     country: "userInput-country",
                     region: "userInput-region",
                     smsEnabled: false,
-                    voiceEnables: false,
+                    voiceEnabled: false,
                 })
                 .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
@@ -425,8 +425,8 @@ describe("incoming-numbers:list Data Test", function () {
                 "userInput-phoneNumber",
                 "--alias",
                 "userInput-alias",
-                "--applicationID",
-                "userInput-applicationID",
+                "--applicationId",
+                "userInput-applicationId",
                 "--hasApplication",
                 "false",
                 "--country",
@@ -435,7 +435,7 @@ describe("incoming-numbers:list Data Test", function () {
                 "userInput-region",
                 "--smsEnabled",
                 "false",
-                "--voiceEnables",
+                "--voiceEnabled",
                 "false",
             ])
             .it("tests that value false can be used with boolean flags and args", async (ctx) => {
@@ -453,9 +453,9 @@ describe("incoming-numbers:list Data Test", function () {
             .it("tests incorrect smsEnabled input results in exit code 2")
 
         test.stdout()
-            .command(["incoming-numbers:list", "--voiceEnables", "flse"])
+            .command(["incoming-numbers:list", "--voiceEnabled", "flse"])
             .exit(2)
-            .it("tests incorrect voiceEnables input results in exit code 2")
+            .it("tests incorrect voiceEnabled input results in exit code 2")
     })
 })
 

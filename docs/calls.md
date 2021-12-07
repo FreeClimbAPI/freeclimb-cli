@@ -43,7 +43,7 @@ OPTIONS
 
   -T, --to=to                      Only show Calls to this phone number.
 
-  -a, --active=true|false          Set true to list active calls. Flag is defalted to false.
+  -a, --active=true|false          Flag defaults to false. Set true to list active calls.
 
   -e, --endTime=endTime            Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.
 

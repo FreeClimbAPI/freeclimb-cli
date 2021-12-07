@@ -108,7 +108,7 @@ describe("available-numbers:list Data Test", function () {
                 country: "userInput-country",
                 region: "userInput-region",
                 smsEnabled: true,
-                voiceEnables: true,
+                voiceEnabled: true,
                 phoneNumber: "userInput-phoneNumber",
             })
             .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
@@ -125,7 +125,7 @@ describe("available-numbers:list Data Test", function () {
             "userInput-region",
             "--smsEnabled",
             "true",
-            "--voiceEnables",
+            "--voiceEnabled",
             "true",
             "--phoneNumber",
             "userInput-phoneNumber",
@@ -228,15 +228,15 @@ describe("available-numbers:list Data Test", function () {
             api
                 .get(`/apiserver/AvailablePhoneNumbers`, {})
                 .query({
-                    voiceEnables: true,
+                    voiceEnabled: true,
                 })
                 .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
                 .reply(200, testJson)
         )
             .stdout()
-            .command(["available-numbers:list", "--voiceEnables", "true"])
+            .command(["available-numbers:list", "--voiceEnabled", "true"])
             .it(
-                "required params and a query param is sent through with request-voiceEnables",
+                "required params and a query param is sent through with request-voiceEnabled",
                 async (ctx) => {
                     expect(ctx.stdout).to.contain(nockServerResponse)
                 }
@@ -385,7 +385,7 @@ describe("available-numbers:list Data Test", function () {
                     country: "userInput-country",
                     region: "userInput-region",
                     smsEnabled: false,
-                    voiceEnables: false,
+                    voiceEnabled: false,
                     phoneNumber: "userInput-phoneNumber",
                 })
                 .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
@@ -402,7 +402,7 @@ describe("available-numbers:list Data Test", function () {
                 "userInput-region",
                 "--smsEnabled",
                 "false",
-                "--voiceEnables",
+                "--voiceEnabled",
                 "false",
                 "--phoneNumber",
                 "userInput-phoneNumber",
@@ -417,9 +417,9 @@ describe("available-numbers:list Data Test", function () {
             .it("tests incorrect smsEnabled input results in exit code 2")
 
         test.stdout()
-            .command(["available-numbers:list", "--voiceEnables", "flse"])
+            .command(["available-numbers:list", "--voiceEnabled", "flse"])
             .exit(2)
-            .it("tests incorrect voiceEnables input results in exit code 2")
+            .it("tests incorrect voiceEnabled input results in exit code 2")
     })
 })
 

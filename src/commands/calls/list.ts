@@ -44,7 +44,7 @@ export class callsList extends Command {
         }),
         active: flags.string({
             char: "a",
-            description: "Set true to list active calls. Flag is defalted to false.",
+            description: "Flag defaults to false. Set true to list active calls.",
             required: false,
             options: ["true", "false"],
         }),

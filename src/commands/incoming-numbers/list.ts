@@ -21,38 +21,38 @@ export class incomingNumbersList extends Command {
                 "Only show incoming phone numbers with aliases that exactly match this value.",
             required: false,
         }),
-        applicationID: flags.string({
+        applicationId: flags.string({
             char: "A",
-            description: "Filters numbers attached to specific applicaiton ID.",
+            description: "Filters numbers by application ID.",
             required: false,
         }),
         hasApplication: flags.string({
             char: "h",
             description:
-                "Filters numbers based on whether or not they have an associated application.",
+                "Filters numbers by whether or not they are associated with an application.",
             required: false,
             options: ["true", "false"],
         }),
         country: flags.string({
             char: "C",
-            description: "Filters numbers based on ISO country code.",
+            description: "Filters numbers by two character ISO country code.",
             required: false,
         }),
         region: flags.string({
             char: "r",
             description:
-                "Filters numbers based on two letter state abrieviation. This flag is only available for US numbers.",
+                "Filters numbers by two letter state abbreviation. This flag is only available for US numbers.",
             required: false,
         }),
         smsEnabled: flags.string({
             char: "E",
-            description: "Filters numbers based on SMS capabilities.",
+            description: "Filters numbers based on SMS capability.",
             required: false,
             options: ["true", "false"],
         }),
-        voiceEnables: flags.string({
+        voiceEnabled: flags.string({
             char: "o",
-            description: "Filters numbers based on voice capabilities.",
+            description: "Filters numbers based on voice capability.",
             required: false,
             options: ["true", "false"],
         }),
@@ -113,9 +113,9 @@ export class incomingNumbersList extends Command {
         // flags.smsEnabled === "true" sets smsEnabled to the boolean representation of the flag
         const smsEnabled =
             typeof flags.smsEnabled === "undefined" ? undefined : flags.smsEnabled === "true"
-        // flags.voiceEnables === "true" sets voiceEnables to the boolean representation of the flag
-        const voiceEnables =
-            typeof flags.voiceEnables === "undefined" ? undefined : flags.voiceEnables === "true"
+        // flags.voiceEnabled === "true" sets voiceEnabled to the boolean representation of the flag
+        const voiceEnabled =
+            typeof flags.voiceEnabled === "undefined" ? undefined : flags.voiceEnabled === "true"
 
         await fcApi.apiCall(
             "GET",
@@ -123,12 +123,12 @@ export class incomingNumbersList extends Command {
                 params: {
                     phoneNumber: flags.phoneNumber,
                     alias: flags.alias,
-                    applicationID: flags.applicationID,
+                    applicationId: flags.applicationId,
                     hasApplication: hasApplication,
                     country: flags.country,
                     region: flags.region,
                     smsEnabled: smsEnabled,
-                    voiceEnables: voiceEnables,
+                    voiceEnabled: voiceEnabled,
                 },
             },
             normalResponse

@@ -305,28 +305,28 @@
             "paramType": "query",
             "required": false,
             "dataType": "string",
-            "description": "Filters numbers based on ISO country code"
+            "description": "Filters numbers by two character ISO country code."
           },
           {
             "name": "region",
             "paramType": "query",
             "required": false,
             "dataType": "string",
-            "description": "Filters numbers based on two letter state abrieviation. This flag is only available for US numbers"
+            "description": "Filters numbers by two letter state abbreviation. This flag is only available for US numbers."
           },
           {
             "name": "smsEnabled",
             "paramType": "query",
             "required": false,
             "dataType": "boolean",
-            "description": "Filters numbers based on SMS capabilities."
+            "description": "Filters numbers based on SMS capability."
           },
           {
-            "name": "voiceEnables",
+            "name": "voiceEnabled",
             "paramType": "query",
             "required": false,
             "dataType": "boolean",
-            "description": "Filters numbers based on voice capabilities."
+            "description": "Filters numbers based on voice capability."
           },
           {
             "name": "phoneNumber",
@@ -610,7 +610,7 @@
             "paramType": "query",
             "required": false,
             "dataType": "boolean",
-            "description": "Set true to list active calls. Flag is defalted to false."
+            "description": "Flag defaults to false. Set true to list active calls."
           },
           {
             "name": "accountId",
@@ -1194,46 +1194,46 @@
             "description": "Only show incoming phone numbers with aliases that exactly match this value."
           },
           {
-            "name": "applicationID",
+            "name": "applicationId",
             "paramType": "query",
             "required": false,
             "dataType": "string",
-            "description": "Filters numbers attached to specific applicaiton ID."
+            "description": "Filters numbers by application ID."
           },
           {
             "name": "hasApplication",
             "paramType": "query",
             "required": false,
             "dataType": "boolean",
-            "description": "Filters numbers based on whether or not they have an associated application."
+            "description": "Filters numbers by whether or not they are associated with an application."
           },
           {
             "name": "country",
             "paramType": "query",
             "required": false,
             "dataType": "string",
-            "description": "Filters numbers based on ISO country code."
+            "description": "Filters numbers by two character ISO country code."
           },
           {
             "name": "region",
             "paramType": "query",
             "required": false,
             "dataType": "string",
-            "description": "Filters numbers based on two letter state abrieviation. This flag is only available for US numbers."
+            "description": "Filters numbers by two letter state abbreviation. This flag is only available for US numbers."
           },
           {
             "name": "smsEnabled",
             "paramType": "query",
             "required": false,
             "dataType": "boolean",
-            "description": "Filters numbers based on SMS capabilities."
+            "description": "Filters numbers based on SMS capability."
           },
           {
-            "name": "voiceEnables",
+            "name": "voiceEnabled",
             "paramType": "query",
             "required": false,
             "dataType": "boolean",
-            "description": "Filters numbers based on voice capabilities."
+            "description": "Filters numbers based on voice capability."
           },
           {
             "name": "accountId",
