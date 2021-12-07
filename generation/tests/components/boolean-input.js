@@ -7,7 +7,7 @@
  * necessary component for generating test files. Changes made to this
  * file may affect generated test files.
  */
-const TestInstance = require("../outline.js")
+import TestInstance from "../outline.js"
 
 let falseBooleanInputTest = function (additionalParam) {
     const falseParams = additionalParam.filter((param) => param.dataType === "boolean")
@@ -30,7 +30,7 @@ let falseBooleanInputTest = function (additionalParam) {
 }
 
 function exitTest(information, param) {
-    test = ""
+    let test = ""
     const exitTest = new TestInstance(
         information,
         param,
@@ -41,4 +41,4 @@ function exitTest(information, param) {
     test += `${exitTest.testExitCodeOutline()}\n\n`
     return test
 }
-module.exports = falseBooleanInputTest
+export {falseBooleanInputTest}

@@ -7,7 +7,7 @@
  * necessary component for generating test files. Changes made to this
  * file may affect generated test files.
  */
-const TestInstance = require("../outline.js")
+import TestInstance from "../outline.js"
 
 const testJson = ["testJsonStatus", ""]
 const nockServerResponse = [
@@ -24,4 +24,4 @@ let statusCodeTest = function (additionalParams) {
     return `${statusCodeTestInstance.variableOutline()}\n\n${statusCodeTestInstance.testOutline()}`
 }
 
-module.exports = statusCodeTest
+export {statusCodeTest}

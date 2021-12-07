@@ -7,7 +7,7 @@
  * for generating test files. Changes made to this file may affect generated test
  * files.
  */
-const TestInstance = require("../outline.js")
+import TestInstance from "../outline.js"
 
 const releventCommands = ["logs:filter", "logs:list"]
 
@@ -86,4 +86,4 @@ let maxItemFlagTest = function (additionalParam) {
     return ""
 }
 
-module.exports = maxItemFlagTest
+export {maxItemFlagTest}

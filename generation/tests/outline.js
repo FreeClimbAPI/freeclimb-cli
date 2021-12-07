@@ -378,4 +378,4 @@ TestOutline.prototype.testWarnOutline = function () {
     .it("${this.message}")\n`
 }
 
-module.exports = TestOutline
+export default TestOutline

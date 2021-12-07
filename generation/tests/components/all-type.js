@@ -6,7 +6,7 @@
  * a part of the CLI but rather a necessary component for generating test
  * files. Changes made to this file may affect generated test files.
  */
-const TestInstance = require("../outline.js")
+import TestInstance from "../outline.js"
 
 let allTypeTest = function (additionalParam, message) {
     if (additionalParam.length > 1) {
@@ -15,4 +15,4 @@ let allTypeTest = function (additionalParam, message) {
     }
     return ""
 }
-module.exports = allTypeTest
+export {allTypeTest}

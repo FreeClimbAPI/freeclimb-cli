@@ -7,7 +7,7 @@
  * necessary component for generating test files. Changes made to this
  * file may affect generated test files.
  */
-const TestInstance = require("../outline.js")
+import TestInstance from "../outline.js"
 
 const formatedAlias = ["available-numbers:list"]
 
@@ -38,7 +38,7 @@ let optionalTypeTest = function (additionalParam, paramType) {
 }
 
 function exitTest(information, param, max, min) {
-    test = ""
+    let test = ""
     const exitTest = new TestInstance(
         information,
         param,
@@ -63,4 +63,4 @@ function formatedAliasTest(information, param) {
     return `${aliasTest.testWarnOutline()}\n\n`
 }
 
-module.exports = optionalTypeTest
+export {optionalTypeTest}

@@ -7,7 +7,7 @@
  * necessary component for generating test files. Changes made to this
  * file may affect generated test files.
  */
-const TestInstance = require("../outline.js")
+import TestInstance from "../outline.js"
 
 const nextTestJson = [
     "testJsonNext",
@@ -89,4 +89,4 @@ let nextFlagTest = function (additionalParam, isPagination) {
     return test
 }
 
-module.exports = nextFlagTest
+export {nextFlagTest}

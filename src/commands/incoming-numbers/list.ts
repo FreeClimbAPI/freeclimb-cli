@@ -21,6 +21,41 @@ export class incomingNumbersList extends Command {
                 "Only show incoming phone numbers with aliases that exactly match this value.",
             required: false,
         }),
+        applicationID: flags.string({
+            char: "A",
+            description: "Filters numbers attached to specific applicaiton ID.",
+            required: false,
+        }),
+        hasApplication: flags.string({
+            char: "h",
+            description:
+                "Filters numbers based on whether or not they have an associated application.",
+            required: false,
+            options: ["true", "false"],
+        }),
+        country: flags.string({
+            char: "C",
+            description: "Filters numbers based on ISO country code.",
+            required: false,
+        }),
+        region: flags.string({
+            char: "r",
+            description:
+                "Filters numbers based on two letter state abrieviation. This flag is only available for US numbers.",
+            required: false,
+        }),
+        smsEnabled: flags.string({
+            char: "E",
+            description: "Filters numbers based on SMS capabilities.",
+            required: false,
+            options: ["true", "false"],
+        }),
+        voiceEnables: flags.string({
+            char: "o",
+            description: "Filters numbers based on voice capabilities.",
+            required: false,
+            options: ["true", "false"],
+        }),
         next: flags.boolean({ char: "n", description: "Displays the next page of output." }),
         help: flags.help({ char: "h" }),
     }
@@ -70,12 +105,30 @@ export class incomingNumbersList extends Command {
             return
         }
 
+        // flags.hasApplication === "true" sets hasApplication to the boolean representation of the flag
+        const hasApplication =
+            typeof flags.hasApplication === "undefined"
+                ? undefined
+                : flags.hasApplication === "true"
+        // flags.smsEnabled === "true" sets smsEnabled to the boolean representation of the flag
+        const smsEnabled =
+            typeof flags.smsEnabled === "undefined" ? undefined : flags.smsEnabled === "true"
+        // flags.voiceEnables === "true" sets voiceEnables to the boolean representation of the flag
+        const voiceEnables =
+            typeof flags.voiceEnables === "undefined" ? undefined : flags.voiceEnables === "true"
+
         await fcApi.apiCall(
             "GET",
             {
                 params: {
                     phoneNumber: flags.phoneNumber,
                     alias: flags.alias,
+                    applicationID: flags.applicationID,
+                    hasApplication: hasApplication,
+                    country: flags.country,
+                    region: flags.region,
+                    smsEnabled: smsEnabled,
+                    voiceEnables: voiceEnables,
                 },
             },
             normalResponse

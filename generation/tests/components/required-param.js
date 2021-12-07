@@ -7,7 +7,7 @@
  * necessary component for generating test files. Changes made to this
  * file may affect generated test files.
  */
-const TestInstance = require("../outline.js")
+import TestInstance from "../outline.js"
 
 const formatedPQL = ["logs:filter"]
 const testJsonErrorNoSuggestion = [
@@ -95,4 +95,4 @@ function formatedPQLTest(information, additionalParams) {
     return `\n\n${formatedPQLTestInstance.testWarnOutline()}`
 }
 
-module.exports = requiredParamTest
+export {requiredParamTest}

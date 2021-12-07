@@ -6,11 +6,12 @@
  * component for generating test files. Changes made to this file may affect
  * generated test files.
  */
-const fs = require("fs")
-const { exec } = require("child_process")
-const { parseCommandLine } = require("typescript")
-const apiInfo = require("../schema/generated-api-schema.json")
-const Tests = require("./cases")
+import * as fs from 'fs';
+import {exec} from "child_process";
+//import {parseCommandLine} from "typescript";
+import {Tests} from "./cases.js"
+import apiInfo from "../schema/generated-api-schema.js"
+
 
 // Create src/commands if directory does not already exist
 fs.mkdirSync("./test/commands", { recursive: true })

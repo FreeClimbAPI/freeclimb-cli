@@ -14,6 +14,29 @@ export class availableNumbersList extends Command {
             description: "Filter on numbers based on the formatted string of the phone number.",
             required: false,
         }),
+        country: flags.string({
+            char: "C",
+            description: "Filters numbers based on ISO country code",
+            required: false,
+        }),
+        region: flags.string({
+            char: "r",
+            description:
+                "Filters numbers based on two letter state abrieviation. This flag is only available for US numbers",
+            required: false,
+        }),
+        smsEnabled: flags.string({
+            char: "E",
+            description: "Filters numbers based on SMS capabilities.",
+            required: false,
+            options: ["true", "false"],
+        }),
+        voiceEnables: flags.string({
+            char: "o",
+            description: "Filters numbers based on voice capabilities.",
+            required: false,
+            options: ["true", "false"],
+        }),
         phoneNumber: flags.string({
             char: "p",
             description:
@@ -74,11 +97,22 @@ export class availableNumbersList extends Command {
             )
         }
 
+        // flags.smsEnabled === "true" sets smsEnabled to the boolean representation of the flag
+        const smsEnabled =
+            typeof flags.smsEnabled === "undefined" ? undefined : flags.smsEnabled === "true"
+        // flags.voiceEnables === "true" sets voiceEnables to the boolean representation of the flag
+        const voiceEnables =
+            typeof flags.voiceEnables === "undefined" ? undefined : flags.voiceEnables === "true"
+
         await fcApi.apiCall(
             "GET",
             {
                 params: {
                     alias: flags.alias,
+                    country: flags.country,
+                    region: flags.region,
+                    smsEnabled: smsEnabled,
+                    voiceEnables: voiceEnables,
                     phoneNumber: flags.phoneNumber,
                 },
             },
