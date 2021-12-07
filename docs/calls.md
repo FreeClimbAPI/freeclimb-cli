@@ -43,6 +43,8 @@ OPTIONS
 
   -T, --to=to                      Only show Calls to this phone number.
 
+  -a, --active=true|false          Set true to list active calls. Flag is defalted to false.
+
   -e, --endTime=endTime            Only show Calls that ended at or before this time, given as YYYY-MM- DD hh:mm:ss.
 
   -f, --from=from                  Only show Calls from this phone number.
@@ -103,37 +105,37 @@ USAGE
 
 ARGUMENTS
   FROM
-      Phone number to use as the caller ID. This can be: (a) The To or From number provided in FreeClimb's initial request 
+      Phone number to use as the caller ID. This can be: (a) The To or From number provided in FreeClimb's initial request
       to your app or (b) Any incoming phone number you have purchased from FreeClimb.
 
   TO
       Phone number to place the Call to. For trial accounts, this must be a Verified Number.
 
   APPLICATIONID
-      ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the callConnectUrl and 
-      statusCallbackUrl set on the application unless the callConnectUrl attribute is also provided with the request. In 
-      this case, the URL specified in that callConnectUrl attribute will be used as a replacement of the callConnectUrl 
-      originally assigned in the application. The application must have a callConnectUrl associated with it or an error 
+      ID of the application FreeClimb should use to handle this phone call. FreeClimb will use the callConnectUrl and
+      statusCallbackUrl set on the application unless the callConnectUrl attribute is also provided with the request. In
+      this case, the URL specified in that callConnectUrl attribute will be used as a replacement of the callConnectUrl
+      originally assigned in the application. The application must have a callConnectUrl associated with it or an error
       will be returned. The application’s voiceUrl parameter is not used for outbound calls.
 
 OPTIONS
   -I, --ifMachineUrl=ifMachineUrl
-      This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax 
-      machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup, 
+      This attribute specifies a URL to which FreeClimb will make a POST request when an answering machine or a fax
+      machine is detected. This URL is required if the ifMachine flag is set to redirect. When ifMachine is set to hangup,
       ifMachineUrl must not be included in the request.
 
   -P, --parentCallId=parentCallId
-      Required if no applicationId or callConnecturl have been provided. The ID of the parent Call in the case that this 
-      new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to 
-      reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a 
-      parent once the call is in progress or as an inbound call that is still ringing. An outbound call is considered to 
-      be in progress once the outdialConnect or outdialApiConnect webhook is invoked. An inbound call is ringing when the 
-      inbound webhook is invoked. If a callConnectUrl attribute is also included with the parentCallId in the request, 
+      Required if no applicationId or callConnecturl have been provided. The ID of the parent Call in the case that this
+      new Call is meant to be treated as a child of an existing Call. This attribute should be included when possible to
+      reduce latency when adding child calls to Conferences containing the parent Call. A call can only be used as a
+      parent once the call is in progress or as an inbound call that is still ringing. An outbound call is considered to
+      be in progress once the outdialConnect or outdialApiConnect webhook is invoked. An inbound call is ringing when the
+      inbound webhook is invoked. If a callConnectUrl attribute is also included with the parentCallId in the request,
       this URL will be used as a replacement of the callConnectUrl originally assigned in the parent call.
 
   -c, --callConnectUrl=callConnectUrl
-      The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been 
-      provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in 
+      The URL that FreeClimb should use to handle this phone call. If an applicationId or parentCallId have already been
+      provided, this callConnectUrl attribute will be used as a replacement of the callConnectUrl originally assigned in
       the application or parent call.
 
   -h, --help
@@ -143,18 +145,18 @@ OPTIONS
       Specifies how FreeClimb should handle this Call if an answering machine answers it.
 
   -p, --privacyMode=true|false
-      Indicates if the request contains sensitive information which should be hidden. When set to true, the contents of 
+      Indicates if the request contains sensitive information which should be hidden. When set to true, the contents of
       the sendDigits field will be replaced with the string XXXXX in the logs.
 
   -s, --sendDigits=sendDigits
-      String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a 
-      pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234# 
-      will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified 
+      String of digits to dial after connecting to the number. It can include digits 0-9, *, and #, and allows embedding a
+      pause between the output of individual digits. The default pause is 500 milliseconds. So, a string such as 1234#
+      will be played in 2 seconds because of the 4 standard pauses implied within the string. A custom pause is specified
       by including a positive integer wrapped in curly braces: {n}.
 
   -t, --timeout=timeout
-      Number of seconds that FreeClimb should allow the phone to ring before assuming there is no answer. Default is 30 
-      seconds. Maximum allowed ring-time is determined by the target phone's provider. Note that most providers limit 
+      Number of seconds that FreeClimb should allow the phone to ring before assuming there is no answer. Default is 30
+      seconds. Maximum allowed ring-time is determined by the target phone's provider. Note that most providers limit
       ring-time to 120 seconds.
 ```
 

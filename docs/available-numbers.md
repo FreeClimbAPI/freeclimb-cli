@@ -14,12 +14,18 @@ USAGE
   $ freeclimb available-numbers:list
 
 OPTIONS
+  -C, --country=country          Filters numbers based on ISO country code
+  -E, --smsEnabled=true|false    Filters numbers based on SMS capabilities.
   -a, --alias=alias              Filter on numbers based on the formatted string of the phone number.
   -h, --help                     show CLI help
   -n, --next                     Displays the next page of output.
+  -o, --voiceEnables=true|false  Filters numbers based on voice capabilities.
 
   -p, --phoneNumber=phoneNumber  PCRE-compatible regular expression to filter against phoneNumber field, which is in
                                  E.164 format.
+
+  -r, --region=region            Filters numbers based on two letter state abrieviation. This flag is only available for
+                                 US numbers
 ```
 
 _See code: [src/commands/available-numbers/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/available-numbers/list.ts)_
