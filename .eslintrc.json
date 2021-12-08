@@ -14,6 +14,7 @@
   },
   "rules": {
     "no-await-in-loop": ["warn"],
+    "node/no-extraneous-import": "off",
     "prefer-destructuring": ["error", { "object": true, "array": false }],
     // deprecated - eventually use node/global-require
     "global-require": ["warn"],

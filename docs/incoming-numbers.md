@@ -71,12 +71,20 @@ USAGE
   $ freeclimb incoming-numbers:list
 
 OPTIONS
-  -a, --alias=alias              Only show incoming phone numbers with aliases that exactly match this value.
-  -h, --help                     show CLI help
-  -n, --next                     Displays the next page of output.
+  -A, --applicationId=applicationId  Filters numbers by application ID.
+  -C, --country=country              Filters numbers by two character ISO country code.
+  -E, --smsEnabled=true|false        Filters numbers based on SMS capability.
+  -a, --alias=alias                  Only show incoming phone numbers with aliases that exactly match this value.
+  -h, --hasApplication=true|false    Filters numbers by whether or not they are associated with an application.
+  -h, --help                         show CLI help
+  -n, --next                         Displays the next page of output.
+  -o, --voiceEnabled=true|false      Filters numbers based on voice capability.
 
-  -p, --phoneNumber=phoneNumber  Only show incoming phone number resources that match this PCRE-compatible regular
-                                 expression.
+  -p, --phoneNumber=phoneNumber      Only show incoming phone number resources that match this PCRE-compatible regular
+                                     expression.
+
+  -r, --region=region                Filters numbers by two letter state abbreviation. This flag is only available for
+                                     US numbers.
 ```
 
 _See code: [src/commands/incoming-numbers/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/incoming-numbers/list.ts)_

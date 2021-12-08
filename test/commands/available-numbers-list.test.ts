@@ -105,6 +105,10 @@ describe("available-numbers:list Data Test", function () {
             .get(`/apiserver/AvailablePhoneNumbers`, {})
             .query({
                 alias: "123-456-7890",
+                country: "userInput-country",
+                region: "userInput-region",
+                smsEnabled: true,
+                voiceEnabled: true,
                 phoneNumber: "userInput-phoneNumber",
             })
             .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
@@ -115,6 +119,14 @@ describe("available-numbers:list Data Test", function () {
             "available-numbers:list",
             "--alias",
             "123-456-7890",
+            "--country",
+            "userInput-country",
+            "--region",
+            "userInput-region",
+            "--smsEnabled",
+            "true",
+            "--voiceEnabled",
+            "true",
             "--phoneNumber",
             "userInput-phoneNumber",
         ])
@@ -157,6 +169,78 @@ describe("available-numbers:list Data Test", function () {
             .command(["available-numbers:list", "--alias", "123-456-789"])
             .hook("warn")
             .it("test that an incorrectly formated alias is responds with a warning")
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/AvailablePhoneNumbers`, {})
+                .query({
+                    country: "userInput-country",
+                })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command(["available-numbers:list", "--country", "userInput-country"])
+            .it(
+                "required params and a query param is sent through with request-country",
+                async (ctx) => {
+                    expect(ctx.stdout).to.contain(nockServerResponse)
+                }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/AvailablePhoneNumbers`, {})
+                .query({
+                    region: "userInput-region",
+                })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command(["available-numbers:list", "--region", "userInput-region"])
+            .it(
+                "required params and a query param is sent through with request-region",
+                async (ctx) => {
+                    expect(ctx.stdout).to.contain(nockServerResponse)
+                }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/AvailablePhoneNumbers`, {})
+                .query({
+                    smsEnabled: true,
+                })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command(["available-numbers:list", "--smsEnabled", "true"])
+            .it(
+                "required params and a query param is sent through with request-smsEnabled",
+                async (ctx) => {
+                    expect(ctx.stdout).to.contain(nockServerResponse)
+                }
+            )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/AvailablePhoneNumbers`, {})
+                .query({
+                    voiceEnabled: true,
+                })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command(["available-numbers:list", "--voiceEnabled", "true"])
+            .it(
+                "required params and a query param is sent through with request-voiceEnabled",
+                async (ctx) => {
+                    expect(ctx.stdout).to.contain(nockServerResponse)
+                }
+            )
 
         test.nock("https://www.freeclimb.com", async (api) =>
             api
@@ -290,6 +374,52 @@ describe("available-numbers:list Data Test", function () {
                 "Test error is caught when when using next flag and no reponse is given",
                 async (ctx) => {}
             )
+    })
+
+    describe("available-numbers:list boolean input test", function () {
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/AvailablePhoneNumbers`, {})
+                .query({
+                    alias: "123-456-7890",
+                    country: "userInput-country",
+                    region: "userInput-region",
+                    smsEnabled: false,
+                    voiceEnabled: false,
+                    phoneNumber: "userInput-phoneNumber",
+                })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command([
+                "available-numbers:list",
+                "--alias",
+                "123-456-7890",
+                "--country",
+                "userInput-country",
+                "--region",
+                "userInput-region",
+                "--smsEnabled",
+                "false",
+                "--voiceEnabled",
+                "false",
+                "--phoneNumber",
+                "userInput-phoneNumber",
+            ])
+            .it("tests that value false can be used with boolean flags and args", async (ctx) => {
+                expect(ctx.stdout).to.contain(nockServerResponse)
+            })
+
+        test.stdout()
+            .command(["available-numbers:list", "--smsEnabled", "flse"])
+            .exit(2)
+            .it("tests incorrect smsEnabled input results in exit code 2")
+
+        test.stdout()
+            .command(["available-numbers:list", "--voiceEnabled", "flse"])
+            .exit(2)
+            .it("tests incorrect voiceEnabled input results in exit code 2")
     })
 })
 
