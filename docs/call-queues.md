@@ -22,7 +22,7 @@ OPTIONS
   -h, --help             show CLI help
 ```
 
-_See code: [src/commands/call-queues/create.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/call-queues/create.ts)_
+_See code: [src/commands/call-queues/create.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/call-queues/create.ts)_
 
 ## `freeclimb call-queues:get QUEUEID`
 
@@ -39,7 +39,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/call-queues/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/call-queues/get.ts)_
+_See code: [src/commands/call-queues/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/call-queues/get.ts)_
 
 ## `freeclimb call-queues:list`
 
@@ -55,7 +55,7 @@ OPTIONS
   -n, --next         Displays the next page of output.
 ```
 
-_See code: [src/commands/call-queues/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/call-queues/list.ts)_
+_See code: [src/commands/call-queues/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/call-queues/list.ts)_
 
 ## `freeclimb call-queues:update QUEUEID`
 
@@ -78,4 +78,4 @@ OPTIONS
   -h, --help             show CLI help
 ```
 
-_See code: [src/commands/call-queues/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/call-queues/update.ts)_
+_See code: [src/commands/call-queues/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/call-queues/update.ts)_
