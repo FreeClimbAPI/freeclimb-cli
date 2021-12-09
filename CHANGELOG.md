@@ -15,8 +15,6 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 -   query params to available numbers
 -   query params to calls list numbers
 
-<a name="0.3.0"></a>
-
 ## [0.3.0] - 2021-04-07
 
 ### Added
