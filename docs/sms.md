@@ -22,7 +22,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/sms/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/sms/get.ts)_
+_See code: [src/commands/sms/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/sms/get.ts)_
 
 ## `freeclimb sms:list`
 
@@ -48,7 +48,7 @@ OPTIONS
   -n, --next                 Displays the next page of output.
 ```
 
-_See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/sms/list.ts)_
+_See code: [src/commands/sms/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/sms/list.ts)_
 
 ## `freeclimb sms:send FROM TO TEXT`
 
@@ -74,4 +74,4 @@ OPTIONS
                                          is ignored.
 ```
 
-_See code: [src/commands/sms/send.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.3.0/src/commands/sms/send.ts)_
+_See code: [src/commands/sms/send.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/sms/send.ts)_
