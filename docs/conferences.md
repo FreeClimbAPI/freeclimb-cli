@@ -34,7 +34,7 @@ OPTIONS
                                              fetched just once - when the Conference is created.
 ```
 
-_See code: [src/commands/conferences/create.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/conferences/create.ts)_
+_See code: [src/commands/conferences/create.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.1/src/commands/conferences/create.ts)_
 
 ## `freeclimb conferences:get CONFERENCEID`
 
@@ -51,7 +51,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/conferences/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/conferences/get.ts)_
+_See code: [src/commands/conferences/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.1/src/commands/conferences/get.ts)_
 
 ## `freeclimb conferences:list`
 
@@ -77,7 +77,7 @@ OPTIONS
   -n, --next                     Displays the next page of output.
 ```
 
-_See code: [src/commands/conferences/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/conferences/list.ts)_
+_See code: [src/commands/conferences/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.1/src/commands/conferences/list.ts)_
 
 ## `freeclimb conferences:update CONFERENCEID`
 
@@ -97,4 +97,4 @@ OPTIONS
   -h, --help               show CLI help
 ```
 
-_See code: [src/commands/conferences/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/conferences/update.ts)_
+_See code: [src/commands/conferences/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.1/src/commands/conferences/update.ts)_

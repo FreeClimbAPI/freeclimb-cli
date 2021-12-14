@@ -26,7 +26,7 @@ OPTIONS
   -t, --tail             Polls the FreeClimb API to retrieve and display new logs as they occur.
 ```
 
-_See code: [src/commands/logs/filter.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/logs/filter.ts)_
+_See code: [src/commands/logs/filter.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.1/src/commands/logs/filter.ts)_
 
 ## `freeclimb logs:list`
 
@@ -45,4 +45,4 @@ OPTIONS
   -t, --tail             Polls the FreeClimb API to retrieve and display new logs as they occur.
 ```
 
-_See code: [src/commands/logs/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/logs/list.ts)_
+_See code: [src/commands/logs/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.1/src/commands/logs/list.ts)_
