@@ -110,6 +110,7 @@ describe("calls:list Data Test", function () {
                 startTime: "userInput-startTime",
                 endTime: "userInput-endTime",
                 parentCallId: "userInput-parentCallId",
+                active: true,
             })
             .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
             .reply(200, testJson)
@@ -129,6 +130,8 @@ describe("calls:list Data Test", function () {
             "userInput-endTime",
             "--parentCallId",
             "userInput-parentCallId",
+            "--active",
+            "true",
         ])
         .it(
             "testing all query parameters and required body are sent through with request",
@@ -245,6 +248,24 @@ describe("calls:list Data Test", function () {
                     expect(ctx.stdout).to.contain(nockServerResponse)
                 }
             )
+
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Calls`, {})
+                .query({
+                    active: true,
+                })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command(["calls:list", "--active", "true"])
+            .it(
+                "required params and a query param is sent through with request-active",
+                async (ctx) => {
+                    expect(ctx.stdout).to.contain(nockServerResponse)
+                }
+            )
     })
 
     describe("calls:list next flag test", function () {
@@ -351,6 +372,50 @@ describe("calls:list Data Test", function () {
                 "Test error is caught when when using next flag and no reponse is given",
                 async (ctx) => {}
             )
+    })
+
+    describe("calls:list boolean input test", function () {
+        test.nock("https://www.freeclimb.com", async (api) =>
+            api
+                .get(`/apiserver/Accounts/${await cred.accountId}/Calls`, {})
+                .query({
+                    to: "userInput-to",
+                    from: "userInput-from",
+                    status: "userInput-status",
+                    startTime: "userInput-startTime",
+                    endTime: "userInput-endTime",
+                    parentCallId: "userInput-parentCallId",
+                    active: false,
+                })
+                .basicAuth({ user: await cred.accountId, pass: await cred.apiKey })
+                .reply(200, testJson)
+        )
+            .stdout()
+            .command([
+                "calls:list",
+                "--to",
+                "userInput-to",
+                "--from",
+                "userInput-from",
+                "--status",
+                "userInput-status",
+                "--startTime",
+                "userInput-startTime",
+                "--endTime",
+                "userInput-endTime",
+                "--parentCallId",
+                "userInput-parentCallId",
+                "--active",
+                "false",
+            ])
+            .it("tests that value false can be used with boolean flags and args", async (ctx) => {
+                expect(ctx.stdout).to.contain(nockServerResponse)
+            })
+
+        test.stdout()
+            .command(["calls:list", "--active", "flse"])
+            .exit(2)
+            .it("tests incorrect active input results in exit code 2")
     })
 })
 
