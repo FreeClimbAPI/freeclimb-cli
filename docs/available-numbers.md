@@ -28,4 +28,4 @@ OPTIONS
                                  numbers.
 ```
 
-_See code: [src/commands/available-numbers/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/available-numbers/list.ts)_
+_See code: [src/commands/available-numbers/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.0/src/commands/available-numbers/list.ts)_

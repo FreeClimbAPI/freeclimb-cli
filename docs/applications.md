@@ -47,7 +47,7 @@ OPTIONS
                                              PerCL response is expected to control the inbound call.
 ```
 
-_See code: [src/commands/applications/create.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/applications/create.ts)_
+_See code: [src/commands/applications/create.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.0/src/commands/applications/create.ts)_
 
 ## `freeclimb applications:delete APPLICATIONID`
 
@@ -64,7 +64,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/applications/delete.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/applications/delete.ts)_
+_See code: [src/commands/applications/delete.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.0/src/commands/applications/delete.ts)_
 
 ## `freeclimb applications:get APPLICATIONID`
 
@@ -81,7 +81,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/applications/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/applications/get.ts)_
+_See code: [src/commands/applications/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.0/src/commands/applications/get.ts)_
 
 ## `freeclimb applications:list`
 
@@ -97,7 +97,7 @@ OPTIONS
   -n, --next         Displays the next page of output.
 ```
 
-_See code: [src/commands/applications/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/applications/list.ts)_
+_See code: [src/commands/applications/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.0/src/commands/applications/list.ts)_
 
 ## `freeclimb applications:update APPLICATIONID`
 
@@ -140,4 +140,4 @@ OPTIONS
                                              number assigned to this application. Used only for inbound calls.
 ```
 
-_See code: [src/commands/applications/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/applications/update.ts)_
+_See code: [src/commands/applications/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.0/src/commands/applications/update.ts)_
