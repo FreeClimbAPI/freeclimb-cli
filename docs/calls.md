@@ -25,7 +25,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/calls/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/calls/get.ts)_
+_See code: [src/commands/calls/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.1/src/commands/calls/get.ts)_
 
 ## `freeclimb calls:list`
 
@@ -56,7 +56,7 @@ OPTIONS
   -s, --startTime=startTime        Only show Calls that started at or after this time, given as YYYY-MM-DD hh:mm:ss.
 ```
 
-_See code: [src/commands/calls/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/calls/list.ts)_
+_See code: [src/commands/calls/list.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.1/src/commands/calls/list.ts)_
 
 ## `freeclimb calls:list-call CALLID`
 
@@ -75,7 +75,7 @@ OPTIONS
   -n, --next                     Displays the next page of output.
 ```
 
-_See code: [src/commands/calls/list-call.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/calls/list-call.ts)_
+_See code: [src/commands/calls/list-call.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.1/src/commands/calls/list-call.ts)_
 
 ## `freeclimb calls:list-call-logs CALLID`
 
@@ -93,7 +93,7 @@ OPTIONS
   -n, --next  Displays the next page of output.
 ```
 
-_See code: [src/commands/calls/list-call-logs.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/calls/list-call-logs.ts)_
+_See code: [src/commands/calls/list-call-logs.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.1/src/commands/calls/list-call-logs.ts)_
 
 ## `freeclimb calls:make FROM TO APPLICATIONID`
 
@@ -160,7 +160,7 @@ OPTIONS
       ring-time to 120 seconds.
 ```
 
-_See code: [src/commands/calls/make.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/calls/make.ts)_
+_See code: [src/commands/calls/make.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.1/src/commands/calls/make.ts)_
 
 ## `freeclimb calls:update CALLID STATUS`
 
@@ -180,4 +180,4 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/calls/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/calls/update.ts)_
+_See code: [src/commands/calls/update.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.1/src/commands/calls/update.ts)_

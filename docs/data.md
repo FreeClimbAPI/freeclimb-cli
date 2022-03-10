@@ -17,4 +17,4 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/data.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/data.ts)_
+_See code: [src/commands/data.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.1/src/commands/data.ts)_
