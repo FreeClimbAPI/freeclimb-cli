@@ -50,7 +50,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [ 16.x ]
+        node-version: [ 14.x ]
         os: [ macos-latest ]
 
     steps:
