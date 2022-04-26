@@ -1,6 +1,6 @@
 {
   "name": "freeclimb-cli",
-  "version": "0.4.0",
+  "version": "0.5.2",
   "author": "dev@freeclimb.com",
   "bin": {
     "freeclimb": "./bin/run"
@@ -15,6 +15,7 @@
     "@oclif/plugin-autocomplete": "^0.3.0",
     "@oclif/plugin-help": "^3.2.2",
     "axios": "^0.24.0",
+    "chalk": "^2.4.2",
     "cli-ux": "^5.6.3",
     "dotenv": "^10.0.0",
     "keytar": "^7.7.0",

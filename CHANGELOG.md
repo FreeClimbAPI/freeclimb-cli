@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format of this changelog is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<a name="0.5.3"></a>
+
+## [0.5.3] - 2022-04-26
+
+### Changed
+
+-   Added chalk explicitly as a dependency
+
 <a name="0.5.2"></a>
 
 ## [0.5.2] - 2022-03-10
