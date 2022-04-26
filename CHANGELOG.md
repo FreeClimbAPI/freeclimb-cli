@@ -11,7 +11,7 @@ This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.htm
 
 ### Changed
 
--   update node version for testing
+-   removed node version 12 from testing
 
 <a name="0.5.1"></a>
 
