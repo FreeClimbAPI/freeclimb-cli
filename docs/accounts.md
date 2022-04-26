@@ -18,7 +18,7 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/accounts/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/accounts/get.ts)_
+_See code: [src/commands/accounts/get.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.2/src/commands/accounts/get.ts)_
 
 ## `freeclimb accounts:manage`
 
@@ -34,4 +34,4 @@ OPTIONS
   -l, --label=label  Group to which this account belongs.
 ```
 
-_See code: [src/commands/accounts/manage.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.4.0/src/commands/accounts/manage.ts)_
+_See code: [src/commands/accounts/manage.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.2/src/commands/accounts/manage.ts)_
