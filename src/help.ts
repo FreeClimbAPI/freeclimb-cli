@@ -1,4 +1,4 @@
-import Help from "@oclif/plugin-help"
+import Help from "@oclif/help"
 
 import * as Config from "@oclif/config"
 
@@ -8,7 +8,7 @@ import chalk from "chalk"
 
 const { bold } = chalk
 
-import { renderList } from "@oclif/plugin-help/lib/list"
+import { renderList } from "@oclif/help/lib/list"
 
 export default class FreeClimbHelpClass extends Help {
     protected formatTopics(topics: Config.Topic[]): string {
