@@ -17,4 +17,4 @@ OPTIONS
   -h, --help  show CLI help
 ```
 
-_See code: [src/commands/logout.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.2/src/commands/logout.ts)_
+_See code: [src/commands/logout.ts](https://github.com/FreeClimbAPI/freeclimb-cli/blob/v0.5.3/src/commands/logout.ts)_
