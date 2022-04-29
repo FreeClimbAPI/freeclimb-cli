@@ -10,7 +10,7 @@ Read the complete [FreeClimb CLI Quickstart documentation](https://docs.freeclim
 ## Requirements
 A [FreeClimb account](https://freeclimb.com/dashboard/)
 
-[Node.js](https://nodejs.org/en/download/) version 12.9.0 or higher
+[Node.js](https://nodejs.org/en/download/) version 14.15.0 or higher
 
 Linux users may require further prerequisites. See details about this in the [documentation](https://docs.freeclimb.com/docs/freeclimb-cli-quickstart#linux).
 
@@ -68,7 +68,7 @@ Review [Other Use Cases](https://docs.freeclimb.com/docs/freeclimb-cli-quickstar
 
 ## Troubleshooting
 Newer versions of Node may give an invalid header value error when using the CLI. To resolve this issue: 
- 1. Use Node version 12.9.0
+ 1. Use Node version 14.15.0
  2. Add NODE_OPTIONS as a persistent environment variable by running the following command:
  ```
  $ echo export NODE_OPTIONS=--http-parser=legacy >> ~/.bash_profile
