@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format of this changelog is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 This project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+<a name="0.5.5"></a>
+
+## [0.5.5] - 2022-04-27
+
+### Changed
+
+-   removed node v12 from capabilities set lowest version to 14.15.0
+
 <a name="0.5.4"></a>
 
 ## [0.5.4] - 2022-04-26
